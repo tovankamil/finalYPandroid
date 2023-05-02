@@ -97,19 +97,28 @@ const QA = () => {
     <ScrollView>
       <View style={styles.tabViewContainer}>
         <View style={styles.tabView}>
-          <TextInput label="Pertanyaan 1" placeholder="" />
+          <TextInput
+            label="Apakah anda mengenal Yanuar Prihatin"
+            placeholder=""
+          />
           <Gap height={14} />
-          <TextInput label="Pertanyaan 2" placeholder="" />
+          <TextInput
+            label="Apakah anda bersedia memilih Yanuar Prihatin caleg anda 2024"
+            placeholder=""
+          />
           <Gap height={14} />
-          <TextInput label="Pertanyaan 3" placeholder="" />
+          <TextInput
+            label="Apakah anda bersedia menjadi relawan untuk Yanuar Prihatin"
+            placeholder=""
+          />
           <Gap height={14} />
-          <TextInput label="Pertanyaan 4" placeholder="" />
+          {/* <TextInput label="Pertanyaan 4" placeholder="" />
           <Gap height={14} />
           <TextInput label="Pertanyaan 5" placeholder="" />
           <Gap height={14} />
           <TextInput label="Pertanyaan 6" placeholder="" />
           <Gap height={14} />
-          <TextInput label="Pertanyaan 7" placeholder="" />
+          <TextInput label="Pertanyaan 7" placeholder="" /> */}
           <Gap height={14} />
         </View>
       </View>
