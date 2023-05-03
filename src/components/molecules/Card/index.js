@@ -21,7 +21,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.nik}</Text>
+            <Text style={styles.isiColor}>{value.nik}</Text>
           </View>
         </View>
       </View>
@@ -45,7 +45,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.hp}</Text>
+            <Text style={styles.isiColor}>{value.hp}</Text>
           </View>
         </View>
       </View>
@@ -57,7 +57,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.alamat}</Text>
+            <Text style={styles.isiColor}>{value.alamat}</Text>
           </View>
         </View>
       </View>
@@ -69,7 +69,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.nama_kota}</Text>
+            <Text style={styles.isiColor}> {value.kota.nama}</Text>
           </View>
         </View>
       </View>
@@ -80,7 +80,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.nama_kecamatan}</Text>
+            <Text style={styles.isiColor}>{value.kecamatan.nama}</Text>
           </View>
         </View>
       </View>
@@ -92,7 +92,7 @@ const Card = ({value}) => {
           </View>
           <Text style={styles.dot}>:</Text>
           <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.nama_desa}</Text>
+            <Text style={styles.isiColor}> {value.desa.nama}</Text>
           </View>
         </View>
       </View>

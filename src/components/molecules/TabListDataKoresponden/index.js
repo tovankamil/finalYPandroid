@@ -21,7 +21,7 @@ const DataTerinput = () => {
         <ButtonPrimary
           bg="#0EA137"
           color="white"
-          textData="Tambah Baru"
+          textData="Tambah Koresponden"
           onPress={() => navigation.navigate('FormKoresponden')}
           _
         />
@@ -68,7 +68,7 @@ const TabListDataKoresponden = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: '1', title: 'Data Terinput '},
-    {key: '2', title: 'Data Terpending'},
+    // {key: '2', title: 'Data Terpending'},
   ]);
 
   const renderScene = SceneMap({

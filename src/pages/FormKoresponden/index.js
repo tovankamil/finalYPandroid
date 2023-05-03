@@ -10,7 +10,6 @@ import {getData} from '../../utils';
 export default function FormKoresponden({navigation}) {
   const globalState = useSelector(state => state.formKorespondenReducer);
   const dataProvinsiReducer = useSelector(state => state.dataProvinsiReducer);
-  console.log('globalState', globalState);
 
   const dispatch = useDispatch();
   const [user, setUser] = useState({});

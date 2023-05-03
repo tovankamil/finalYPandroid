@@ -79,11 +79,27 @@ const SignUp = ({navigation}) => {
         usernameEr: 'Masukan username',
       }));
     }
+
+    if (form.username.length > 20) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        usernameEr: 'Username tidak boleh melebihi 20 karakter',
+      }));
+    }
     if (form.nama.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
         ...errordata,
         namaEr: 'Masukan Nama',
+      }));
+    }
+
+    if (form.nama.length > 50) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        namaEr: 'Nama tidak boleh melebihi 50 karakter',
       }));
     }
     if (form.password.length == 0) {
@@ -93,6 +109,15 @@ const SignUp = ({navigation}) => {
         passwordEr: 'Silahkan Masukan Password',
       }));
     }
+
+    if (form.password.length > 50) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        passwordEr: 'Password tidak boleh melebihi 50 karakter',
+      }));
+    }
+
     if (form.hp.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
@@ -101,11 +126,27 @@ const SignUp = ({navigation}) => {
       }));
     }
 
+    if (form.hp.length > 20) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        hpEr: 'Hp Tidak boleh melebihi 2 angka',
+      }));
+    }
+
     if (form.umur.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
         ...errordata,
         umurEr: 'Masukan Umur anda',
+      }));
+    }
+
+    if (form.umur.length > 2) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        umurEr: 'Umur tidak boleh melebihi 2 angka',
       }));
     }
     if (form.jenisKelamin.length == 0) {

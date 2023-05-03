@@ -36,18 +36,23 @@ export const formKorespondenReducer = (
     return {
       ...state,
       kota: action.value.kota,
-      kecamatan: action.value.kecamatan,
-      desa: action.value.nama_desa,
+      nama_kota: action.value.nama_kota,
+      kecamatan: '',
+      nama_kecamatan: '',
+      desa: '',
+      nama_desa: '',
     };
   if (action.type === 'SET_KECAMATAN_KORESPONDEN')
     return {
       ...state,
-      kecamatan: action.value,
+      kecamatan: action.value.kecamatan,
+      nama_kecamatan: action.value.nama_kecamatan,
     };
   if (action.type === 'SET_DESA_KORESPONDEN')
     return {
       ...state,
-      desa: action.value,
+      desa: action.value.desa,
+      nama_desa: action.value.nama_desa,
     };
   if (action.type === 'SET_ATTRIBUTE_SPANDUK')
     return {

@@ -8,10 +8,11 @@ export const signUpKorespondenAction = (
   navigation,
   token,
 ) => dispatch => {
+  console.log('dataRegister', token);
   dispatch(setLoading(true));
-  Axios.post(`${API_HOST.url}/registerkoresponden`, dataRegister, {
+  Axios.post(`${API_HOST.url}/fe/users/login/inputkoresponden`, dataRegister, {
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token?.value}`,
       'Content-Type': 'application/json',
     },
   })
@@ -23,8 +24,7 @@ export const signUpKorespondenAction = (
     })
     .catch(err => {
       dispatch(setLoading(false));
-
-      showMessage('error', err);
+      showMessage(`${err.response.data.msg}`, 'danger');
     });
 };
 

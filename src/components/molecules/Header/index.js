@@ -24,22 +24,22 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#152534',
+    backgroundColor: '#153606',
     paddingHorizontal: 24,
-    paddingTop: 20,
-    paddingBottom: 24,
+    paddingTop: 8,
+    paddingBottom: 18,
     flexDirection: 'row',
     alignItems: 'center',
   },
   title: {
-    fontSize: 22,
+    fontSize: 18,
     marginTop: 12,
     fontFamily: 'Poppins-Medium',
     lineHeight: 29,
     color: '#ffffff',
   },
   subTitle: {
-    fontSize: 13,
+    fontSize: 12,
     fontFamily: 'Poppins-Light',
     color: '#8D92A3',
     lineHeight: 15,

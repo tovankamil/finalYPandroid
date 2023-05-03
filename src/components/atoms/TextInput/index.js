@@ -19,10 +19,10 @@ export default React.memo(TextInput);
 
 const styles = StyleSheet.create({
   label: {
-    fontSize: 16,
-    fontFamily: 'Poppins-reguler',
-    color: 'black',
-    marginBottom: 10,
+    fontSize: 13,
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
+    marginBottom: 6,
   },
   input: {
     borderWidth: 1,

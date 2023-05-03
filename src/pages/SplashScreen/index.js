@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
-import {BOXLogo} from '../../assets';
+import {ICSplashScreen} from '../../assets';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
@@ -12,17 +12,17 @@ const SplashScreen = ({navigation}) => {
   return (
     <View
       style={{
-        backgroundColor: '#0EA137',
+        backgroundColor: '#FDFDFD',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
       }}
     >
-      <Image source={BOXLogo} style={styles.image} />
-
+      {/* <Image source={ICSplashScreen} style={styles.image} /> */}
+      <ICSplashScreen style={styles.image} />
       <View />
       <Text
-        style={{fontSize: 25, color: '#FDFDFD', fontFamily: 'Poppins-medium'}}
+        style={{fontSize: 25, color: '#626262', fontFamily: 'Poppins-medium'}}
       >
         Data Sukses
       </Text>

@@ -2,8 +2,8 @@ import ICLogo from './logo.png';
 import ICBack from './ic-back.svg';
 import ICBackWHITE from './ic-back-white.svg';
 import ICNext from './ic-next.svg';
-import SVGLogo from './logo.svg';
-import BOXLogo from './logobox.png';
+// import SVGLogo from './logo.svg';
+// import BOXLogo from './logobox.png';
 import Home_off from './home.svg';
 import Koresponden_off from './personalcard.svg';
 import TambahKoresponden_off from './profile-add.svg';
@@ -14,11 +14,20 @@ import TambahKoresponden_on from './profile-add_on.svg';
 import Profile_on from './profile-circle_on.svg';
 import UserKoresponden from './koresponden.svg';
 import IconUserDetail from './IconUserDetail.svg';
+import ICSplashScreen from './splashscreen.svg';
+import ICUser from './User.svg';
+import ICPROFILE from './Profile.png';
+import ICPKORESPONDEN from './Koresponden.png';
+import ICSETTING from './Setting.png';
+import ICKELUAR from './Keluar.png';
 export {
+  ICKELUAR,
+  ICSETTING,
+  ICPKORESPONDEN,
+  ICPROFILE,
   ICNext,
   ICLogo,
-  SVGLogo,
-  BOXLogo,
+  ICUser,
   ICBack,
   ICBackWHITE,
   Home_off,
@@ -31,4 +40,5 @@ export {
   TambahKoresponden_on,
   UserKoresponden,
   IconUserDetail,
+  ICSplashScreen,
 };

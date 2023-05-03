@@ -16,21 +16,6 @@ export const dataProvinsi = () => dispatch => {
     });
 };
 
-// export const dataKecamatan = id => dispatch => {
-//   console.log('id', id);
-//   dispatch(setLoading(true));
-
-//   Axios.get(`${API_HOST.url}/kecamatan/${id}`)
-//     .then(res => {
-//       dispatch({type: 'LIST_DATA_KECAMATAN', value: res.data.data});
-//       dispatch(setLoading(false));
-//     })
-//     .catch(err => {
-//       dispatch(setLoading(false));
-//       showMessage('error', 'danger');
-//     });
-// };
-
 export const dataKecamatan2 = id => dispatch => {
   dispatch(setLoading(true));
 

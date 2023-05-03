@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {signInAction} from '../../redux/action/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {removeData} from '../../utils';
+import {ICSplashScreen} from '../../assets';
 const SignIn = ({navigation}) => {
   const [form, setForm] = useForm({
     username: '',
@@ -29,10 +30,10 @@ const SignIn = ({navigation}) => {
 
   return (
     <View style={styles.page}>
-      <Header
-        title="Login ke dalam akun anda"
-        subTitle="Masukan username dan password anda"
-      />
+      <View style={styles.boxImage}>
+        <ICSplashScreen style={styles.image} />
+      </View>
+
       <View style={styles.container}>
         <TextInput
           label="Username"
@@ -40,7 +41,7 @@ const SignIn = ({navigation}) => {
           value={form.nik}
           onChangeText={value => setForm('username', value)}
         />
-        <Gap height={6} />
+        <Gap height={16} />
         <TextInput
           label="Password"
           placeholder="Masukan Password"
@@ -71,6 +72,16 @@ export default SignIn;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  },
+  boxImage: {
+    justifyContent: 'center',
+    width: '100%',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
   container: {
     backgroundColor: 'white',

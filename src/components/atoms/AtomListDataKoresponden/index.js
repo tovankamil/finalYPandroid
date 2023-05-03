@@ -13,7 +13,7 @@ const AtomListDataKoresponden = ({onPress, value}) => {
           <View style={styles.data}>
             <Text style={styles.nama}>{value?.nama} </Text>
             <Text style={styles.alamat}>
-              {`${value?.usia} Tahun ,${value?.nama_kota}-${value?.nama_kecamatan}`}{' '}
+              {`${value?.usia} Tahun ,${value?.kota?.nama}-${value?.kecamatan?.nama}`}{' '}
             </Text>
           </View>
         </View>

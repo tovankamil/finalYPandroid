@@ -42,14 +42,26 @@ const Select = ({
           </View>
         );
       } else {
-        value && dispatch(dataKecamatan2({kota: value.split('#')[0]}));
+        value &&
+          dispatch(
+            dataKecamatan2({kota: value?.length > 0 && value.split('#')[0]}),
+          );
         value &&
           dispatch({
             type: 'SET_KOTA',
-            value: {kota: value.split('#')[0], nama_kota: value.split('#')[1]},
+            value: {
+              kota: value?.length > 0 && value.split('#')[0],
+              nama_kota: value?.length > 0 && value.split('#')[1],
+            },
           });
         koresponden &&
-          dispatch({type: 'SET_KOTA_KORESPONDEN', value: value.split('#')[1]});
+          dispatch({
+            type: 'SET_KOTA_KORESPONDEN',
+            value: {
+              kota: value?.length > 0 && value.split('#')[0],
+              nama_kota: value?.length > 0 && value.split('#')[1],
+            },
+          });
         return (
           <View style={styles.input}>
             <Picker
@@ -91,19 +103,25 @@ const Select = ({
           </View>
         );
       } else {
-        value && dispatch(dataDesa({kecamatan: value.split('#')[0]}));
+        value &&
+          dispatch(
+            dataDesa({kecamatan: value?.length > 0 && value.split('#')[0]}),
+          );
         value &&
           dispatch({
             type: 'SET_KECAMATAN',
             value: {
-              kecamatan: value.split('#')[0],
-              nama_kecamatan: value.split('#')[1],
+              kecamatan: value?.length > 0 && value.split('#')[0],
+              nama_kecamatan: value?.length > 0 && value.split('#')[1],
             },
           });
         koresponden &&
           dispatch({
             type: 'SET_KECAMATAN_KORESPONDEN',
-            value: value.split('#')[1],
+            value: {
+              kecamatan: value?.length > 0 && value.split('#')[0],
+              nama_kecamatan: value?.length > 0 && value.split('#')[1],
+            },
           });
         return (
           <View style={styles.input}>
@@ -150,12 +168,18 @@ const Select = ({
         dispatch({
           type: 'SET_DESA',
           value: {
-            desa: value.split('#')[0],
-            nama_desa: value.split('#')[1],
+            desa: value?.length > 0 && value.split('#')[0],
+            nama_desa: value?.length > 0 && value.split('#')[1],
           },
         });
         koresponden &&
-          dispatch({type: 'SET_DESA_KORESPONDEN', value: value.split('#')[1]});
+          dispatch({
+            type: 'SET_DESA_KORESPONDEN',
+            value: {
+              desa: value?.length > 0 && value.split('#')[0],
+              nama_desa: value?.length > 0 && value.split('#')[1],
+            },
+          });
         return (
           <View style={styles.input}>
             <Picker

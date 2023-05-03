@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {dataKecamatan2} from '../../../redux/action';
 
 const SelectKoresponden = ({label, value, onSelectChange, data}) => {
-  console.log('data selecct', data);
+
   const dispatch = useDispatch();
   const Pilih = ({label, data, onSelectChange, value}) => {
     if (data?.data?.length == 0) {

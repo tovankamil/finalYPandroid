@@ -45,7 +45,7 @@ export const signUpAction = (dataRegister, navigation) => dispatch => {
       navigation.navigate('Home');
     })
     .catch(err => {
-      console.log(err);
+
       dispatch(setLoading(false));
 
       showMessage(`${err}`, 'danger');
