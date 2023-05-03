@@ -107,6 +107,7 @@ const Select = ({
           dispatch(
             dataDesa({kecamatan: value?.length > 0 && value.split('#')[0]}),
           );
+        value == 0 && dispatch(dataDesa({type: 'LIST_DATA_DESA_RESET'}));
         value &&
           dispatch({
             type: 'SET_KECAMATAN',
@@ -216,7 +217,12 @@ const Select = ({
 export default React.memo(Select);
 
 const styles = StyleSheet.create({
-  label: {fontSize: 16, fontFamily: 'Poppins-Regular', color: '#020202'},
+  label: {
+    fontSize: 13,
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
+    paddingBottom: 10,
+  },
   input: {
     borderWidth: 1,
     borderColor: '#020202',

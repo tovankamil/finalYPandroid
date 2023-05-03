@@ -48,6 +48,7 @@ export default dataProvinsi = (state = initStateRegister, action) => {
       data_desa: [],
     };
   }
-
+  if (action.type === 'RESET_PROVINSI') return (state = initStateRegister);
+  return state;
   return state;
 };

@@ -47,7 +47,7 @@ const CBAttributeLainnya = ({label}) => {
   );
 };
 
-export default CBAttributeLainnya;
+export default React.memo(CBAttributeLainnya);
 const Attr = ({lainnya, datalain}) => {
   return (
     <View style={styles.lainnya}>

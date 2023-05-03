@@ -33,7 +33,7 @@ export const dataKecamatan2 = id => dispatch => {
 
 export const dataDesa = id => dispatch => {
   dispatch(setLoading(true));
-
+  console.log('dataDesa', id);
   Axios.post(`${API_HOST.url}/be/desa/ById`, id)
     .then(res => {
       dispatch({type: 'LIST_DATA_DESA', value: res.data});

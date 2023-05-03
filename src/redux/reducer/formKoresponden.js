@@ -22,6 +22,7 @@ export const formKorespondenReducer = (
   state = initStateRegisterKoresponden,
   action,
 ) => {
+  console.log('state', state);
   if (action.type === 'SET_PROFILE_KORESPONDEN')
     return {
       ...state,
@@ -54,6 +55,14 @@ export const formKorespondenReducer = (
       desa: action.value.desa,
       nama_desa: action.value.nama_desa,
     };
+
+  if (action.type === 'RESET_DESA_KORESPONDEN')
+    return {
+      ...state,
+      desa: '',
+      nama_desa: '',
+    };
+
   if (action.type === 'SET_ATTRIBUTE_SPANDUK')
     return {
       ...state,

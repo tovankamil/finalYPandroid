@@ -8,7 +8,6 @@ export const signUpKorespondenAction = (
   navigation,
   token,
 ) => dispatch => {
-  console.log('dataRegister', token);
   dispatch(setLoading(true));
   Axios.post(`${API_HOST.url}/fe/users/login/inputkoresponden`, dataRegister, {
     headers: {

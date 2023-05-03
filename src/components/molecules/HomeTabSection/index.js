@@ -34,6 +34,9 @@ const Identitas = () => {
   });
   useEffect(() => {
     dispatch(dataProvinsi());
+    dispatch({
+      type: 'RESET_PROVINSI',
+    });
   }, []);
 
   const memoKota = useMemo(() => {
@@ -80,11 +83,11 @@ const Identitas = () => {
         <View style={styles.tabView}>
           <FormProfilKoresponden />
 
-          <Gap height={14} />
+          <Gap height={10} />
           {memoKota}
-          <Gap height={14} />
+          <Gap height={20} />
           {memoKecamatan}
-          <Gap height={14} />
+          <Gap height={20} />
           {memoDesa}
         </View>
       </View>
@@ -126,7 +129,6 @@ const QA = () => {
   );
 };
 const Attribute = () => {
-  const [isSelected, setSelection] = useState(false);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -153,8 +155,8 @@ const renderTabBar = props => (
 const initialLayout = {width: Dimensions.get('window').width};
 
 const HomeTabSection = () => {
-  const globalstate = useSelector(state => state.formKorespondenReducer);
-  const layout = useWindowDimensions();
+  // const globalstate = useSelector(state => state.formKorespondenReducer);
+  // const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([

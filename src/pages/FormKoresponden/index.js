@@ -7,7 +7,7 @@ import HomeTabSection from '../../components/molecules/HomeTabSection';
 import {dataProvinsi, signUpKorespondenAction} from '../../redux/action';
 import {getData} from '../../utils';
 
-export default function FormKoresponden({navigation}) {
+const FormKoresponden = ({navigation}) => {
   const globalState = useSelector(state => state.formKorespondenReducer);
   const dataProvinsiReducer = useSelector(state => state.dataProvinsiReducer);
 
@@ -32,10 +32,10 @@ export default function FormKoresponden({navigation}) {
     if (globalState.lainnya.length > 0) {
       dataattr += `#${globalState.lainnya}`;
     }
+    console.log('globalstate', globalState);
+    // Object.assign(globalState, {attribute: dataattr});
 
-    Object.assign(globalState, {attribute: dataattr});
-
-    dispatch(signUpKorespondenAction(globalState, navigation, user));
+    // dispatch(signUpKorespondenAction(globalState, navigation, user));
   };
 
   return (
@@ -56,10 +56,10 @@ export default function FormKoresponden({navigation}) {
             onPress={onPressLearnMore}
             text="Simpan"
             textColor="#F9F9F9"
-            color="red"
+            color="green"
           />
         </View>
-        <View style={styles.boxButton}>
+        {/* <View style={styles.boxButton}>
           <Button
             style={styles.button}
             onPress={onPressLearnMore}
@@ -67,13 +67,13 @@ export default function FormKoresponden({navigation}) {
             textColor="#F9F9F9"
             color="green"
           />
-        </View>
+        </View> */}
       </View>
       {/* end tab   */}
     </View>
   );
-}
-
+};
+export default React.memo(FormKoresponden);
 const styles = StyleSheet.create({
   content: {
     flex: 1,
@@ -82,16 +82,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-
+    width: '100%',
     backgroundColor: 'white',
   },
   boxButton: {
     padding: 10,
-
+    width: '100%',
     justifyContent: 'center',
   },
   button: {
-    width: '50%',
     color: 'red',
   },
 });
