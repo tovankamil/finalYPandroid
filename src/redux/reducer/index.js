@@ -4,6 +4,7 @@ import {globalReducer} from './global';
 import dataProvinsiReducer from './dataProvinsi';
 import {formKorespondenReducer} from './formKoresponden';
 import dataKorespondenReducer from './dataKoresponden';
+import settingRelawanReducer from './setting';
 
 const reducer = combineReducers({
   registerReducer,
@@ -11,5 +12,6 @@ const reducer = combineReducers({
   dataProvinsiReducer,
   formKorespondenReducer,
   dataKorespondenReducer,
+  settingRelawanReducer,
 });
 export default reducer;

@@ -6,6 +6,7 @@ import {
   TextInput as TextInputRN,
   TouchableOpacity,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {
   CalendarBlank,
   IconUserDetail,
@@ -16,6 +17,8 @@ import {
 import {Gap, Header} from '../../components';
 
 export default function Setting({navigation}) {
+  const globalState = useSelector(state => state);
+  console.log('globalState', globalState);
   const [password, setPassword] = useState('');
   const onSubmit = () => {
     // REMOVE TOKEN
@@ -76,9 +79,9 @@ export default function Setting({navigation}) {
               Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110
             </Text>
           </View>
-          <Gap height={20} />
+          <Gap height={30} />
           <View style={styles.line}></View>
-          <Gap height={20} />
+          <Gap height={40} />
 
           <View style={styles.boxFlexRow}>
             <View style={styles.boxFLexCenter}>
@@ -207,7 +210,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   line: {
-    backgroundColor: 'purple',
+    backgroundColor: '#D0D0D0',
     height: 1,
   },
   button: {
