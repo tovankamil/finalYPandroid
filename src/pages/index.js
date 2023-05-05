@@ -9,6 +9,7 @@ import Profile from './Profile';
 import FormKoresponden from './FormKoresponden';
 import DataKoresponden from './DataKoresponden';
 import DetailKoresponden from './DetailKoresponden';
+import Setting from './Setting';
 
 export {
   SplashScreen,
@@ -22,4 +23,5 @@ export {
   FormKoresponden,
   DataKoresponden,
   DetailKoresponden,
+  Setting,
 };

@@ -5,7 +5,7 @@ import {Button, Gap, Header, TextInput} from '../../components';
 import {getData, useForm} from '../../utils';
 import {useDispatch, useSelector} from 'react-redux';
 import {signInAction} from '../../redux/action/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {removeData} from '../../utils';
 import {ICSplashScreen} from '../../assets';
 const SignIn = ({navigation}) => {

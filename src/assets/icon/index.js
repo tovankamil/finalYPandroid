@@ -20,6 +20,10 @@ import ICPROFILE from './Profile.png';
 import ICPKORESPONDEN from './Koresponden.png';
 import ICSETTING from './Setting.png';
 import ICKELUAR from './Keluar.png';
+import CalendarBlank from './CalendarBlank.svg';
+import MapPin from './MapPin.svg';
+import Phone from './Phone.svg';
+import Password from './Password.svg';
 export {
   ICKELUAR,
   ICSETTING,
@@ -41,4 +45,8 @@ export {
   UserKoresponden,
   IconUserDetail,
   ICSplashScreen,
+  CalendarBlank,
+  MapPin,
+  Phone,
+  Password,
 };

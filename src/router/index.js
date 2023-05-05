@@ -13,6 +13,7 @@ import {
   DataKoresponden,
   FormKoresponden,
   DetailKoresponden,
+  Setting,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -78,6 +79,11 @@ const Router = () => {
       <Stack.Screen
         name="DetailKoresponden"
         component={DetailKoresponden}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Setting"
+        component={Setting}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen

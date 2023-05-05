@@ -60,7 +60,7 @@ const HomeData = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.borderData}
-          onPress={() => navigation.navigate('DataKoresponden')}
+          // onPress={() => navigation.navigate('DataKoresponden')}
         >
           <Image source={ICPROFILE} style={styles.image} />
         </TouchableOpacity>
@@ -69,7 +69,7 @@ const HomeData = ({navigation}) => {
       <View style={styles.containerMenu}>
         <TouchableOpacity
           style={styles.borderData}
-          onPress={() => navigation.navigate('DataKoresponden')}
+          onPress={() => navigation.navigate('Setting')}
         >
           <Image source={ICSETTING} style={styles.image} />
         </TouchableOpacity>

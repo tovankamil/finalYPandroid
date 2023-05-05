@@ -41,7 +41,6 @@ const FormKoresponden = ({navigation}) => {
       globalState?.kecamatan.length > 0 &&
       globalState?.desa.length > 0
     ) {
-      console.log('globalstate', globalState);
       Object.assign(globalState, {attribute: dataattr});
 
       dispatch(signUpKorespondenAction(globalState, navigation, user));
