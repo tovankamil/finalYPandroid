@@ -16,13 +16,15 @@ const initStateRegisterKoresponden = {
   spanduk: '',
   baju: '',
   lainnya: '',
+  qa1: '',
+  qa2: '',
+  qa3: '',
 };
 
 export const formKorespondenReducer = (
   state = initStateRegisterKoresponden,
   action,
 ) => {
-  console.log('state', state);
   if (action.type === 'SET_PROFILE_KORESPONDEN')
     return {
       ...state,
@@ -85,6 +87,15 @@ export const formKorespondenReducer = (
       ...state,
       lainnya: action.value.lainnya,
     };
+
+  if (action.type === 'SET_QA')
+    return {
+      ...state,
+      qa1: action.value.qa1,
+      qa2: action.value.qa2,
+      qa3: action.value.qa3,
+    };
+
   if (action.type === 'SET_RESET_FORM')
     return (state = initStateRegisterKoresponden);
   return state;

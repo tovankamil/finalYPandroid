@@ -12,7 +12,7 @@ import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {Gap, Select, TextInput} from '../../atoms';
 
 import {dataProvinsi} from '../../../redux/action';
-import {CBBaju} from '../../index';
+import {CBBaju, CBQA} from '../../index';
 import {useSelector, useDispatch} from 'react-redux';
 import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
 import {CBAttributeLainnya} from '../CBAtrribute';
@@ -96,37 +96,7 @@ const Identitas = () => {
 };
 
 const QA = () => {
-  return (
-    <ScrollView>
-      <View style={styles.tabViewContainer}>
-        <View style={styles.tabView}>
-          <TextInput
-            label="Apakah anda mengenal Yanuar Prihatin"
-            placeholder=""
-          />
-          <Gap height={14} />
-          <TextInput
-            label="Apakah anda bersedia memilih Yanuar Prihatin caleg anda 2024"
-            placeholder=""
-          />
-          <Gap height={14} />
-          <TextInput
-            label="Apakah anda bersedia menjadi relawan untuk Yanuar Prihatin"
-            placeholder=""
-          />
-          <Gap height={14} />
-          {/* <TextInput label="Pertanyaan 4" placeholder="" />
-          <Gap height={14} />
-          <TextInput label="Pertanyaan 5" placeholder="" />
-          <Gap height={14} />
-          <TextInput label="Pertanyaan 6" placeholder="" />
-          <Gap height={14} />
-          <TextInput label="Pertanyaan 7" placeholder="" /> */}
-          <Gap height={14} />
-        </View>
-      </View>
-    </ScrollView>
-  );
+  return <CBQA />;
 };
 const Attribute = () => {
   return (

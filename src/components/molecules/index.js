@@ -11,6 +11,7 @@ import MenuHome from './MenuHome';
 import Card from './Card';
 // import TabListDataKoresponden from './TabListDataKoresponden';
 export * from './CBAtrribute';
+import CBQA from './CBQA';
 
 export {
   Header,
@@ -23,4 +24,5 @@ export {
   BottomNavigator,
   MenuHome,
   Card,
+  CBQA,
 };

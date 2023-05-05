@@ -32,10 +32,20 @@ const FormKoresponden = ({navigation}) => {
     if (globalState.lainnya.length > 0) {
       dataattr += `#${globalState.lainnya}`;
     }
-    console.log('globalstate', globalState);
-    // Object.assign(globalState, {attribute: dataattr});
 
-    // dispatch(signUpKorespondenAction(globalState, navigation, user));
+    if (globalState.lainnya.length > 0) {
+      dataattr += `#${globalState.lainnya}`;
+    }
+    if (
+      globalState?.kota.length > 0 &&
+      globalState?.kecamatan.length > 0 &&
+      globalState?.desa.length > 0
+    ) {
+      console.log('globalstate', globalState);
+      Object.assign(globalState, {attribute: dataattr});
+
+      dispatch(signUpKorespondenAction(globalState, navigation, user));
+    }
   };
 
   return (

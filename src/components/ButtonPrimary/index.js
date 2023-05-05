@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
   container: color => ({
     backgroundColor: color,
     padding: 12,
+    paddingVertical: 12,
+    borderRadius: 8,
   }),
   text: color => ({
     fontSize: 14,

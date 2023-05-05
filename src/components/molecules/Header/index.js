@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Poppins-Light',
     color: '#8D92A3',
-    lineHeight: 15,
-    marginTop: 3,
+    lineHeight: 13,
+    marginTop: 1,
   },
   back: {
-    padding: 16,
-    marginRight: 16,
+    padding: 15,
+    marginRight: 15,
     marginLeft: -10,
   },
 });
