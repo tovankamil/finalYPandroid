@@ -1,20 +1,36 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {
   Dimensions,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   useWindowDimensions,
   View,
 } from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import {useDispatch} from 'react-redux';
 
 import {ButtonPrimary} from '../..';
+import {getDataKoresponden} from '../../../redux/action';
+import {getData} from '../../../utils';
 import {Gap} from '../../atoms';
 import ListDataKoresponden from '../ListDataKoresponden';
 
 const DataTerinput = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const refreshdata = useCallback(() => {
+    setRefreshing(true);
+    getData('token').then(data => {
+      dispatch(getDataKoresponden(data));
+    });
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1);
+  }, []);
   return (
     <>
       <View style={styles.boxButton}>
@@ -26,7 +42,11 @@ const DataTerinput = () => {
           _
         />
       </View>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
+        }
+      >
         <View style={styles.tabViewContainer}>
           <View style={styles.tabView}>
             <ListDataKoresponden />

@@ -1,5 +1,5 @@
 const initStateRegister = {
-  setting: [],
+  setting: {},
 };
 
 export default settingRelawanReducer = (state = initStateRegister, action) => {

@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TextInput as TextInputRN,
   TouchableOpacity,
+  ScrollView,
+  RefreshControl,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+
+import {useDispatch, useSelector} from 'react-redux';
 import {
   CalendarBlank,
   IconUserDetail,
@@ -15,110 +18,162 @@ import {
   Phone,
 } from '../../assets';
 import {Gap, Header} from '../../components';
+import {
+  dataRelawan,
+  dataRelawanUpdatePassword,
+} from '../../redux/action/setting';
+import {cumatanggal, getData, showMessage} from '../../utils';
+import {capitalizeFirstLetter} from '../../utils/firstCapital';
 
 export default function Setting({navigation}) {
-  const globalState = useSelector(state => state);
-  console.log('globalState', globalState);
+  const dispatch = useDispatch();
+  const globalState = useSelector(
+    state => state?.settingRelawanReducer?.setting,
+  );
+  const [refreshing, setRefreshing] = React.useState(false);
+  useEffect(() => {
+    grepData();
+  }, []);
   const [password, setPassword] = useState('');
+  const grepData = useCallback(() => {
+    getData('token').then(data => {
+      dispatch(dataRelawan(data));
+    });
+  }, []);
+  const refreshdata = useCallback(() => {
+    setRefreshing(true);
+    getData('token').then(data => {
+      dispatch(dataRelawan(data));
+    });
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1);
+  }, []);
   const onSubmit = () => {
+    password?.length <= 5 && showMessage('Minimal password  6 digit', 'danger');
+    password?.length >= 6 &&
+      getData('token').then(data => {
+        dispatch(dataRelawanUpdatePassword(data, password));
+      });
     // REMOVE TOKEN
   };
+
   return (
-    <View style={styles.content}>
-      <Header
-        title="Setting "
-        subTitle="Profile Relawan"
-        onBack={() => navigation.goBack()}
-      />
+    <ScrollView
+      contentContainerStyle={styles.scrollView}
+      refreshControl={
+        <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
+      }
+    >
+      <View style={styles.content}>
+        <Header
+          title="Setting "
+          subTitle="Profile Relawan"
+          onBack={() => navigation.goBack()}
+        />
 
-      {/* Photo */}
-      <View>
-        <View style={styles.boxPhoto}>
-          <View style={styles.icon}>
-            <IconUserDetail />
-          </View>
-          <Gap height={10} />
-          <Text style={styles.nama}>Tofan</Text>
-          <Gap height={5} />
-          <Text style={styles.nik}>317400919910010</Text>
-          <Gap height={5} />
-          <Text style={styles.kecamatanTitle}>Koodinator kecamatan</Text>
-        </View>
-      </View>
-      {/* Photo */}
-
-      {/* Information */}
-      <View style={styles.boxInformation}>
-        <View style={styles.boxData}>
-          <Text style={styles.informasi}>Informasi</Text>
-          {/* Tanggal Daftar */}
-          <Gap height={25} />
-          <View style={styles.boxFlexRow}>
-            <View style={styles.boxFLexCenter}>
-              <CalendarBlank />
+        {/* Photo */}
+        <View>
+          <View style={styles.boxPhoto}>
+            <View style={styles.icon}>
+              <IconUserDetail />
             </View>
-            <Gap width={10} />
-            <Text>25 Maret 2023</Text>
-          </View>
-          <Gap height={25} />
-          <View style={styles.boxFlexRow}>
-            <View style={styles.boxFLexCenter}>
-              <Phone />
-            </View>
-            <Gap width={10} />
-            <Text>082292301999</Text>
-          </View>
-          <Gap height={20} />
-          <View style={styles.boxFlexRow}>
-            <View style={styles.boxFLexCenter}>
-              <MapPin />
-            </View>
-            <Gap width={10} />
-            <Text style={styles.alamat}>
-              Jl. Medan Merdeka Sel. No.8-9, RT.11/RW.2, Gambir, Kecamatan
-              Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110
+            <Gap height={10} />
+            <Text style={styles.nama}>
+              {globalState?.data?.nama &&
+                capitalizeFirstLetter(globalState?.data?.nama)}
+            </Text>
+            <Gap height={5} />
+            <Text style={styles.nik}>{globalState?.data?.nik}</Text>
+            <Gap height={5} />
+            <Text style={styles.kecamatanTitle}>
+              Koodinator{' '}
+              {globalState?.data?.nik === 'KC' ? 'Kecamatan' : 'Desa'}
             </Text>
           </View>
-          <Gap height={30} />
-          <View style={styles.line}></View>
-          <Gap height={40} />
+        </View>
+        {/* Photo */}
 
-          <View style={styles.boxFlexRow}>
-            <View style={styles.boxFLexCenter}>
-              <Password />
+        {/* Information */}
+        <View style={styles.boxInformation}>
+          <View style={styles.boxData}>
+            <Text style={styles.informasi}>Informasi</Text>
+            {/* Tanggal Daftar */}
+            <Gap height={25} />
+            <View style={styles.boxFlexRow}>
+              <View style={styles.boxFLexCenter}>
+                <CalendarBlank />
+              </View>
+              <Gap width={10} />
+              <Text>
+                {' '}
+                {globalState?.data?.createdAt &&
+                  cumatanggal(globalState?.data?.createdAt)}
+              </Text>
             </View>
-            <Gap width={10} />
+            <Gap height={25} />
+            <View style={styles.boxFlexRow}>
+              <View style={styles.boxFLexCenter}>
+                <Phone />
+              </View>
+              <Gap width={10} />
+              <Text>{globalState?.data?.hp ? globalState?.data?.hp : ''}</Text>
+            </View>
+            <Gap height={20} />
+            <View style={styles.boxFlexRow}>
+              <View style={styles.boxFLexCenter}>
+                <MapPin />
+              </View>
+              <Gap width={10} />
+              <Text style={styles.alamat}>
+                {globalState?.data &&
+                  `${globalState?.data?.alamat}, ${globalState?.data?.desa?.nama}, ${globalState?.data?.kecamatan?.nama}, ${globalState?.data?.kota?.nama}`}
+              </Text>
+            </View>
+            <Gap height={30} />
+            <View style={styles.line}></View>
+            <Gap height={40} />
 
-            <TextInputRN
-              placeholder="Masukan password baru"
-              style={styles.input}
-              secureTextEntry
-              onChangeText={value => setPassword(value)}
-            />
-          </View>
+            <View style={styles.boxFlexRow}>
+              <View style={styles.boxFLexCenter}>
+                <Password />
+              </View>
+              <Gap width={10} />
 
-          <Gap height={20} />
+              <TextInputRN
+                placeholder="Masukan password baru"
+                style={styles.input}
+                secureTextEntry
+                onChangeText={value => setPassword(value)}
+              />
+            </View>
 
-          <View style={styles.boxFlexRow}>
-            <View style={styles.boxFLexCenter}></View>
-            <Gap width={35} />
+            <Gap height={40} />
 
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={onSubmit}
-              style={styles.button}
-            >
-              <Text style={styles.buttonText}>Updated Password</Text>
-            </TouchableOpacity>
+            <View style={styles.boxFlexRow}>
+              <View style={styles.boxFLexCenter}></View>
+              <Gap width={35} />
+
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={onSubmit}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>Updated Password</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
+        {/* Information */}
       </View>
-      {/* Information */}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+  },
   content: {
     flex: 1,
     backgroundColor: '#dddddd',
@@ -156,7 +211,6 @@ const styles = StyleSheet.create({
   boxInformation: {
     padding: 5,
     paddingHorizontal: 5,
-
     flex: 1,
     backgroundColor: '#dddddd',
   },
