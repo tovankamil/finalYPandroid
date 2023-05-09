@@ -8,12 +8,14 @@ import {signInAction} from '../../redux/action/auth';
 
 import {removeData} from '../../utils';
 import {ICSplashScreen} from '../../assets';
+import {setLogout} from '../../redux/action';
 const SignIn = ({navigation}) => {
   const [form, setForm] = useForm({
     username: '',
     password: '',
   });
   const dispatch = useDispatch();
+  dispatch(setLogout(false));
   useEffect(() => {
     getData('token').then(res => {
       if (res) {

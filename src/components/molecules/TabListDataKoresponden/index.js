@@ -9,24 +9,31 @@ import {
   View,
 } from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {ButtonPrimary} from '../..';
-import {getDataKoresponden} from '../../../redux/action';
+import {getDataKoresponden, setLogout} from '../../../redux/action';
 import {getData} from '../../../utils';
 import {Gap} from '../../atoms';
 import ListDataKoresponden from '../ListDataKoresponden';
 
 const DataTerinput = () => {
+  const globalState = useSelector(state => state);
   const navigation = useNavigation();
+
   const dispatch = useDispatch();
   const [refreshing, setRefreshing] = React.useState(false);
+  globalState.globalReducer.isLogout && dispatch(setLogout(false));
+  globalState.globalReducer.isLogout &&
+    navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
 
   const refreshdata = useCallback(() => {
     setRefreshing(true);
-    getData('token').then(data => {
-      dispatch(getDataKoresponden(data));
-    });
+    getData('token')
+      .then(data => {
+        dispatch(getDataKoresponden(data));
+      })
+      .catch(err => console.log('data', err));
     setTimeout(() => {
       setRefreshing(false);
     }, 1);

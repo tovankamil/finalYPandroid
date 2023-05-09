@@ -22,7 +22,7 @@ import {useForm} from '../../../utils';
 
 const Identitas = () => {
   const globalState = useSelector(state => state.dataProvinsiReducer);
-
+  console.log('globalState', globalState);
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
     nama_kota: '',
@@ -102,7 +102,7 @@ const Attribute = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>Attrbiute Yang Diberikan :</Text>
+        <Text style={styles.title}>Attribute yang diberikan :</Text>
         <CBBaju label="baju" />
         <CBBaju label="brosur" />
         <CBBaju label="spanduk" />

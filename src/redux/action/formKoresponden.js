@@ -1,7 +1,8 @@
+import {useNavigation} from '@react-navigation/native';
 import Axios from 'axios';
 import {API_HOST} from '../../config';
 import {getData, removeData, showMessage, storeData} from '../../utils';
-import {setLoading} from './global';
+import {setLoading, setLogout} from './global';
 
 export const signUpKorespondenAction = (
   dataRegister,
@@ -24,6 +25,22 @@ export const signUpKorespondenAction = (
     .catch(err => {
       dispatch(setLoading(false));
       showMessage(`${err.response.data.msg}`, 'danger');
+      err.response.status !== 500 && dispatch(setLoading(false));
+      showMessage(
+        err.response.status == 500
+          ? 'Login expired silahkan login kembali '
+          : '',
+        'error',
+      );
+
+      err.response.status == 500 &&
+        setTimeout(() => {
+          dispatch(setLoading(false));
+          err.response.status === 500 && removeData('token');
+          err.response.status === 500 && removeData('userProfile');
+
+          dispatch(setLogout(true));
+        }, 1000);
     });
 };
 
@@ -40,7 +57,21 @@ export const getDataKoresponden = token => dispatch => {
       dispatch({type: 'LIST_DATA_KORESPONDEN', value: res.data});
     })
     .catch(err => {
-      dispatch(setLoading(false));
-      // showMessage('error', err);
+      err.response.status !== 500 && dispatch(setLoading(false));
+      showMessage(
+        err.response.status == 500
+          ? 'Login expired silahkan login kembali '
+          : '',
+        'error',
+      );
+
+      err.response.status == 500 &&
+        setTimeout(() => {
+          dispatch(setLoading(false));
+          err.response.status === 500 && removeData('token');
+          err.response.status === 500 && removeData('userProfile');
+
+          dispatch(setLogout(true));
+        }, 1000);
     });
 };

@@ -4,14 +4,21 @@ import {Text, View, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Header} from '../../components';
 import HomeTabSection from '../../components/molecules/HomeTabSection';
-import {dataProvinsi, signUpKorespondenAction} from '../../redux/action';
+import {
+  dataProvinsi,
+  setLogout,
+  signUpKorespondenAction,
+} from '../../redux/action';
 import {getData} from '../../utils';
 
 const FormKoresponden = ({navigation}) => {
   const globalState = useSelector(state => state.formKorespondenReducer);
-  const dataProvinsiReducer = useSelector(state => state.dataProvinsiReducer);
-
+  const globalStateLogout = useSelector(state => state);
   const dispatch = useDispatch();
+  globalStateLogout.globalReducer.isLogout && dispatch(setLogout(false));
+  globalStateLogout.globalReducer.isLogout &&
+    navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
+
   const [user, setUser] = useState({});
   useEffect(() => {
     getData('token').then(data => {
@@ -36,6 +43,7 @@ const FormKoresponden = ({navigation}) => {
     if (globalState.lainnya.length > 0) {
       dataattr += `#${globalState.lainnya}`;
     }
+
     if (
       globalState?.kota.length > 0 &&
       globalState?.kecamatan.length > 0 &&

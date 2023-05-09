@@ -87,7 +87,7 @@ export default function Setting({navigation}) {
             <Text style={styles.nik}>{globalState?.data?.nik}</Text>
             <Gap height={5} />
             <Text style={styles.kecamatanTitle}>
-              Koodinator{' '}
+              Koordinator{' '}
               {globalState?.data?.nik === 'KC' ? 'Kecamatan' : 'Desa'}
             </Text>
           </View>

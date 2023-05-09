@@ -1,5 +1,6 @@
 const initGlobal = {
   isError: false,
+  isLogout: false,
   message: 'error',
 };
 
@@ -15,6 +16,12 @@ export const globalReducer = (state = initGlobal, action) => {
     return {
       ...state,
       isLoading: action.value,
+    };
+  }
+  if (action.type === 'SET_LOGOUT') {
+    return {
+      ...state,
+      isLogout: action.value,
     };
   }
   return state;
