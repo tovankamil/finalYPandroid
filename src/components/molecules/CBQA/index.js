@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {useForm} from '../../../utils';
 import {Gap, TextInput} from '../../atoms';

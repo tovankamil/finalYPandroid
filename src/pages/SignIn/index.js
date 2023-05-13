@@ -8,7 +8,7 @@ import {signInAction} from '../../redux/action/auth';
 
 import {removeData} from '../../utils';
 import {ICSplashScreen} from '../../assets';
-import {setLogout} from '../../redux/action';
+import {setLogout, setTabindexinputkoresponden} from '../../redux/action';
 const SignIn = ({navigation}) => {
   const [form, setForm] = useForm({
     username: '',
@@ -16,7 +16,9 @@ const SignIn = ({navigation}) => {
   });
   const dispatch = useDispatch();
   dispatch(setLogout(false));
+  dispatch(dispatch(setTabindexinputkoresponden(0)));
   useEffect(() => {
+    dispatch({type: 'SET_RESET_SETTING_RELAWAN'});
     getData('token').then(res => {
       if (res) {
         navigation.reset({index: 0, routes: [{name: 'Home'}]});

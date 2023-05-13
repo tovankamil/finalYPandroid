@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Header} from '../../components';
 import HomeTabSection from '../../components/molecules/HomeTabSection';
 import {
-  dataProvinsi,
   setLogout,
+  setNikError,
+  setTabindexinputkoresponden,
   signUpKorespondenAction,
 } from '../../redux/action';
 import {getData} from '../../utils';
@@ -27,6 +28,12 @@ const FormKoresponden = ({navigation}) => {
   }, []);
   const onPressLearnMore = () => {
     let dataattr = '';
+    if (globalState?.nik.length == 16) {
+      dispatch(setNikError(''));
+    }
+    if (globalState?.nik.length < 16) {
+      dispatch(setNikError('Masukan nik 16 digit'));
+    }
     if (globalState.brosur.length > 0) {
       dataattr += '#brosur';
     }
@@ -43,11 +50,59 @@ const FormKoresponden = ({navigation}) => {
     if (globalState.lainnya.length > 0) {
       dataattr += `#${globalState.lainnya}`;
     }
+    if (
+      globalState.spanduk.length == 0 ||
+      globalState.brosur.length == 0 ||
+      globalState.baju.length == 0
+    ) {
+      dispatch(setTabindexinputkoresponden(2));
+    }
+    if (
+      globalState.qa1.length == 0 ||
+      globalState.qa2.length == 0 ||
+      globalState.qa2.length == 0
+    ) {
+      dispatch(setTabindexinputkoresponden(1));
+    }
 
     if (
+      globalState?.nama.length == 0 ||
+      globalState?.nama.length > 20 ||
+      globalState?.usia.length == 0 ||
+      globalState?.usia.length > 2 ||
+      globalState?.nik.length == 0 ||
+      globalState?.nik.length < 16 ||
+      globalState?.nik.length > 17 ||
+      globalState?.alamat.length == 0 ||
+      globalState?.hp.length == 0 ||
+      globalState?.hp.length > 20 ||
+      globalState?.kota.length == 0 ||
+      globalState?.kecamatan.length == 0 ||
+      globalState?.desa.length == 0
+    ) {
+      dispatch(setTabindexinputkoresponden(0));
+    }
+
+    if (
+      globalState?.nama.length > 0 &&
+      globalState?.nama.length <= 20 &&
+      globalState?.usia.length > 0 &&
+      globalState?.usia.length <= 2 &&
+      globalState?.nik.length > 0 &&
+      globalState?.nik.length >= 16 &&
+      globalState?.nik.length <= 17 &&
+      globalState?.alamat.length > 0 &&
+      globalState?.hp.length > 0 &&
+      globalState?.hp.length <= 20 &&
       globalState?.kota.length > 0 &&
       globalState?.kecamatan.length > 0 &&
-      globalState?.desa.length > 0
+      globalState?.desa.length > 0 &&
+      globalState.qa1.length > 0 &&
+      globalState.qa2.length > 0 &&
+      globalState.qa2.length > 0 &&
+      globalState.spanduk.length > 0 &&
+      globalState.brosur.length > 0 &&
+      globalState.baju.length > 0
     ) {
       Object.assign(globalState, {attribute: dataattr});
 

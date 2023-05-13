@@ -2,6 +2,8 @@ const initGlobal = {
   isError: false,
   isLogout: false,
   message: 'error',
+  tabIndexInputKoresponden: 2,
+  nikError: '',
 };
 
 export const globalReducer = (state = initGlobal, action) => {
@@ -22,6 +24,18 @@ export const globalReducer = (state = initGlobal, action) => {
     return {
       ...state,
       isLogout: action.value,
+    };
+  }
+  if (action.type === 'SET_TABINPUTKORESPONDEN') {
+    return {
+      ...state,
+      tabIndexInputKoresponden: action.value,
+    };
+  }
+  if (action.type === 'SET_NIK_ERROR') {
+    return {
+      ...state,
+      nikError: action.value,
     };
   }
   return state;

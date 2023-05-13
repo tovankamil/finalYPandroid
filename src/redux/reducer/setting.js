@@ -9,5 +9,7 @@ export default settingRelawanReducer = (state = initStateRegister, action) => {
       setting: action.value,
     };
 
+  if (action.type === 'SET_RESET_SETTING_RELAWAN')
+    return (state = initStateRegister);
   return state;
 };

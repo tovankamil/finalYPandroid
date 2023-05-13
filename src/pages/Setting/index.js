@@ -57,21 +57,9 @@ export default function Setting({navigation}) {
       });
     // REMOVE TOKEN
   };
-
-  return (
-    <ScrollView
-      contentContainerStyle={styles.scrollView}
-      refreshControl={
-        <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
-      }
-    >
-      <View style={styles.content}>
-        <Header
-          title="Setting "
-          subTitle="Profile Relawan"
-          onBack={() => navigation.goBack()}
-        />
-
+  const DataProfile = () => {
+    return (
+      <>
         {/* Photo */}
         <View>
           <View style={styles.boxPhoto}>
@@ -165,6 +153,23 @@ export default function Setting({navigation}) {
           </View>
         </View>
         {/* Information */}
+      </>
+    );
+  };
+  return (
+    <ScrollView
+      contentContainerStyle={styles.scrollView}
+      refreshControl={
+        <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
+      }
+    >
+      <View style={styles.content}>
+        <Header
+          title="Setting "
+          subTitle="Profile Relawan"
+          onBack={() => navigation.goBack()}
+        />
+        {globalState?.data?.nama && <DataProfile />}
       </View>
     </ScrollView>
   );

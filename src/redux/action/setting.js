@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import {API_HOST} from '../../config';
-import {removeData, showMessage, storeData} from '../../utils';
+import {showMessage} from '../../utils';
 import {setLoading} from './global';
 
 export const dataRelawan = token => dispatch => {

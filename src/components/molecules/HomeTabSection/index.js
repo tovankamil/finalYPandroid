@@ -11,7 +11,7 @@ import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 
 import {Gap, Select, TextInput} from '../../atoms';
 
-import {dataProvinsi} from '../../../redux/action';
+import {dataProvinsi, setTabindexinputkoresponden} from '../../../redux/action';
 import {CBBaju, CBQA} from '../../index';
 import {useSelector, useDispatch} from 'react-redux';
 import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
@@ -22,7 +22,7 @@ import {useForm} from '../../../utils';
 
 const Identitas = () => {
   const globalState = useSelector(state => state.dataProvinsiReducer);
-  console.log('globalState', globalState);
+
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
     nama_kota: '',
@@ -125,10 +125,21 @@ const renderTabBar = props => (
 const initialLayout = {width: Dimensions.get('window').width};
 
 const HomeTabSection = () => {
-  // const globalstate = useSelector(state => state.formKorespondenReducer);
+  const globalstate = useSelector(state => state);
+  const dispatch = useDispatch();
   // const layout = useWindowDimensions();
+  const globalStateTAB = useSelector(state => state);
 
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(
+    globalStateTAB?.globalReducer?.tabIndexInputKoresponden,
+  );
+
+  console.log('setIndex', index);
+  // index !== globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
+  //   dispatch(setTabindexinputkoresponden(index));
+  index != globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
+    setIndex(globalStateTAB.globalReducer.tabIndexInputKoresponden);
+
   const [routes] = React.useState([
     {key: '1', title: 'Identitas '},
     {key: '2', title: 'Q&A'},
@@ -140,7 +151,7 @@ const HomeTabSection = () => {
     2: QA,
     3: Attribute,
   });
-
+  console.log('setIndex', renderScene);
   return (
     <TabView
       renderTabBar={renderTabBar}

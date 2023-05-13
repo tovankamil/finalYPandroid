@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {Gap, TextInput} from '..';
+import {Gap, Span, TextInput} from '..';
 import {getData, useForm} from '../../../utils';
 
 const FormProfilKoresponden = () => {
+  const globalState = useSelector(state => state.globalReducer);
+  console.log(globalState);
   const [errordata, setErrordata] = useState({
     namaEr: '',
     nikEr: '',
@@ -60,7 +62,7 @@ const FormProfilKoresponden = () => {
         onChangeText={value => setForm('nik', value)}
         numeric="numeric"
       />
-      {errordata.nikEr != '' && <Span label={errordata.nikEr} />}
+      {globalState?.nikError != '' && <Span label={globalState?.nikError} />}
       <Gap height={14} />
 
       {/* Hp */}

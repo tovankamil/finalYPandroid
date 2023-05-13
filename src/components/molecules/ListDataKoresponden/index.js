@@ -1,9 +1,10 @@
 import {useNavigation} from '@react-navigation/core';
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDataKoresponden} from '../../../redux/action';
 import {getData} from '../../../utils';
+import {checkConnection} from '../../../utils/checkConnection';
 import {AtomListDataKoresponden, Gap} from '../../atoms';
 
 const ListDataKoresponden = () => {
@@ -14,8 +15,8 @@ const ListDataKoresponden = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState({});
   useEffect(() => {
+    dispatch({type: 'RESET_LIST_DATA_KORESPONDEN'});
     getData('token').then(data => {
       dispatch(getDataKoresponden(data));
     });
