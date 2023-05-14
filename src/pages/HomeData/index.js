@@ -12,24 +12,48 @@ import {
 import {BottomNavigator, Button, Gap, MenuHome} from '../../components';
 import {getData, removeData} from '../../utils';
 import {capitalizeFirstLetter} from '../../utils/firstCapital';
-
+import {BarChart} from 'react-native-gifted-charts';
+import {dataTopKota} from '../../redux/action/topkota';
+import {useDispatch, useSelector} from 'react-redux';
 const HomeData = ({navigation}) => {
+  const dispatch = useDispatch();
+  const globalTopkota = useSelector(state => state.topKotaReducer);
   const [user, setUser] = useState({});
+  const [bardata, setBardata] = useState({});
 
   useEffect(() => {
     getData('userProfile').then(data => {
       setUser(data);
     });
+    grepTopKota();
   }, []);
 
-  const dataProfile = () => {
-    getData;
+  const grepTopKota = () => {
+    getData('token').then(data => {
+      dispatch(dataTopKota(data));
+    });
   };
   const onSubmit = () => {
     removeData('token');
     removeData('userProfile');
     navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
   };
+  const barData = [];
+  let datafrontColor = ['blue', 'green', 'orange', 'red'];
+  globalTopkota?.data?.data &&
+    globalTopkota?.data?.data.map((d, i) => {
+      let dataKota = {
+        value: globalTopkota?.data.data[i].count,
+        label: globalTopkota?.data.data[i]._id[0].nama,
+        frontColor: datafrontColor[i],
+        sideColor: '#23A7F3',
+        topColor: '#92e6f6',
+      };
+      console.log('globalTopkota', globalTopkota?.data.data[0]._id[0].nama);
+      barData.push(dataKota);
+    });
+  //   console.log('globalTopkota', globalTopkota?.data.data[0].count);
+  // console.log('globalTopkota', globalTopkota?.data.data[0]._id[0].nama);
 
   return (
     <View style={styles.page}>
@@ -48,9 +72,38 @@ const HomeData = ({navigation}) => {
       </View>
 
       {/* <Button text="Keluar"  color = '#0EA137'  textColor = '#F9F9F9'   onPress={onSubmit}/> */}
-      <Gap height={12} />
-
-      <Gap height={100} />
+      <Gap height={20} />
+      <View
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          paddingHorizontal: 15,
+          paddingRight: 8,
+        }}
+      >
+        <View
+          style={{display: 'flex', justifyContent: 'center', width: '100%'}}
+        >
+          <Text style={styles.labelTopKota}>Top Daerah Koresponden</Text>
+        </View>
+        <BarChart
+          isAnimated
+          isThreeD
+          spacing={65}
+          labelWidth={20}
+          barWidth={20}
+          barBorderRadius={4}
+          frontColor="lightgray"
+          data={barData}
+          yAxisThickness={0}
+          xAxisThickness={0}
+          disableScroll={true}
+          autoShiftLabels
+          noOfSections={5}
+        />
+      </View>
+      <Gap height={70} />
       <View style={styles.containerMenu}>
         <TouchableOpacity
           style={styles.borderData}
@@ -100,6 +153,12 @@ const HomeData = ({navigation}) => {
 };
 export default HomeData;
 const styles = StyleSheet.create({
+  labelTopKota: {
+    fontSize: 16,
+    textAlign: 'center',
+    width: '100%',
+    fontWeight: 'bold',
+  },
   borderData: {
     borderWidth: 1,
     borderColor: '#ddd',
