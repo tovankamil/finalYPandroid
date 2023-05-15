@@ -98,7 +98,7 @@ const HomeData = ({navigation}) => {
           noOfSections={4}
         />
       </View>
-      <Gap height={70} />
+      <Gap height={110} />
       <View style={styles.containerMenu}>
         <TouchableOpacity
           style={styles.borderData}
@@ -113,7 +113,7 @@ const HomeData = ({navigation}) => {
           <Image source={ICPROFILE} style={styles.image} />
         </TouchableOpacity>
       </View>
-      <Gap height={55} />
+      <Gap height={35} />
       <View style={styles.containerMenu}>
         <TouchableOpacity
           style={styles.borderData}

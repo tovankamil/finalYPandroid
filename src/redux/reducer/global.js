@@ -4,6 +4,10 @@ const initGlobal = {
   message: 'error',
   tabIndexInputKoresponden: 2,
   nikError: '',
+  usia: '',
+  qaerror: '',
+  atrerror: '',
+  identitasError: '',
 };
 
 export const globalReducer = (state = initGlobal, action) => {
@@ -36,6 +40,30 @@ export const globalReducer = (state = initGlobal, action) => {
     return {
       ...state,
       nikError: action.value,
+    };
+  }
+  if (action.type === 'SET_USIA_ERROR') {
+    return {
+      ...state,
+      usia: action.value,
+    };
+  }
+  if (action.type === 'SET_QA_ERROR') {
+    return {
+      ...state,
+      qaerror: action.value,
+    };
+  }
+  if (action.type === 'SET_ATR_ERROR') {
+    return {
+      ...state,
+      atrerror: action.value,
+    };
+  }
+  if (action.type === 'SET_IDENTITAS_ERROR') {
+    return {
+      ...state,
+      identitasError: action.value,
     };
   }
   return state;

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 
-import {Gap, Select, TextInput} from '../../atoms';
+import {Gap, Select, Span, TextInput} from '../../atoms';
 
 import {dataProvinsi, setTabindexinputkoresponden} from '../../../redux/action';
 import {CBBaju, CBQA} from '../../index';
@@ -125,21 +125,20 @@ const renderTabBar = props => (
 const initialLayout = {width: Dimensions.get('window').width};
 
 const HomeTabSection = () => {
-  const globalstate = useSelector(state => state);
   const dispatch = useDispatch();
+  const globalState = useSelector(state => state.globalReducer);
   // const layout = useWindowDimensions();
   const globalStateTAB = useSelector(state => state);
-
-  const [index, setIndex] = React.useState(
-    globalStateTAB?.globalReducer?.tabIndexInputKoresponden,
-  );
-
+  console.log(globalStateTAB?.globalReducer?.tabIndexInputKoresponden);
+  const [index, setIndex] = React.useState(0);
 
   // index !== globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
   //   dispatch(setTabindexinputkoresponden(index));
+
   index != globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
     setIndex(globalStateTAB.globalReducer.tabIndexInputKoresponden);
-
+  console.log(globalStateTAB?.globalReducer?.tabIndexInputKoresponden);
+  console.log(index);
   const [routes] = React.useState([
     {key: '1', title: 'Identitas '},
     {key: '2', title: 'Q&A'},
@@ -153,20 +152,50 @@ const HomeTabSection = () => {
   });
 
   return (
-    <TabView
-      renderTabBar={renderTabBar}
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      style={styles.tabView}
-    />
+    <>
+      {(globalState.usia != '' ||
+        globalState.nikError != '' ||
+        globalState.qaerror != '' ||
+        globalState.atrerror != '') && (
+        <View style={{paddingLeft: 15, marginVertical: 15}}>
+          <Text style={{color: 'red'}}>Erorr</Text>
+          {globalState.identitasError != '' && (
+            <Text style={styles.labelError}>{globalState?.identitasError}</Text>
+          )}
+          {globalState.nikError != '' && (
+            <Text style={styles.labelError}>{globalState?.nikError}</Text>
+          )}
+          {globalState.usia != '' && (
+            <Text style={styles.labelError}>{globalState?.usia}</Text>
+          )}
+          {globalState.qaerror != '' && (
+            <Text style={styles.labelError}>{globalState?.qaerror}</Text>
+          )}
+          {globalState.atrerror != '' && (
+            <Text style={styles.labelError}>{globalState?.atrerror}</Text>
+          )}
+        </View>
+      )}
+
+      <TabView
+        renderTabBar={renderTabBar}
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+        style={styles.tabView}
+      />
+    </>
   );
 };
 
 export default HomeTabSection;
 
 const styles = StyleSheet.create({
+  labelError: {
+    fontSize: 12,
+    color: 'red',
+  },
   tabViewContainer: {
     paddingHorizontal: 12,
     paddingVertical: 20,

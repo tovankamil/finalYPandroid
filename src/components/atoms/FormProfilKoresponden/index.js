@@ -51,7 +51,7 @@ const FormProfilKoresponden = () => {
         onChangeText={value => setForm('usia', value)}
         numeric="numeric"
       />
-      {errordata.usiaEr != '' && <Span label={errordata.usiaEr} />}
+      {globalState?.usia != '' && <Span label={globalState?.usia} />}
       <Gap height={14} />
 
       {/* NIK */}

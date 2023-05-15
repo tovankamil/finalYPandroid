@@ -5,9 +5,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Button, Header} from '../../components';
 import HomeTabSection from '../../components/molecules/HomeTabSection';
 import {
+  setATR,
+  setIDENTITAS,
   setLogout,
   setNikError,
+  setQA,
   setTabindexinputkoresponden,
+  setUsiaError,
   signUpKorespondenAction,
 } from '../../redux/action';
 import {getData} from '../../utils';
@@ -31,8 +35,18 @@ const FormKoresponden = ({navigation}) => {
     if (globalState?.nik.length == 16) {
       dispatch(setNikError(''));
     }
-    if (globalState?.nik.length < 16) {
+    if (globalState?.nik.length < 16 || globalState?.nik.length > 16) {
       dispatch(setNikError('Masukan nik 16 digit'));
+    }
+    if (
+      globalState?.usia.length > 2 ||
+      globalState?.usia.length < 1 ||
+      globalState?.usia == 0
+    ) {
+      dispatch(setUsiaError('Silahkan isi usia anda maksimal 2 digit'));
+    }
+    if (globalState?.usia.length == 2) {
+      dispatch(setUsiaError(''));
     }
     if (globalState.brosur.length > 0) {
       dataattr += '#brosur';
@@ -56,12 +70,30 @@ const FormKoresponden = ({navigation}) => {
       globalState.baju.length == 0
     ) {
       dispatch(setTabindexinputkoresponden(2));
+      dispatch(setATR('Silahkan lengkapi pada tab Attribute'));
+    }
+    if (
+      globalState.spanduk.length > 0 &&
+      globalState.brosur.length > 0 &&
+      globalState.baju.length > 0
+    ) {
+      dispatch(setTabindexinputkoresponden(2));
+      dispatch(setATR(''));
     }
     if (
       globalState.qa1.length == 0 ||
       globalState.qa2.length == 0 ||
       globalState.qa2.length == 0
     ) {
+      dispatch(setQA('Silahkan lengkapi pertanyaan pada tab QA'));
+      dispatch(setTabindexinputkoresponden(1));
+    }
+    if (
+      globalState.qa1.length > 0 &&
+      globalState.qa2.length > 0 &&
+      globalState.qa2.length > 0
+    ) {
+      dispatch(setQA(''));
       dispatch(setTabindexinputkoresponden(1));
     }
 
@@ -80,7 +112,10 @@ const FormKoresponden = ({navigation}) => {
       globalState?.kecamatan.length == 0 ||
       globalState?.desa.length == 0
     ) {
+      dispatch(setIDENTITAS('Silahkan lengkapi form indentitas'));
       dispatch(setTabindexinputkoresponden(0));
+    } else {
+      dispatch(setIDENTITAS(''));
     }
 
     if (
