@@ -134,7 +134,7 @@ const HomeTabSection = () => {
     globalStateTAB?.globalReducer?.tabIndexInputKoresponden,
   );
 
-  console.log('setIndex', index);
+
   // index !== globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
   //   dispatch(setTabindexinputkoresponden(index));
   index != globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
@@ -151,7 +151,7 @@ const HomeTabSection = () => {
     2: QA,
     3: Attribute,
   });
-  console.log('setIndex', renderScene);
+
   return (
     <TabView
       renderTabBar={renderTabBar}

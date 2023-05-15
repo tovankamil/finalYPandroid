@@ -6,7 +6,6 @@ import {setLoading} from './global';
 export const signUpAction = (dataRegister, navigation) => dispatch => {
   Axios.post(`${API_HOST.url}/fe/users/registeruser`, dataRegister)
     .then(res => {
-      console.log('res', res);
       const token = res?.data?.data?.token;
       const profile = res?.data?.data?.result;
 
@@ -45,7 +44,6 @@ export const signUpAction = (dataRegister, navigation) => dispatch => {
       navigation.navigate('Home');
     })
     .catch(err => {
-
       dispatch(setLoading(false));
 
       showMessage(`${err}`, 'danger');

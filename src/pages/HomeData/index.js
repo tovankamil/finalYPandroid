@@ -49,11 +49,8 @@ const HomeData = ({navigation}) => {
         sideColor: '#23A7F3',
         topColor: '#92e6f6',
       };
-      console.log('globalTopkota', globalTopkota?.data.data[0]._id[0].nama);
       barData.push(dataKota);
     });
-  //   console.log('globalTopkota', globalTopkota?.data.data[0].count);
-  // console.log('globalTopkota', globalTopkota?.data.data[0]._id[0].nama);
 
   return (
     <View style={styles.page}>
@@ -77,17 +74,15 @@ const HomeData = ({navigation}) => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          width: '100%',
-          paddingHorizontal: 15,
-          paddingRight: 8,
         }}
       >
-        <View
-          style={{display: 'flex', justifyContent: 'center', width: '100%'}}
-        >
+        <View style={{display: 'flex', justifyContent: 'center'}}>
           <Text style={styles.labelTopKota}>Top Daerah Koresponden</Text>
         </View>
         <BarChart
+          width={360}
+          xAxisColor={'#c919ff'}
+          rotateLabel
           isAnimated
           isThreeD
           spacing={65}
@@ -100,7 +95,7 @@ const HomeData = ({navigation}) => {
           xAxisThickness={0}
           disableScroll={true}
           autoShiftLabels
-          noOfSections={5}
+          noOfSections={4}
         />
       </View>
       <Gap height={70} />
@@ -118,7 +113,7 @@ const HomeData = ({navigation}) => {
           <Image source={ICPROFILE} style={styles.image} />
         </TouchableOpacity>
       </View>
-      <Gap height={75} />
+      <Gap height={55} />
       <View style={styles.containerMenu}>
         <TouchableOpacity
           style={styles.borderData}

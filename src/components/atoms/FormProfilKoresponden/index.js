@@ -6,7 +6,7 @@ import {getData, useForm} from '../../../utils';
 
 const FormProfilKoresponden = () => {
   const globalState = useSelector(state => state.globalReducer);
-  console.log(globalState);
+
   const [errordata, setErrordata] = useState({
     namaEr: '',
     nikEr: '',
