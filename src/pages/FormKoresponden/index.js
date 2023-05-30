@@ -148,8 +148,8 @@ const FormKoresponden = ({navigation}) => {
   return (
     <View style={styles.content}>
       <Header
-        title="Koresponden"
-        subTitle="Form Koresponden"
+        title="Responden"
+        subTitle="Form Responden"
         onBack={() => navigation.goBack()}
       />
       {/* Tab */}

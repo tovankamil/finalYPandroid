@@ -103,9 +103,15 @@ const Attribute = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Attribute yang diberikan :</Text>
-        <CBBaju label="baju" />
+        <CBBaju label="kaos" />
+        <CBBaju label="stiker" />
         <CBBaju label="brosur" />
+        <CBBaju label="banner" />
         <CBBaju label="spanduk" />
+        <CBBaju label="kalendar" />
+        <CBBaju label="baliho" />
+        <CBBaju label="bendera" />
+        <CBBaju label="kerudung" />
         <CBAttributeLainnya label="Lain-lain" />
       </View>
     </ScrollView>

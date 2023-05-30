@@ -7,8 +7,8 @@ const DataKoresponden = ({navigation}) => {
   return (
     <View style={styles.content}>
       <Header
-        title="Data Koresponden"
-        subTitle="List Data Koresponden"
+        title="Data responden"
+        subTitle="List Data Responden"
         onBack={() => navigation.goBack()}
       />
       {/* Tab */}

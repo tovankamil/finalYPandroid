@@ -62,7 +62,7 @@ const SignIn = ({navigation}) => {
         />
         <Gap height={14} />
         <Button
-          text="Buat Akun Baru"
+          text="Daftar Relawan"
           color="#8D92A3"
           textColor="#F9F9F9"
           onPress={() => navigation.navigate('SignUp')}

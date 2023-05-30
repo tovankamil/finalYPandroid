@@ -77,7 +77,9 @@ const HomeData = ({navigation}) => {
         }}
       >
         <View style={{display: 'flex', justifyContent: 'center'}}>
-          <Text style={styles.labelTopKota}>Top Daerah Koresponden</Text>
+          <Text style={styles.labelTopKota}>
+            4 kecamatan responden terbanyak
+          </Text>
         </View>
         <BarChart
           width={360}
