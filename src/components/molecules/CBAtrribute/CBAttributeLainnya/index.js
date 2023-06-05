@@ -63,6 +63,7 @@ const Attr = ({lainnya, datalain}) => {
 const styles = StyleSheet.create({
   box: {
     flexDirection: 'column',
+    width: '100%',
   },
   container: {
     flexDirection: 'row',

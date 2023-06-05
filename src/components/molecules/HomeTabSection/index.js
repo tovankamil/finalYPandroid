@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useEffect} from 'react';
+import React, {useState, useMemo, useEffect, useCallback} from 'react';
 import {
   Dimensions,
   ScrollView,
@@ -19,7 +19,17 @@ import {CBAttributeLainnya} from '../CBAtrribute';
 import {useForm} from '../../../utils';
 
 // import {getFoodDataByTypes} from '../../../redux/action';
-
+const dataAttribute = [
+  {id: 1, txt: 'Kaos', isChecked: false},
+  {id: 2, txt: 'Stiker', isChecked: false},
+  {id: 3, txt: 'Brosur', isChecked: false},
+  {id: 4, txt: 'Banner', isChecked: false},
+  {id: 5, txt: 'Spanduk', isChecked: false},
+  {id: 6, txt: 'Kalender', isChecked: false},
+  {id: 7, txt: 'Baliho', isChecked: false},
+  {id: 8, txt: 'Bendera', isChecked: false},
+  {id: 9, txt: 'Kerudung', isChecked: false},
+];
 const Identitas = () => {
   const globalState = useSelector(state => state.dataProvinsiReducer);
 
@@ -34,6 +44,7 @@ const Identitas = () => {
   });
   useEffect(() => {
     dispatch(dataProvinsi());
+    dispatch({type: 'SET_ALL_ATTRIBUTE', value: dataAttribute});
     dispatch({
       type: 'RESET_PROVINSI',
     });
@@ -98,20 +109,25 @@ const Identitas = () => {
 const QA = () => {
   return <CBQA />;
 };
+
 const Attribute = () => {
+  const SET_ALL_ATTRIBUTE = useSelector(state => state.formKorespondenReducer);
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Attribute yang diberikan :</Text>
-        <CBBaju label="kaos" />
-        <CBBaju label="stiker" />
-        <CBBaju label="brosur" />
-        <CBBaju label="banner" />
-        <CBBaju label="spanduk" />
-        <CBBaju label="kalendar" />
-        <CBBaju label="baliho" />
-        <CBBaju label="bendera" />
-        <CBBaju label="kerudung" />
+        {SET_ALL_ATTRIBUTE.attribute &&
+          SET_ALL_ATTRIBUTE.attribute.map((d, i) => {
+            return (
+              <CBBaju
+                no={d.id}
+                label={d.txt}
+                isChecked={d.isChecked}
+                data={SET_ALL_ATTRIBUTE.attribute}
+              />
+            );
+          })}
         <CBAttributeLainnya label="Lain-lain" />
       </View>
     </ScrollView>

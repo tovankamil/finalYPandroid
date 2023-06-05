@@ -19,6 +19,7 @@ const initStateRegisterKoresponden = {
   qa1: '',
   qa2: '',
   qa3: '',
+  attribute: {},
 };
 
 export const formKorespondenReducer = (
@@ -64,7 +65,11 @@ export const formKorespondenReducer = (
       desa: '',
       nama_desa: '',
     };
-
+  if (action.type === 'SET_ALL_ATTRIBUTE')
+    return {
+      ...state,
+      attribute: action.value,
+    };
   if (action.type === 'SET_ATTRIBUTE_SPANDUK')
     return {
       ...state,
