@@ -1,8 +1,8 @@
+import {Picker} from '@react-native-community/picker';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Picker} from '@react-native-community/picker';
 import {useDispatch} from 'react-redux';
-import {dataDesa, dataKecamatan, dataKecamatan2} from '../../../redux/action';
+import {dataDesa, dataKecamatan2} from '../../../redux/action';
 
 const Select = ({
   label,

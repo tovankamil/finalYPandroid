@@ -1,11 +1,9 @@
 import CheckBox from '@react-native-community/checkbox';
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {capitalizeFirstLetter} from '../../../../utils/firstCapital';
+import {useDispatch} from 'react-redux';
 
-const CBBaju = ({label, isChecked, no, data}) => {
-  console.log(data);
+const CBBaju = ({label, no, data}) => {
   const [isSelected, setSelection] = useState(false);
 
   const dispatch = useDispatch();
@@ -15,56 +13,12 @@ const CBBaju = ({label, isChecked, no, data}) => {
 
     let temp = data.findIndex(d => d.id == no);
 
-    console.log('Before Object Updation: ', data[temp]);
     data[temp].isChecked = !data[temp].isChecked;
-
-    console.log('after Object Updation: ', data[temp]);
 
     dispatch({
       type: 'SET_ALL_ATTRIBUTE',
       value: data,
     });
-    // if (label === 'brosur') {
-    //   if (!isSelected) {
-    //     let data = {
-    //       brosur: 'iya',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_BROSUR', value: data});
-    //   } else {
-    //     let data = {
-    //       brosur: '',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_BROSUR', value: data});
-    //   }
-    // }
-
-    // if (label === 'spanduk') {
-    //   if (!isSelected) {
-    //     let data = {
-    //       spanduk: 'iya',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_SPANDUK', value: data});
-    //   } else {
-    //     let data = {
-    //       spanduk: '',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_SPANDUK', value: data});
-    //   }
-    // }
-
-    // if (label === 'kaos') {
-    //   if (!isSelected) {
-    //     let data = {
-    //       baju: 'iya',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_BAJU', value: data});
-    //   } else {
-    //     let data = {
-    //       baju: '',
-    //     };
-    //     dispatch({type: 'SET_ATTRIBUTE_BAJU', value: data});
-    //   }
-    // }
   };
 
   return (

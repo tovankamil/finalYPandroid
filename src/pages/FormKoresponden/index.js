@@ -48,30 +48,30 @@ const FormKoresponden = ({navigation}) => {
     if (globalState?.usia.length == 2) {
       dispatch(setUsiaError(''));
     }
-    if (globalState.brosur.length > 0) {
-      dataattr += '#brosur';
-    }
-    if (globalState.spanduk.length > 0) {
-      dataattr += '#spanduk';
-    }
-    if (globalState.baju.length > 0) {
-      dataattr += '#baju';
-    }
-    if (globalState.lainnya.length > 0) {
-      dataattr += `#${globalState.lainnya}`;
-    }
 
     if (globalState.lainnya.length > 0) {
       dataattr += `#${globalState.lainnya}`;
     }
-    if (
-      globalState.spanduk.length == 0 ||
-      globalState.brosur.length == 0 ||
-      globalState.baju.length == 0
-    ) {
+
+    let temp = globalState?.attribute?.findIndex(d => d.isChecked == true);
+
+    if (temp === -1 && globalState.lainnya.length < 1) {
+      dispatch(setATR('Silahkan lengkapi pada Tab Attribute'));
       dispatch(setTabindexinputkoresponden(2));
-      dispatch(setATR('Silahkan lengkapi pada tab Attribute'));
     }
+    if (temp === 0 && globalState.lainnya.length < 1) {
+      dispatch(setATR('Silahkan lengkapi pada Tab Attribute'));
+      dispatch(setTabindexinputkoresponden(2));
+    }
+    if (temp === 0 && globalState.lainnya.length >= 0) {
+      dispatch(setATR(''));
+      globalState?.attribute?.map(d => {
+        if (d.isChecked) {
+          dataattr += `#${d.txt}`;
+        }
+      });
+    }
+
     if (
       globalState.spanduk.length > 0 &&
       globalState.brosur.length > 0 &&
@@ -135,9 +135,8 @@ const FormKoresponden = ({navigation}) => {
       globalState.qa1.length > 0 &&
       globalState.qa2.length > 0 &&
       globalState.qa2.length > 0 &&
-      globalState.spanduk.length > 0 &&
-      globalState.brosur.length > 0 &&
-      globalState.baju.length > 0
+      temp === 0 &&
+      globalState.lainnya.length >= 0
     ) {
       Object.assign(globalState, {attribute: dataattr});
 
@@ -166,15 +165,6 @@ const FormKoresponden = ({navigation}) => {
             color="green"
           />
         </View>
-        {/* <View style={styles.boxButton}>
-          <Button
-            style={styles.button}
-            onPress={onPressLearnMore}
-            text="Draft"
-            textColor="#F9F9F9"
-            color="green"
-          />
-        </View> */}
       </View>
       {/* end tab   */}
     </View>

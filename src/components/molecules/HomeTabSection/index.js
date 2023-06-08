@@ -1,37 +1,20 @@
-import React, {useState, useMemo, useEffect, useCallback} from 'react';
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import React, {useEffect, useMemo} from 'react';
+import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 
-import {Gap, Select, Span, TextInput} from '../../atoms';
+import {Gap, Select} from '../../atoms';
 
-import {dataProvinsi, setTabindexinputkoresponden} from '../../../redux/action';
-import {CBBaju, CBQA} from '../../index';
-import {useSelector, useDispatch} from 'react-redux';
-import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
-import {CBAttributeLainnya} from '../CBAtrribute';
+import {useDispatch, useSelector} from 'react-redux';
+import {dataProvinsi} from '../../../redux/action';
 import {useForm} from '../../../utils';
+import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
+import {CBBaju, CBQA} from '../../index';
+import {CBAttributeLainnya} from '../CBAtrribute';
 
 // import {getFoodDataByTypes} from '../../../redux/action';
-const dataAttribute = [
-  {id: 1, txt: 'Kaos', isChecked: false},
-  {id: 2, txt: 'Stiker', isChecked: false},
-  {id: 3, txt: 'Brosur', isChecked: false},
-  {id: 4, txt: 'Banner', isChecked: false},
-  {id: 5, txt: 'Spanduk', isChecked: false},
-  {id: 6, txt: 'Kalender', isChecked: false},
-  {id: 7, txt: 'Baliho', isChecked: false},
-  {id: 8, txt: 'Bendera', isChecked: false},
-  {id: 9, txt: 'Kerudung', isChecked: false},
-];
+
 const Identitas = () => {
-  const globalState = useSelector(state => state.dataProvinsiReducer);
+  const globalState = useSelector(state => state?.dataProvinsiReducer);
 
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
@@ -44,7 +27,7 @@ const Identitas = () => {
   });
   useEffect(() => {
     dispatch(dataProvinsi());
-    dispatch({type: 'SET_ALL_ATTRIBUTE', value: dataAttribute});
+
     dispatch({
       type: 'RESET_PROVINSI',
     });
@@ -111,24 +94,43 @@ const QA = () => {
 };
 
 const Attribute = () => {
+  const dispatch = useDispatch();
+  const dataAttribute = [
+    {id: 1, txt: 'Kaos', isChecked: false},
+    {id: 2, txt: 'Stiker', isChecked: false},
+    {id: 3, txt: 'Brosur', isChecked: false},
+    {id: 4, txt: 'Banner', isChecked: false},
+    {id: 5, txt: 'Spanduk', isChecked: false},
+    {id: 6, txt: 'Kalender', isChecked: false},
+    {id: 7, txt: 'Baliho', isChecked: false},
+    {id: 8, txt: 'Bendera', isChecked: false},
+    {id: 9, txt: 'Kerudung', isChecked: false},
+  ];
   const SET_ALL_ATTRIBUTE = useSelector(state => state.formKorespondenReducer);
 
+  useEffect(() => {
+    dispatch({type: 'SET_ALL_ATTRIBUTE', value: dataAttribute});
+  }, []);
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Attribute yang diberikan :</Text>
-        {SET_ALL_ATTRIBUTE.attribute &&
-          SET_ALL_ATTRIBUTE.attribute.map((d, i) => {
+
+        {Object.keys(SET_ALL_ATTRIBUTE.attribute).length > 0 &&
+          SET_ALL_ATTRIBUTE?.attribute?.map((d, i) => {
             return (
               <CBBaju
                 no={d.id}
                 label={d.txt}
                 isChecked={d.isChecked}
-                data={SET_ALL_ATTRIBUTE.attribute}
+                data={SET_ALL_ATTRIBUTE?.attribute}
               />
             );
           })}
-        <CBAttributeLainnya label="Lain-lain" />
+        <CBAttributeLainnya
+          label="Lain-lain"
+          data={SET_ALL_ATTRIBUTE?.attribute}
+        />
       </View>
     </ScrollView>
   );
@@ -149,9 +151,9 @@ const initialLayout = {width: Dimensions.get('window').width};
 const HomeTabSection = () => {
   const dispatch = useDispatch();
   const globalState = useSelector(state => state.globalReducer);
+
   // const layout = useWindowDimensions();
   const globalStateTAB = useSelector(state => state);
-  console.log(globalStateTAB?.globalReducer?.tabIndexInputKoresponden);
   const [index, setIndex] = React.useState(0);
 
   // index !== globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
@@ -159,8 +161,7 @@ const HomeTabSection = () => {
 
   index != globalStateTAB?.globalReducer?.tabIndexInputKoresponden &&
     setIndex(globalStateTAB.globalReducer.tabIndexInputKoresponden);
-  console.log(globalStateTAB?.globalReducer?.tabIndexInputKoresponden);
-  console.log(index);
+
   const [routes] = React.useState([
     {key: '1', title: 'Identitas '},
     {key: '2', title: 'Q&A'},
