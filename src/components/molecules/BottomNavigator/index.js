@@ -14,7 +14,7 @@ import {
 
 const Icon = ({label, focus}) => {
   switch (label) {
-    case 'Home':
+    case 'Homedata':
       return focus ? <IHomeActive /> : <IHome />;
 
     case 'Profile':

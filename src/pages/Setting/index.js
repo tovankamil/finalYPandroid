@@ -61,125 +61,122 @@ export default function Setting({navigation}) {
     return (
       <>
         {/* Photo */}
-        <View>
-          <View style={styles.boxPhoto}>
-            <View style={styles.icon}>
-              <IconUserDetail />
-            </View>
-            <Gap height={10} />
-            <Text style={styles.nama}>
-              {globalState?.data?.nama &&
-                capitalizeFirstLetter(globalState?.data?.nama)}
-            </Text>
-            <Gap height={5} />
-            <Text style={styles.nik}>{globalState?.data?.nik}</Text>
-            <Gap height={5} />
-            <Text style={styles.kecamatanTitle}>
-              Koordinator{' '}
-              {globalState?.data?.nik === 'KC' ? 'Kecamatan' : 'Desa'}
-            </Text>
-          </View>
-        </View>
-        {/* Photo */}
-
-        {/* Information */}
-        <View style={styles.boxInformation}>
-          <View style={styles.boxData}>
-            <Text style={styles.informasi}>Informasi</Text>
-            {/* Tanggal Daftar */}
-            <Gap height={25} />
-            <View style={styles.boxFlexRow}>
-              <View style={styles.boxFLexCenter}>
-                <CalendarBlank />
+        <ScrollView
+          contentContainerStyle={styles.scrollView}
+          refreshControl={
+            <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
+          }
+        >
+          <View>
+            <View style={styles.boxPhoto}>
+              <View style={styles.icon}>
+                <IconUserDetail />
               </View>
-              <Gap width={10} />
-              <Text>
-                {' '}
-                {globalState?.data?.createdAt &&
-                  cumatanggal(globalState?.data?.createdAt)}
+              <Gap height={10} />
+              <Text style={styles.nama}>
+                {globalState?.data?.nama &&
+                  capitalizeFirstLetter(globalState?.data?.nama)}
+              </Text>
+              <Gap height={5} />
+              <Text style={styles.nik}>{globalState?.data?.nik}</Text>
+              <Gap height={5} />
+              <Text style={styles.kecamatanTitle}>
+                Koordinator{' '}
+                {globalState?.data?.nik === 'KC' ? 'Kecamatan' : 'Desa'}
               </Text>
             </View>
-            <Gap height={25} />
-            <View style={styles.boxFlexRow}>
-              <View style={styles.boxFLexCenter}>
-                <Phone />
+          </View>
+          {/* Photo */}
+
+          {/* Information */}
+          <View style={styles.boxInformation}>
+            <View style={styles.boxData}>
+              <Text style={styles.informasi}>Informasi</Text>
+              {/* Tanggal Daftar */}
+              <Gap height={25} />
+              <View style={styles.boxFlexRow}>
+                <View style={styles.boxFLexCenter}>
+                  <CalendarBlank />
+                </View>
+                <Gap width={10} />
+                <Text>
+                  {' '}
+                  {globalState?.data?.createdAt &&
+                    cumatanggal(globalState?.data?.createdAt)}
+                </Text>
               </View>
-              <Gap width={10} />
-              <Text>{globalState?.data?.hp ? globalState?.data?.hp : ''}</Text>
-            </View>
-            <Gap height={20} />
-            <View style={styles.boxFlexRow}>
-              <View style={styles.boxFLexCenter}>
-                <MapPin />
+              <Gap height={25} />
+              <View style={styles.boxFlexRow}>
+                <View style={styles.boxFLexCenter}>
+                  <Phone />
+                </View>
+                <Gap width={10} />
+                <Text>
+                  {globalState?.data?.hp ? globalState?.data?.hp : ''}
+                </Text>
               </View>
-              <Gap width={10} />
-              <Text style={styles.alamat}>
-                {globalState?.data &&
-                  `${globalState?.data?.alamat}, ${globalState?.data?.desa?.nama}, ${globalState?.data?.kecamatan?.nama}, ${globalState?.data?.kota?.nama}`}
-              </Text>
-            </View>
-            <Gap height={30} />
-            <View style={styles.line}></View>
-            <Gap height={40} />
-
-            <View style={styles.boxFlexRow}>
-              <View style={styles.boxFLexCenter}>
-                <Password />
+              <Gap height={20} />
+              <View style={styles.boxFlexRow}>
+                <View style={styles.boxFLexCenter}>
+                  <MapPin />
+                </View>
+                <Gap width={10} />
+                <Text style={styles.alamat}>
+                  {globalState?.data &&
+                    `${globalState?.data?.alamat}, ${globalState?.data?.desa?.nama}, ${globalState?.data?.kecamatan?.nama}, ${globalState?.data?.kota?.nama}`}
+                </Text>
               </View>
-              <Gap width={10} />
+              <Gap height={30} />
+              <View style={styles.line}></View>
+              <Gap height={40} />
 
-              <TextInputRN
-                placeholder="Masukan password baru"
-                style={styles.input}
-                secureTextEntry
-                onChangeText={value => setPassword(value)}
-              />
-            </View>
+              <View style={styles.boxFlexRow}>
+                <View style={styles.boxFLexCenter}>
+                  <Password />
+                </View>
+                <Gap width={10} />
 
-            <Gap height={70} />
+                <TextInputRN
+                  placeholder="Masukan password baru"
+                  style={styles.input}
+                  secureTextEntry
+                  onChangeText={value => setPassword(value)}
+                />
+              </View>
 
-            <View style={styles.boxFlexRow}>
-              <View style={styles.boxFLexCenter}></View>
-              <Gap width={35} />
+              <Gap height={30} />
 
-              <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={onSubmit}
-                style={styles.button}
-              >
-                <Text style={styles.buttonText}>Updated Password</Text>
-              </TouchableOpacity>
+              <View style={styles.boxFlexRow}>
+                <View style={styles.boxFLexCenter}></View>
+                <Gap width={35} />
+
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={onSubmit}
+                  style={styles.button}
+                >
+                  <Text style={styles.buttonText}>Updated Password</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-        {/* Information */}
+        </ScrollView>
       </>
     );
   };
   return (
-    <ScrollView
-      contentContainerStyle={styles.scrollView}
-      refreshControl={
-        <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
-      }
-    >
-      <View style={styles.content}>
-        <Header
-          title="Setting "
-          subTitle="Profile Relawan"
-          onBack={() => navigation.goBack()}
-        />
-        {globalState?.data?.nama && <DataProfile />}
-      </View>
-    </ScrollView>
+    <View style={styles.content}>
+      <Header
+        title="Setting "
+        subTitle="Profile Relawan"
+        onBack={() => navigation.goBack()}
+      />
+      {globalState?.data?.nama && <DataProfile />}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-    flexGrow: 1,
-  },
   content: {
     flex: 1,
     backgroundColor: '#dddddd',
