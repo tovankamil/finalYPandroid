@@ -117,7 +117,7 @@ export default function Profile({navigation}) {
 const styles = StyleSheet.create({
   scrollView: {
     paddingHorizontal: 15,
-    paddingTop: 10,
+    paddingTop: 0,
     paddingBottom: 25,
   },
   content: {

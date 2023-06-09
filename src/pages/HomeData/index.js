@@ -32,7 +32,15 @@ const HomeData = ({navigation}) => {
     navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
   };
   const barData = [];
-  let datafrontColor = ['blue', 'green', 'orange', 'red'];
+  let datafrontColor = [
+    'blue',
+    'green',
+    'orange',
+    'red',
+    'purple',
+    'gray',
+    'black',
+  ];
   globalTopkota?.data?.data &&
     globalTopkota?.data?.data.map((d, i) => {
       let dataKota = {
@@ -72,7 +80,7 @@ const HomeData = ({navigation}) => {
       >
         <View style={{display: 'flex', justifyContent: 'center'}}>
           <Text style={styles.labelTopKota}>
-            4 kecamatan responden terbanyak
+            7 Kecamatan responden terbanyak
           </Text>
         </View>
         <View style={{backgroundColor: 'white', marginTop: 15}}>
@@ -82,9 +90,9 @@ const HomeData = ({navigation}) => {
             rotateLabel
             isAnimated
             isThreeD
-            spacing={65}
-            labelWidth={20}
-            barWidth={20}
+            spacing={30}
+            labelWidth={0}
+            barWidth={10}
             barBorderRadius={4}
             frontColor="lightgray"
             data={barData}
@@ -92,7 +100,7 @@ const HomeData = ({navigation}) => {
             xAxisThickness={0}
             disableScroll={true}
             autoShiftLabels
-            noOfSections={4}
+            noOfSections={5}
             backgroundColor="white"
           />
         </View>
@@ -100,11 +108,20 @@ const HomeData = ({navigation}) => {
       <Gap height={10} />
       <View style={styles.containerMenu}>
         <Text>Legend :</Text>
-        <View style={styles.boxLegend}>
-          <View style={styles.kotak}></View>
-          <View>
-            <Text>data</Text>
-          </View>
+        <View style={styles.boxPage}>
+          {globalTopkota?.data?.data &&
+            globalTopkota?.data?.data.map((d, i) => {
+              return (
+                <>
+                  <View style={styles.boxLegend}>
+                    <View style={styles.kotak(datafrontColor[i])}></View>
+                    <View>
+                      <Text>{globalTopkota?.data.data[i]._id[0].nama}</Text>
+                    </View>
+                  </View>
+                </>
+              );
+            })}
         </View>
       </View>
     </View>
@@ -112,6 +129,10 @@ const HomeData = ({navigation}) => {
 };
 export default HomeData;
 const styles = StyleSheet.create({
+  boxPage: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   boxLegend: {
     display: 'flex',
     flexDirection: 'row',
@@ -121,11 +142,11 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: 10,
   },
-  kotak: {
+  kotak: color => ({
     width: 12,
     height: 12,
-    backgroundColor: 'red',
-  },
+    backgroundColor: color,
+  }),
   labelTopKota: {
     fontSize: 16,
     textAlign: 'center',
