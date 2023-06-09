@@ -1,7 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
+import {BarChart} from 'react-native-gifted-charts';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   ICKELUAR,
   ICPKORESPONDEN,
@@ -9,12 +10,10 @@ import {
   ICSETTING,
   ICUser,
 } from '../../assets';
-import {BottomNavigator, Button, Gap, MenuHome} from '../../components';
+import {Gap} from '../../components';
+import {dataTopKota} from '../../redux/action/topkota';
 import {getData, removeData} from '../../utils';
 import {capitalizeFirstLetter} from '../../utils/firstCapital';
-import {BarChart} from 'react-native-gifted-charts';
-import {dataTopKota} from '../../redux/action/topkota';
-import {useDispatch, useSelector} from 'react-redux';
 const HomeData = ({navigation}) => {
   const dispatch = useDispatch();
   const globalTopkota = useSelector(state => state.topKotaReducer);
@@ -68,7 +67,6 @@ const HomeData = ({navigation}) => {
         </View>
       </View>
 
-      {/* <Button text="Keluar"  color = '#0EA137'  textColor = '#F9F9F9'   onPress={onSubmit}/> */}
       <Gap height={20} />
       <View
         style={{
@@ -102,7 +100,7 @@ const HomeData = ({navigation}) => {
       </View>
       <Gap height={110} />
       <View style={styles.containerMenu}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.borderData}
           onPress={() => navigation.navigate('DataKoresponden')}
         >
@@ -125,7 +123,7 @@ const HomeData = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.borderData} onPress={onSubmit}>
           <Image source={ICKELUAR} style={styles.image} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       {/* <View style={styles.containerMenu}>

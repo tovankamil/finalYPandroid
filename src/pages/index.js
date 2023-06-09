@@ -10,8 +10,10 @@ import FormKoresponden from './FormKoresponden';
 import DataKoresponden from './DataKoresponden';
 import DetailKoresponden from './DetailKoresponden';
 import Setting from './Setting';
+import Keluar from './Keluar';
 
 export {
+  Keluar,
   SplashScreen,
   SignIn,
   SignUp,

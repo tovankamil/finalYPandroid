@@ -24,7 +24,27 @@ import CalendarBlank from './CalendarBlank.svg';
 import MapPin from './MapPin.svg';
 import Phone from './Phone.svg';
 import Password from './Password.svg';
+import IHome from './home.svg';
+import IHomeActive from './homeactive';
+import IProfile from './profile';
+import IProfileActive from './profileactive';
+import ITambahResponden from './tambaresponden';
+import ITambahRespondenActive from './tambahrespondenactive';
+import ISetting from './setting';
+import ISettingActive from './settingactive';
+import IExit from './exit';
+import IExitActive from './exitactive';
 export {
+  IHome,
+  IHomeActive,
+  IProfile,
+  IProfileActive,
+  ITambahResponden,
+  ITambahRespondenActive,
+  ISetting,
+  ISettingActive,
+  IExit,
+  IExitActive,
   ICKELUAR,
   ICSETTING,
   ICPKORESPONDEN,

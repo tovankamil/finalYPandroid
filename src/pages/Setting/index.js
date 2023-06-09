@@ -136,7 +136,7 @@ export default function Setting({navigation}) {
               />
             </View>
 
-            <Gap height={40} />
+            <Gap height={70} />
 
             <View style={styles.boxFlexRow}>
               <View style={styles.boxFLexCenter}></View>
@@ -178,6 +178,7 @@ export default function Setting({navigation}) {
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
+    flexGrow: 1,
   },
   content: {
     flex: 1,

@@ -1,34 +1,38 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
-  Home_off,
-  Home_on,
-  Koresponden_off,
-  Koresponden_on,
-  Profile_off,
-  Profile_on,
-  TambahKoresponden_off,
-  TambahKoresponden_on,
+  IExit,
+  IExitActive,
+  IHome,
+  IHomeActive,
+  IProfile,
+  IProfileActive,
+  ISetting,
+  ISettingActive,
+  ITambahResponden,
 } from '../../../assets';
 
 const Icon = ({label, focus}) => {
   switch (label) {
-    case 'HomeData':
-      return focus ? <Home_on /> : <Home_off />;
-    case 'Data':
-      return focus ? <Koresponden_on /> : <Koresponden_off />;
-    case 'Add':
-      return focus ? <TambahKoresponden_on /> : <TambahKoresponden_off />;
+    case 'Home':
+      return focus ? <IHomeActive /> : <IHome />;
+
     case 'Profile':
-      return focus ? <Profile_on /> : <Profile_off />;
+      return focus ? <IProfileActive /> : <IProfile />;
+    case 'Responden':
+      return focus ? <ITambahResponden /> : <ITambahResponden />;
+    case 'Setting':
+      return focus ? <ISettingActive /> : <ISetting />;
+    case 'Keluar':
+      return focus ? <IExitActive /> : <IExit />;
     default:
-      return <Home_on />;
+      return <IHome />;
   }
 };
 
 const BottomNavigator = ({state, descriptors, navigation}) => {
   return (
-    <View style={{flexDirection: 'row', backgroundColor: 'green'}}>
+    <View style={styles.container}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -69,9 +73,21 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{flex: 1}}
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
           >
-            <Text style={{color: isFocused ? '#673ab7' : '#222'}}>{label}</Text>
+            <Icon label={label} focus={isFocused} />
+            <Text
+              style={{
+                color: isFocused ? '#0C7649' : '#BFBFBF',
+                fontSize: 12,
+                fontFamily: 'Poppins-reguler',
+                textAlign: 'center',
+                marginTop: 5,
+              }}
+            >
+              {' '}
+              {label}
+            </Text>
           </TouchableOpacity>
         );
       })}
@@ -89,5 +105,16 @@ const styles = StyleSheet.create({
     paddingBottom: 13,
     paddingHorizontal: 50,
     justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+
+    color: 'white',
+    paddingTop: 15,
+    paddingBottom: 13,
+    paddingHorizontal: 15,
+    width: '100%',
+    // borderTopRightRadius: 35,
+    // borderTopLeftRadius: 35,
   },
 });

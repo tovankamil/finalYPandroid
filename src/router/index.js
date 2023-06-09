@@ -14,6 +14,7 @@ import {
   FormKoresponden,
   DetailKoresponden,
   Setting,
+  Keluar,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -23,10 +24,29 @@ const Tab = createBottomTabNavigator();
 const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      {/* <Tab.Screen name="HomeData" component={HomeData} /> */}
-      <Tab.Screen name="Data" component={DataKoresponden} />
-      <Tab.Screen name="Add" component={TambahKoresponden} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Home"
+        component={HomeData}
+        options={{headerShown: false}}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Responden"
+        component={DataKoresponden}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Setting"
+        component={Setting}
+        options={{headerShown: false}}
+      />
+
+      <Tab.Screen name="Keluar" component={Keluar} />
     </Tab.Navigator>
   );
 };
@@ -62,7 +82,7 @@ const Router = () => {
 
       <Stack.Screen
         name="Home"
-        component={HomeData}
+        component={MainApp}
         options={{headerShown: false}}
       />
 
