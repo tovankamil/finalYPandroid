@@ -1,15 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import {BarChart} from 'react-native-gifted-charts';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  ICKELUAR,
-  ICPKORESPONDEN,
-  ICPROFILE,
-  ICSETTING,
-  ICUser,
-} from '../../assets';
+import {ICUser} from '../../assets';
 import {Gap} from '../../components';
 import {dataTopKota} from '../../redux/action/topkota';
 import {getData, removeData} from '../../utils';
@@ -43,7 +37,7 @@ const HomeData = ({navigation}) => {
     globalTopkota?.data?.data.map((d, i) => {
       let dataKota = {
         value: globalTopkota?.data.data[i].count,
-        label: globalTopkota?.data.data[i]._id[0].nama,
+        // label: globalTopkota?.data.data[i]._id[0].nama,
         frontColor: datafrontColor[i],
         sideColor: '#23A7F3',
         topColor: '#92e6f6',
@@ -58,9 +52,11 @@ const HomeData = ({navigation}) => {
         <View style={styles.boxName}>
           <Text style={styles.name}>
             Hi,
-            {user &&
-              user?.nama?.length > 0 &&
-              capitalizeFirstLetter(user?.nama)}
+            <Text style={styles.namepasi}>
+              {user &&
+                user?.nama?.length > 0 &&
+                capitalizeFirstLetter(user?.nama)}
+            </Text>
           </Text>
           <Gap height={1} />
           <Text style={styles.subtitle}>Relawan</Text>
@@ -79,32 +75,57 @@ const HomeData = ({navigation}) => {
             4 kecamatan responden terbanyak
           </Text>
         </View>
-        <BarChart
-          width={360}
-          xAxisColor={'#c919ff'}
-          rotateLabel
-          isAnimated
-          isThreeD
-          spacing={65}
-          labelWidth={20}
-          barWidth={20}
-          barBorderRadius={4}
-          frontColor="lightgray"
-          data={barData}
-          yAxisThickness={0}
-          xAxisThickness={0}
-          disableScroll={true}
-          autoShiftLabels
-          noOfSections={4}
-        />
+        <View style={{backgroundColor: 'white', marginTop: 15}}>
+          <BarChart
+            width={360}
+            xAxisColor={'#c919ff'}
+            rotateLabel
+            isAnimated
+            isThreeD
+            spacing={65}
+            labelWidth={20}
+            barWidth={20}
+            barBorderRadius={4}
+            frontColor="lightgray"
+            data={barData}
+            yAxisThickness={0}
+            xAxisThickness={0}
+            disableScroll={true}
+            autoShiftLabels
+            noOfSections={4}
+            backgroundColor="white"
+          />
+        </View>
       </View>
-      <Gap height={110} />
-      <View style={styles.containerMenu}></View>
+      <Gap height={10} />
+      <View style={styles.containerMenu}>
+        <Text>Legend :</Text>
+        <View style={styles.boxLegend}>
+          <View style={styles.kotak}></View>
+          <View>
+            <Text>data</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
 export default HomeData;
 const styles = StyleSheet.create({
+  boxLegend: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 10,
+    marginTop: 10,
+  },
+  kotak: {
+    width: 12,
+    height: 12,
+    backgroundColor: 'red',
+  },
   labelTopKota: {
     fontSize: 16,
     textAlign: 'center',
@@ -126,16 +147,19 @@ const styles = StyleSheet.create({
   },
   page: {flex: 1},
   boxName: {
-    padding: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
     backgroundColor: '#153606',
   },
   containerMenu: {
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
     width: '100%',
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
   },
   topBoxProfile: {
     width: '100%',
@@ -147,10 +171,13 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   name: {
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'Poppins-medium',
     color: '#D0D0D0',
     textAlign: 'left',
+  },
+  namepasi: {
+    marginRight: 5,
   },
   subtitle: {
     fontSize: 10,

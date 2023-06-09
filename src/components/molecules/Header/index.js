@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#153606',
     paddingHorizontal: 24,
-    paddingTop: 8,
-    paddingBottom: 18,
+    paddingTop: 0,
+    paddingBottom: 14,
     flexDirection: 'row',
     alignItems: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     marginTop: 12,
     fontFamily: 'Poppins-Medium',
     lineHeight: 29,

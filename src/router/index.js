@@ -31,7 +31,7 @@ const MainApp = () => {
       />
 
       <Tab.Screen
-        name="Profile"
+        name="Profil"
         component={Profile}
         options={{headerShown: false}}
       />

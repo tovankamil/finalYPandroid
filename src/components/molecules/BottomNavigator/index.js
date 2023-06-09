@@ -14,10 +14,10 @@ import {
 
 const Icon = ({label, focus}) => {
   switch (label) {
-    case 'Homedata':
+    case 'Home':
       return focus ? <IHomeActive /> : <IHome />;
 
-    case 'Profile':
+    case 'Profil':
       return focus ? <IProfileActive /> : <IProfile />;
     case 'Responden':
       return focus ? <ITambahResponden /> : <ITambahResponden />;
@@ -79,7 +79,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             <Text
               style={{
                 color: isFocused ? '#0C7649' : '#BFBFBF',
-                fontSize: 12,
+                fontSize: 11,
                 fontFamily: 'Poppins-reguler',
                 textAlign: 'center',
                 marginTop: 5,
@@ -101,18 +101,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: 'white',
-    paddingTop: 15,
-    paddingBottom: 13,
-    paddingHorizontal: 50,
-    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     color: 'white',
-    paddingTop: 15,
-    paddingBottom: 13,
-    paddingHorizontal: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+
     width: '100%',
     // borderTopRightRadius: 35,
     // borderTopLeftRadius: 35,
