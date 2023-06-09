@@ -90,7 +90,7 @@ const HomeData = ({navigation}) => {
             rotateLabel
             isAnimated
             isThreeD
-            spacing={30}
+            spacing={25}
             labelWidth={0}
             barWidth={10}
             barBorderRadius={4}
