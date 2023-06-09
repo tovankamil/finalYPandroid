@@ -44,7 +44,7 @@ const DataTerinput = () => {
         <ButtonPrimary
           bg="#0EA137"
           color="white"
-          textData="Tambah Koresponden"
+          textData="Tambah responden"
           onPress={() => navigation.navigate('FormKoresponden')}
           _
         />

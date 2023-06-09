@@ -99,50 +99,7 @@ const HomeData = ({navigation}) => {
         />
       </View>
       <Gap height={110} />
-      <View style={styles.containerMenu}>
-        {/* <TouchableOpacity
-          style={styles.borderData}
-          onPress={() => navigation.navigate('DataKoresponden')}
-        >
-          <Image source={ICPKORESPONDEN} style={styles.image} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.borderData}
-          // onPress={() => navigation.navigate('DataKoresponden')}
-        >
-          <Image source={ICPROFILE} style={styles.image} />
-        </TouchableOpacity>
-      </View>
-      <Gap height={35} />
-      <View style={styles.containerMenu}>
-        <TouchableOpacity
-          style={styles.borderData}
-          onPress={() => navigation.navigate('Setting')}
-        >
-          <Image source={ICSETTING} style={styles.image} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.borderData} onPress={onSubmit}>
-          <Image source={ICKELUAR} style={styles.image} />
-        </TouchableOpacity> */}
-      </View>
-
-      {/* <View style={styles.containerMenu}>
-        <Gap height={5} />
-        <MenuHome
-          title="Data Koresponden"
-          onPress={() => navigation.navigate('DataKoresponden')}
-        />
-        <Gap height={5} />
-        <MenuHome
-          title="Data Relawan"
-          onPress={() => navigation.navigate('home')}
-        />
-        <Gap height={5} />
-        <MenuHome title="Profile" onPress={() => navigation.navigate('home')} />
-
-        <Gap height={5} />
-        <MenuHome title="Keluar" onPress={onSubmit} />
-      </View> */}
+      <View style={styles.containerMenu}></View>
     </View>
   );
 };
