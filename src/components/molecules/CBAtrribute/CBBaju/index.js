@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
-const CBBaju = ({label, no, data}) => {
+const CBBaju = ({label, no, data, isChecked}) => {
   const [isSelected, setSelection] = useState(false);
 
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const CBBaju = ({label, no, data}) => {
   return (
     <View style={styles.container}>
       <CheckBox
-        value={isSelected}
+        value={isChecked}
         onValueChange={cek}
         style={styles.checkbox}
         tintColors={{true: 'green', false: '#ddd'}}

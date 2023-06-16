@@ -24,16 +24,19 @@ export const signUpKorespondenAction = (
       navigation.navigate('DataKoresponden');
     })
     .catch(err => {
+      console.log('err.response.data.msg', err.response.data.msg);
       dispatch(setLoading(false));
       dispatch(setTabindexinputkoresponden(0));
-      showMessage(`${err.response.data.msg}`, 'danger');
+      err.response.data.msg.length > 0 &&
+        showMessage(err.response.data.msg, 'danger');
       err.response.status !== 500 && dispatch(setLoading(false));
-      showMessage(
-        err.response.status == 500
-          ? 'Login expired silahkan login kembali '
-          : '',
-        'error',
-      );
+      err.response.status == 500 &&
+        showMessage(
+          err.response.status == 500
+            ? 'Login expired silahkan login kembali '
+            : '',
+          'error',
+        );
 
       err.response.status == 500 &&
         setTimeout(() => {

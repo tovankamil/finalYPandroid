@@ -11,8 +11,6 @@ import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
 import {CBBaju, CBQA} from '../../index';
 import {CBAttributeLainnya} from '../CBAtrribute';
 
-// import {getFoodDataByTypes} from '../../../redux/action';
-
 const Identitas = () => {
   const globalState = useSelector(state => state?.dataProvinsiReducer);
 
@@ -181,7 +179,6 @@ const HomeTabSection = () => {
         globalState.qaerror != '' ||
         globalState.atrerror != '') && (
         <View style={{paddingLeft: 15, marginVertical: 15}}>
-          <Text style={{color: 'red'}}>Erorr</Text>
           {globalState.identitasError != '' && (
             <Text style={styles.labelError}>{globalState?.identitasError}</Text>
           )}

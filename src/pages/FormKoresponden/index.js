@@ -28,7 +28,13 @@ const FormKoresponden = ({navigation}) => {
   useEffect(() => {
     getData('token').then(data => {
       setUser(data);
+      console.log(' globalState?.attribute?', globalState?.attribute);
     });
+    dispatch(setATR(''));
+    dispatch(setQA(''));
+    dispatch(setIDENTITAS(''));
+    dispatch(setNikError(''));
+    dispatch(setUsiaError(''));
   }, []);
   const onPressLearnMore = () => {
     let dataattr = '';
@@ -54,16 +60,16 @@ const FormKoresponden = ({navigation}) => {
     }
 
     let temp = globalState?.attribute?.findIndex(d => d.isChecked == true);
-
+    console.log('temp', temp);
     if (temp === -1 && globalState.lainnya.length < 1) {
-      dispatch(setATR('Silahkan lengkapi pada Tab Attribute'));
+      dispatch(setATR('Silahkan Pilih Attribute'));
       dispatch(setTabindexinputkoresponden(2));
     }
     if (temp === 0 && globalState.lainnya.length < 1) {
-      dispatch(setATR('Silahkan lengkapi pada Tab Attribute'));
+      dispatch(setATR('Silahkan Pilih Attribute'));
       dispatch(setTabindexinputkoresponden(2));
     }
-    if (temp === 0 && globalState.lainnya.length >= 0) {
+    if (temp >= 0 && globalState.lainnya.length >= 0) {
       dispatch(setATR(''));
       globalState?.attribute?.map(d => {
         if (d.isChecked) {
@@ -85,7 +91,7 @@ const FormKoresponden = ({navigation}) => {
       globalState.qa2.length == 0 ||
       globalState.qa2.length == 0
     ) {
-      dispatch(setQA('Silahkan lengkapi pertanyaan pada tab QA'));
+      dispatch(setQA('Silahkan jawab pertanyaan pada  Q&A'));
       dispatch(setTabindexinputkoresponden(1));
     }
     if (
@@ -96,21 +102,23 @@ const FormKoresponden = ({navigation}) => {
       dispatch(setQA(''));
       dispatch(setTabindexinputkoresponden(1));
     }
-
+    console.log('globalState', globalState);
     if (
-      globalState?.nama.length == 0 ||
-      globalState?.nama.length > 20 ||
-      globalState?.usia.length == 0 ||
-      globalState?.usia.length > 2 ||
-      globalState?.nik.length == 0 ||
-      globalState?.nik.length < 16 ||
-      globalState?.nik.length > 17 ||
-      globalState?.alamat.length == 0 ||
-      globalState?.hp.length == 0 ||
-      globalState?.hp.length > 20 ||
-      globalState?.kota.length == 0 ||
-      globalState?.kecamatan.length == 0 ||
-      globalState?.desa.length == 0
+      globalState?.nama?.length == 0 ||
+      globalState?.nama?.length > 20 ||
+      globalState?.usia?.length == 0 ||
+      globalState?.usia?.length > 2 ||
+      globalState?.nik?.length == 0 ||
+      globalState?.nik?.length < 16 ||
+      globalState?.nik?.length > 17 ||
+      globalState?.alamat?.length == 0 ||
+      globalState?.hp?.length == 0 ||
+      globalState?.hp?.length > 20 ||
+      globalState?.kota?.length == 0 ||
+      globalState?.kecamatan == false ||
+      globalState?.desa == false ||
+      globalState?.kecamatan?.length == 0 ||
+      globalState?.desa?.length == 0
     ) {
       dispatch(setIDENTITAS('Silahkan lengkapi form indentitas'));
       dispatch(setTabindexinputkoresponden(0));
@@ -135,11 +143,11 @@ const FormKoresponden = ({navigation}) => {
       globalState.qa1.length > 0 &&
       globalState.qa2.length > 0 &&
       globalState.qa2.length > 0 &&
-      temp === 0 &&
+      temp >= 0 &&
       globalState.lainnya.length >= 0
     ) {
-      Object.assign(globalState, {attribute: dataattr});
-
+      Object.assign(globalState, {dataattribute: dataattr});
+      console.log('globalstatefinal', globalState);
       dispatch(signUpKorespondenAction(globalState, navigation, user));
     }
   };

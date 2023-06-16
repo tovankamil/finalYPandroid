@@ -16,6 +16,7 @@ const CBAttributeLainnya = ({label}) => {
     },
     [lainnya],
   );
+  dispatch({type: 'RESET_DATA_ATTRIBUTE'});
   if (!isSelected) {
     let data = {
       lainnya: '',

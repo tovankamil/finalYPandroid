@@ -2,7 +2,7 @@ const initGlobal = {
   isError: false,
   isLogout: false,
   message: 'error',
-  tabIndexInputKoresponden: 2,
+  tabIndexInputKoresponden: 1,
   nikError: '',
   usia: '',
   qaerror: '',
