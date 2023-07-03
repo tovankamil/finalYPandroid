@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, RefreshControl, Text, View} from 'react-native';
 
 import {BarChart} from 'react-native-gifted-charts';
 import {useDispatch, useSelector} from 'react-redux';
@@ -13,7 +13,7 @@ const HomeData = ({navigation}) => {
   const globalTopkota = useSelector(state => state.topKotaReducer);
   const [user, setUser] = useState({});
   const [bardata, setBardata] = useState({});
-
+  const [refreshing, setRefreshing] = React.useState(false);
   useEffect(() => {
     getData('userProfile').then(data => {
       setUser(data);
@@ -40,96 +40,113 @@ const HomeData = ({navigation}) => {
     'purple',
     'gray',
     'black',
+    'burlywood',
+    'brown',
   ];
   globalTopkota?.data?.data &&
     globalTopkota?.data?.data.map((d, i) => {
-      let dataKota = {
-        value: globalTopkota?.data.data[i].count,
-        // label: globalTopkota?.data.data[i]._id[0].nama,
-        frontColor: datafrontColor[i],
-        sideColor: '#23A7F3',
-        topColor: '#92e6f6',
-      };
-      barData.push(dataKota);
+      if (i < 9) {
+        let dataKota = {
+          value: globalTopkota?.data.data[i].count,
+          // label: globalTopkota?.data.data[i]._id[0].nama,
+          frontColor: datafrontColor[i],
+          sideColor: '#23A7F3',
+          topColor: '#92e6f6',
+        };
+        barData.push(dataKota);
+      }
     });
-
+  const refreshdata = useCallback(() => {
+    setRefreshing(true);
+    getData('token')
+      .then(data => {
+        dispatch(dataTopKota(data));
+      })
+      .catch(err => console.log('data', err));
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1);
+  }, []);
   return (
-    <View style={styles.page}>
-      <View style={styles.topBoxProfile}>
-        <ICUser />
-        <View style={styles.boxName}>
-          <Text style={styles.name}>
-            Hi,
-            <Text style={styles.namepasi}>
-              {user &&
-                user?.nama?.length > 0 &&
-                capitalizeFirstLetter(user?.nama)}
+    <ScrollView
+      refreshControl={
+        <RefreshControl onRefresh={refreshdata} refreshing={refreshing} />
+      }
+    >
+      <View style={styles.page}>
+        <View style={styles.topBoxProfile}>
+          <ICUser />
+          <View style={styles.boxName}>
+            <Text style={styles.name}>
+              Hi,
+              <Text style={styles.namepasi}>
+                {user &&
+                  user?.nama?.length > 0 &&
+                  capitalizeFirstLetter(user?.nama)}
+              </Text>
             </Text>
-          </Text>
-          <Gap height={1} />
-          <Text style={styles.subtitle}>Relawan</Text>
+            <Gap height={1} />
+            <Text style={styles.subtitle}>Relawan</Text>
+          </View>
         </View>
-      </View>
 
-      <Gap height={20} />
-      <View
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <View style={{display: 'flex', justifyContent: 'center'}}>
-          <Text style={styles.labelTopKota}>
-            7 Kecamatan responden terbanyak
-          </Text>
+        <Gap height={20} />
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <View style={{display: 'flex', justifyContent: 'center'}}>
+            <Text style={styles.labelTopKota}>
+              7 Kecamatan responden terbanyak
+            </Text>
+          </View>
+          <View style={{backgroundColor: 'white', marginTop: 15}}>
+            <BarChart
+              width={360}
+              xAxisColor={'#c919ff'}
+              rotateLabel
+              isAnimated
+              isThreeD
+              spacing={25}
+              labelWidth={0}
+              barWidth={10}
+              barBorderRadius={4}
+              frontColor="lightgray"
+              data={barData}
+              yAxisThickness={0}
+              xAxisThickness={0}
+              disableScroll={true}
+              autoShiftLabels
+              noOfSections={5}
+              backgroundColor="white"
+            />
+          </View>
         </View>
-        <View style={{backgroundColor: 'white', marginTop: 15}}>
-          <BarChart
-            width={360}
-            xAxisColor={'#c919ff'}
-            rotateLabel
-            isAnimated
-            isThreeD
-            spacing={25}
-            labelWidth={0}
-            barWidth={10}
-            barBorderRadius={4}
-            frontColor="lightgray"
-            data={barData}
-            yAxisThickness={0}
-            xAxisThickness={0}
-            disableScroll={true}
-            autoShiftLabels
-            noOfSections={5}
-            backgroundColor="white"
-          />
-        </View>
-      </View>
-      <Gap height={10} />
-      <View style={styles.containerMenu}>
-        <Text>Legend :</Text>
-        <View style={styles.boxPage}>
-          {globalTopkota?.data?.data &&
-            globalTopkota?.data?.data.map((d, i) => {
-              console.log(
-                'globalTopkota',
-                globalTopkota?.data.data[i]._id[0].nama,
-                globalTopkota?.data.data[i].count,
-              );
-              return (
-                <>
-                  <View style={styles.boxLegend}>
-                    <View style={styles.kotak(datafrontColor[i])}></View>
-                    <View>
-                      <Text>{globalTopkota?.data.data[i]._id[0].nama}</Text>
-                    </View>
-                  </View>
-                </>
-              );
-            })}
+        <Gap height={10} />
+        <View style={styles.containerMenu}>
+          <Text>Legend :</Text>
+          <View style={styles.boxPage}>
+            {globalTopkota?.data?.data &&
+              globalTopkota?.data?.data.map((d, i) => {
+                if (i < 9) {
+                  return (
+                    <>
+                      <View style={styles.boxLegend}>
+                        <View style={styles.kotak(datafrontColor[i])}></View>
+                        <View>
+                          <Text>{globalTopkota?.data.data[i]._id[0].nama}</Text>
+                        </View>
+                      </View>
+                    </>
+                  );
+                }
+              })}
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export default HomeData;

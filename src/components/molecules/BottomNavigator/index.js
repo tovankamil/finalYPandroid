@@ -10,6 +10,7 @@ import {
   ISetting,
   ISettingActive,
   ITambahResponden,
+  ITambahRespondenActive,
 } from '../../../assets';
 
 const Icon = ({label, focus}) => {
@@ -20,7 +21,7 @@ const Icon = ({label, focus}) => {
     case 'Profil':
       return focus ? <IProfileActive /> : <IProfile />;
     case 'Responden':
-      return focus ? <ITambahResponden /> : <ITambahResponden />;
+      return focus ? <ITambahRespondenActive /> : <ITambahResponden />;
     case 'Setting':
       return focus ? <ISettingActive /> : <ISetting />;
     case 'Keluar':
