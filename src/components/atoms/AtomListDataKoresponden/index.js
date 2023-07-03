@@ -33,13 +33,13 @@ export default AtomListDataKoresponden;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
-    borderRadius: 15,
+    borderRadius: 0,
     paddingHorizontal: 23,
     paddingVertical: 14,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000000',
+    shadowColor: '#ddd',
     shadowOffset: {
       width: 20,
       height: 1,
@@ -50,14 +50,13 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: '#ffffff',
-
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   data: {
     marginLeft: 14,
-    maxWidth: '81%',
+    maxWidth: '100%',
   },
   nama: {
     fontFamily: 'Poppins-Medium',

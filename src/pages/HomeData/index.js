@@ -111,6 +111,11 @@ const HomeData = ({navigation}) => {
         <View style={styles.boxPage}>
           {globalTopkota?.data?.data &&
             globalTopkota?.data?.data.map((d, i) => {
+              console.log(
+                'globalTopkota',
+                globalTopkota?.data.data[i]._id[0].nama,
+                globalTopkota?.data.data[i].count,
+              );
               return (
                 <>
                   <View style={styles.boxLegend}>

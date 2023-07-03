@@ -65,6 +65,19 @@ const DataTerinput = () => {
   );
 };
 
+// const DataTerpending = () => {
+//   return (
+//     <ScrollView>
+//       <View style={styles.tabViewContainer}>
+//         <View style={styles.tabView}>
+//           <ListDataKoresponden />
+//           <Gap height={14} />
+//         </View>
+//       </View>
+//     </ScrollView>
+//   );
+// };
+
 const DataTerpending = () => {
   return (
     <ScrollView>
@@ -77,6 +90,7 @@ const DataTerpending = () => {
     </ScrollView>
   );
 };
+
 const renderTabBar = props => (
   <TabBar
     {...props}
@@ -120,7 +134,7 @@ export default TabListDataKoresponden;
 const styles = StyleSheet.create({
   tabViewContainer: {
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: 0,
   },
   tabView: {
     backgroundColor: 'white',
