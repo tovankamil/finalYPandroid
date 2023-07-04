@@ -1,12 +1,19 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, RefreshControl, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import {BarChart} from 'react-native-gifted-charts';
 import {useDispatch, useSelector} from 'react-redux';
 import {ICUser} from '../../assets';
 import {Gap} from '../../components';
 import {dataTopKota} from '../../redux/action/topkota';
-import {getData, removeData} from '../../utils';
+import {getData} from '../../utils';
 import {capitalizeFirstLetter} from '../../utils/firstCapital';
 const HomeData = ({navigation}) => {
   const dispatch = useDispatch();
@@ -14,6 +21,7 @@ const HomeData = ({navigation}) => {
   const [user, setUser] = useState({});
   const [bardata, setBardata] = useState({});
   const [refreshing, setRefreshing] = React.useState(false);
+
   useEffect(() => {
     getData('userProfile').then(data => {
       setUser(data);
@@ -26,11 +34,7 @@ const HomeData = ({navigation}) => {
       dispatch(dataTopKota(data));
     });
   };
-  const onSubmit = () => {
-    removeData('token');
-    removeData('userProfile');
-    navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
-  };
+
   const barData = [];
   let datafrontColor = [
     'blue',
@@ -67,6 +71,7 @@ const HomeData = ({navigation}) => {
       setRefreshing(false);
     }, 1);
   }, []);
+
   return (
     <ScrollView
       refreshControl={
@@ -90,7 +95,7 @@ const HomeData = ({navigation}) => {
           </View>
         </View>
 
-        <Gap height={20} />
+        <Gap height={10} />
         <View
           style={{
             display: 'flex',
@@ -102,7 +107,7 @@ const HomeData = ({navigation}) => {
               7 Kecamatan responden terbanyak
             </Text>
           </View>
-          <View style={{backgroundColor: 'white', marginTop: 15}}>
+          <View style={{backgroundColor: 'white', marginTop: 15, padding: 5}}>
             <BarChart
               width={360}
               xAxisColor={'#c919ff'}
@@ -119,12 +124,12 @@ const HomeData = ({navigation}) => {
               xAxisThickness={0}
               disableScroll={true}
               autoShiftLabels
-              noOfSections={5}
+              noOfSections={8}
               backgroundColor="white"
             />
           </View>
         </View>
-        <Gap height={10} />
+        <Gap height={8} />
         <View style={styles.containerMenu}>
           <Text>Legend :</Text>
           <View style={styles.boxPage}>
@@ -133,10 +138,19 @@ const HomeData = ({navigation}) => {
                 if (i < 9) {
                   return (
                     <>
-                      <View style={styles.boxLegend}>
-                        <View style={styles.kotak(datafrontColor[i])}></View>
-                        <View>
-                          <Text>{globalTopkota?.data.data[i]._id[0].nama}</Text>
+                      <View style={styles.boxLegend} key={i}>
+                        <View style={styles.legend}>
+                          <View style={styles.kotak(datafrontColor[i])}></View>
+                          <View>
+                            <Text>
+                              {globalTopkota?.data.data[i]._id[0].nama}
+                            </Text>
+                          </View>
+                        </View>
+                        <View style={styles.rounded}>
+                          <Text style={styles.countLegend}>
+                            {globalTopkota?.data.data[i].count}
+                          </Text>
                         </View>
                       </View>
                     </>
@@ -159,10 +173,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
     gap: 10,
-    marginTop: 10,
+    marginTop: 8,
+  },
+  legend: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'baseline',
+    justifyContent: 'center',
+  },
+  countLegend: {
+    fontSize: 12,
+    fontWeight: '800',
   },
   kotak: color => ({
     width: 12,
@@ -172,8 +197,21 @@ const styles = StyleSheet.create({
   labelTopKota: {
     fontSize: 16,
     textAlign: 'center',
-    width: '100%',
+
     fontWeight: 'bold',
+  },
+  rounded: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 24,
+    height: 24,
+    paddingBottom: 1,
+    backgroundColor: '#ddd',
+    borderRadius: 32,
+
+    borderColor: '#ddd',
+    textAlign: 'center',
   },
   borderData: {
     borderWidth: 1,
