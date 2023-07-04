@@ -53,7 +53,7 @@ const SignIn = ({navigation}) => {
           onChangeText={value => setForm('password', value)}
           secureTextEntry
         />
-        <Gap height={26} />
+        <Gap height={52} />
         <Button
           text="Masuk"
           color="#0EA137"

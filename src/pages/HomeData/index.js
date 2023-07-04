@@ -109,12 +109,11 @@ const HomeData = ({navigation}) => {
           </View>
           <View style={{backgroundColor: 'white', marginTop: 15, padding: 5}}>
             <BarChart
-              width={360}
               xAxisColor={'#c919ff'}
-              rotateLabel
               isAnimated
               isThreeD
-              spacing={25}
+              initialSpacing={12}
+              spacing={29.5}
               labelWidth={0}
               barWidth={10}
               barBorderRadius={4}
@@ -123,7 +122,6 @@ const HomeData = ({navigation}) => {
               yAxisThickness={0}
               xAxisThickness={0}
               disableScroll={true}
-              autoShiftLabels
               noOfSections={8}
               backgroundColor="white"
             />
