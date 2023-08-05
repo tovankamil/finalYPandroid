@@ -12,6 +12,10 @@ const ATOMQA = ({label, noParent, dataQA, isChecked, keydata}) => {
     });
     dataQA[noParent].jawaban[keydata].isChecked = true;
     dispatch(setLoadingQA(dataQA));
+    dispatch({
+      type: 'SET_NEWQA',
+      value: dataQA,
+    });
   };
 
   return (

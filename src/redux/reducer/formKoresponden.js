@@ -20,6 +20,7 @@ const initStateRegisterKoresponden = {
   qa2: '',
   qa3: '',
   attribute: [],
+  qa0: [],
   dataattribute: [],
 };
 
@@ -106,6 +107,11 @@ export const formKorespondenReducer = (
       qa1: action.value.qa1,
       qa2: action.value.qa2,
       qa3: action.value.qa3,
+    };
+  if (action.type === 'SET_NEWQA')
+    return {
+      ...state,
+      qa0: action.value,
     };
 
   if (action.type === 'SET_RESET_FORM')

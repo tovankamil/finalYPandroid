@@ -19,6 +19,9 @@ import {getData} from '../../utils';
 const FormKoresponden = ({navigation}) => {
   const globalState = useSelector(state => state.formKorespondenReducer);
   const globalStateLogout = useSelector(state => state);
+
+  let cekqa = 0;
+
   const dispatch = useDispatch();
   globalStateLogout.globalReducer.isLogout && dispatch(setLogout(false));
   globalStateLogout.globalReducer.isLogout &&
@@ -36,6 +39,14 @@ const FormKoresponden = ({navigation}) => {
     dispatch(setUsiaError(''));
   }, []);
   const onPressLearnMore = () => {
+    globalState.qa0.map((datax, ind) => {
+      datax.jawaban.map((dtx, index) => {
+        console.log('datax', dtx);
+        if (dtx.isChecked) {
+          cekqa++;
+        }
+      });
+    });
     let dataattr = '';
     if (globalState?.nik.length == 16) {
       dispatch(setNikError(''));
@@ -85,12 +96,12 @@ const FormKoresponden = ({navigation}) => {
       dispatch(setTabindexinputkoresponden(2));
       dispatch(setATR(''));
     }
-    if (
-      globalState.qa1.length == 0 ||
-      globalState.qa2.length == 0 ||
-      globalState.qa2.length == 0
-    ) {
+    if (cekqa < 5) {
       dispatch(setQA('Silahkan jawab pertanyaan pada  Q&A'));
+      dispatch(setTabindexinputkoresponden(1));
+    }
+    if (cekqa >= 5) {
+      dispatch(setQA(''));
       dispatch(setTabindexinputkoresponden(1));
     }
     if (
@@ -139,9 +150,7 @@ const FormKoresponden = ({navigation}) => {
       globalState?.kota.length > 0 &&
       globalState?.kecamatan.length > 0 &&
       globalState?.desa.length > 0 &&
-      globalState.qa1.length > 0 &&
-      globalState.qa2.length > 0 &&
-      globalState.qa2.length > 0 &&
+      cekqa >= 5 &&
       temp >= 0 &&
       globalState.lainnya.length >= 0
     ) {
