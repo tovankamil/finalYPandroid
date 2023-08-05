@@ -1,12 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import {BarChart} from 'react-native-gifted-charts';
 import {useDispatch, useSelector} from 'react-redux';
@@ -71,7 +64,14 @@ const HomeData = ({navigation}) => {
       setRefreshing(false);
     }, 1);
   }, []);
-
+  const submit = index => {
+    globalTopkota?.data?.data &&
+      globalTopkota?.data?.data.map((d, i) => {
+        if (i === index) {
+          console.log('submit', index);
+        }
+      });
+  };
   return (
     <ScrollView
       refreshControl={
@@ -104,15 +104,16 @@ const HomeData = ({navigation}) => {
         >
           <View style={{display: 'flex', justifyContent: 'center'}}>
             <Text style={styles.labelTopKota}>
-              7 Kecamatan responden terbanyak
+              Data kecamatan responden terbanyak
             </Text>
           </View>
+
           <View style={{backgroundColor: 'white', marginTop: 15, padding: 5}}>
             <BarChart
               xAxisColor={'#c919ff'}
               isAnimated
               isThreeD
-              initialSpacing={12}
+              initialSpacing={9}
               spacing={29.5}
               labelWidth={0}
               barWidth={10}
@@ -124,6 +125,7 @@ const HomeData = ({navigation}) => {
               disableScroll={true}
               noOfSections={8}
               backgroundColor="white"
+              onPress={(item, index) => submit(index)}
             />
           </View>
         </View>
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     backgroundColor: color,
   }),
   labelTopKota: {
-    fontSize: 16,
+    fontSize: 17,
     textAlign: 'center',
 
     fontWeight: 'bold',

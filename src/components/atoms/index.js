@@ -6,7 +6,7 @@ import Select from './Select';
 import Span from './Span';
 import AtomListDataKoresponden from './AtomListDataKoresponden';
 import SelectKoresponden from './SelectKoresponden';
-
+import ATOMQA from './ATOMQA';
 export {
   TextInput,
   Button,
@@ -16,4 +16,5 @@ export {
   Span,
   AtomListDataKoresponden,
   SelectKoresponden,
+  ATOMQA,
 };

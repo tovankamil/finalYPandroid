@@ -28,7 +28,6 @@ const FormKoresponden = ({navigation}) => {
   useEffect(() => {
     getData('token').then(data => {
       setUser(data);
-      console.log(' globalState?.attribute?', globalState?.attribute);
     });
     dispatch(setATR(''));
     dispatch(setQA(''));

@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {dataProvinsi} from '../../../redux/action';
 import {useForm} from '../../../utils';
 import FormProfilKoresponden from '../../atoms/FormProfilKoresponden';
-import {CBBaju, CBQA} from '../../index';
+import {CBBaju, CBQA, CBQANEW} from '../../index';
 import {CBAttributeLainnya} from '../CBAtrribute';
 
 const Identitas = () => {
@@ -88,7 +88,8 @@ const Identitas = () => {
 };
 
 const QA = () => {
-  return <CBQA />;
+  // return <CBQA />;
+  return <CBQANEW />;
 };
 
 const Attribute = () => {

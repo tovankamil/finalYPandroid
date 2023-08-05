@@ -12,6 +12,7 @@ import Card from './Card';
 // import TabListDataKoresponden from './TabListDataKoresponden';
 export * from './CBAtrribute';
 import CBQA from './CBQA';
+import CBQANEW from './CBQANEW';
 
 export {
   Header,
@@ -25,4 +26,5 @@ export {
   MenuHome,
   Card,
   CBQA,
+  CBQANEW,
 };
