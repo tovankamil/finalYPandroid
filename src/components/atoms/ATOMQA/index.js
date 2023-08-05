@@ -7,23 +7,11 @@ import {setLoadingQA} from '../../../redux/action/qa';
 const ATOMQA = ({label, noParent, dataQA, isChecked, keydata}) => {
   const dispatch = useDispatch();
   const cek = id => {
-    console.log('id', id);
-    console.log('noParent', noParent);
-    console.log('keyx', keydata);
-    console.log('data', dataQA[noParent]);
-    // setSelection(prev => !prev);
-    // let temp = dataQA[noParent].jawaban.findIndex(d => d.id == no);
-    //     console.log('data', temp);
     dataQA[noParent].jawaban.map((dataindex, index) => {
       dataindex.isChecked = false;
     });
     dataQA[noParent].jawaban[keydata].isChecked = true;
     dispatch(setLoadingQA(dataQA));
-    // data[temp].isChecked = !data[temp].isChecked;
-    // dispatch({
-    //   type: 'SET_ALL_ATTRIBUTE',
-    //   value: data,
-    // });
   };
 
   return (
