@@ -150,7 +150,7 @@ const FormKoresponden = ({navigation}) => {
       globalState?.kota.length > 0 &&
       globalState?.kecamatan.length > 0 &&
       globalState?.desa.length > 0 &&
-      cekqa >= 5 &&
+      cekqa >= 15 &&
       temp >= 0 &&
       globalState.lainnya.length >= 0
     ) {
