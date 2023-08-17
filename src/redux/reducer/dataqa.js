@@ -1,5 +1,6 @@
 const initQAReducer = {
   dataQA: [],
+  dataJK: [],
 };
 
 export default qaloadreducer = (state = initQAReducer, action) => {
@@ -7,6 +8,12 @@ export default qaloadreducer = (state = initQAReducer, action) => {
     return {
       ...state,
       dataQA: action.value,
+    };
+  }
+  if (action.type === 'LOADING_DATA_JK') {
+    return {
+      ...state,
+      dataJK: action.value,
     };
   }
 

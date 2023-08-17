@@ -7,6 +7,7 @@ import Span from './Span';
 import AtomListDataKoresponden from './AtomListDataKoresponden';
 import SelectKoresponden from './SelectKoresponden';
 import ATOMQA from './ATOMQA';
+import ATOMJK from './ATOMJK';
 export {
   TextInput,
   Button,
@@ -17,4 +18,5 @@ export {
   AtomListDataKoresponden,
   SelectKoresponden,
   ATOMQA,
+  ATOMJK,
 };
