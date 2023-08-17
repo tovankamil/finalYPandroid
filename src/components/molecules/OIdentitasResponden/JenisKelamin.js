@@ -8,7 +8,7 @@ import {jeniskelamin} from '../../../constants/QA';
 const JenisKelamin = () => {
   return (
     <View>
-      <Text>testxxxxxxx</Text>
+      <Text>testxxxxxxxxr</Text>
     </View>
   );
 };
