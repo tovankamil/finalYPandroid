@@ -17,7 +17,7 @@ import {
   Keluar,
 } from '../pages';
 import {BottomNavigator} from '../components';
-import {TentangCaleg} from '../pages/NewQuestion';
+import {TentangCaleg, TentangPKB} from '../pages/NewQuestion';
 import IdentitasResponden from '../pages/NewQuestion/IdentitasResponden';
 
 const Stack = createNativeStackNavigator();
@@ -110,11 +110,11 @@ const Router = () => {
         component={TentangCaleg}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TentangPKB"
         component={TentangPKB}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* <Stack.Screen
         name="Attribute"
         component={Attribute}

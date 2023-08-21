@@ -7,17 +7,15 @@ import {
   Header,
   JenisKelamin,
   OIdentitasResponden,
+  Span,
   TextInput,
 } from '../../../components';
 import {dataProvinsi} from '../../../redux/action';
-import {useForm} from '../../../utils';
+import {useForm, showMessage} from '../../../utils';
 
 const IdentitasResponden = ({navigation}) => {
   const globalState = useSelector(state => state.globalReducer);
-  const formKorespondenReducer = useSelector(
-    state => state?.formKorespondenReducer,
-  );
-  console.log(formKorespondenReducer);
+
   const [errordata, setErrordata] = useState({
     namaEr: '',
     nikEr: '',
@@ -45,19 +43,19 @@ const IdentitasResponden = ({navigation}) => {
   const ToDispatch = () => {
     let checkData = '';
 
-    Object.keys(form).map((d, i) => {
-      console.log(form[d].length);
-      form[d].length <= 0 ? (checkData = 'Mohon untuk melengkapi data') : '';
-    });
-    console.log(checkData);
-    checkData.length === 0 &&
-      dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
+    if (form.nama.length <= 0) {
+      return showMessage('Silahkan masukan nama responden', 'danger');
+    }
+
+    dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
   };
+
   const DataProvinsi = useCallback(() => {
     return <OIdentitasResponden />;
   });
   const submit = useCallback(() => {
     ToDispatch();
+    navigation.navigate('TentangPKB');
   }, [form]);
   return (
     <ScrollView>
@@ -131,21 +129,20 @@ const IdentitasResponden = ({navigation}) => {
               value={form.alamat}
               onChangeText={value => setForm('alamat', value)}
             />
+
             {errordata.alamatEr != '' && <Span label={errordata.alamatEr} />}
+            <Gap height={14} />
             {DataProvinsi()}
+            <Gap height={14} />
+            <Button
+              style={styles.button}
+              onPress={submit}
+              text="Selanjutnya"
+              textColor="#F9F9F9"
+              color="green"
+            />
           </View>
 
-          <View style={styles.buttonContainer}>
-            <View style={styles.boxButton}>
-              <Button
-                style={styles.button}
-                onPress={submit}
-                text="Selanjutnya"
-                textColor="#F9F9F9"
-                color="green"
-              />
-            </View>
-          </View>
           {/* end tab   */}
         </View>
       </View>
@@ -176,7 +173,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: 'white',
   },
   boxButton: {
     padding: 10,

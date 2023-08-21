@@ -13,7 +13,7 @@ const ATOMJK = ({label, noParent, dataQA, isChecked, keydata}) => {
     dataQA[keydata].isChecked = true;
     dispatch(setLoadingJK(dataQA));
     dispatch({
-      type: 'SET_NEWQA',
+      type: 'SET_NEWJK',
       value: dataQA,
     });
   };
@@ -21,6 +21,7 @@ const ATOMJK = ({label, noParent, dataQA, isChecked, keydata}) => {
   return (
     <View style={styles.detailPertanyaan}>
       <CheckBox
+        key={keydata}
         value={isChecked}
         style={styles.checkbox}
         onValueChange={cek}

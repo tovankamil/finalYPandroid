@@ -3,6 +3,7 @@ const initStateRegisterKoresponden = {
   nik: '',
   hp: '',
   usia: '',
+  jk: '',
   koordinator: '',
   alamat: '',
   nama_kota: '',
@@ -112,6 +113,11 @@ export const formKorespondenReducer = (
     return {
       ...state,
       qa0: action.value,
+    };
+  if (action.type === 'SET_NEWJK')
+    return {
+      ...state,
+      jk: action.value,
     };
 
   if (action.type === 'SET_RESET_FORM')

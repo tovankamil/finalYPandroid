@@ -1,2 +1,4 @@
 import OIdentitasResponden from './OIdentitasResponden';
-export {OIdentitasResponden};
+import OTentangPKB from './OTentangPKB';
+
+export {OIdentitasResponden, OTentangPKB};

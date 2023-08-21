@@ -9,7 +9,6 @@ import {Gap, ATOMJK} from '../../atoms';
 const JenisKelamin = () => {
   const dispatch = useDispatch();
   const dataJenisKelamin = useSelector(state => state.qaloadreducer);
-  console.log('dataJenisKelamin', dataJenisKelamin);
   useEffect(() => {
     dispatch(setLoadingJK(jeniskelamin));
   }, []);
@@ -17,9 +16,8 @@ const JenisKelamin = () => {
     <View>
       <Text style={styles.label}>Jenis Kelamin</Text>
       {jeniskelamin.map((dt, index) => {
-        console.log('dd', dt);
         return (
-          <>
+          <View key={index}>
             <ATOMJK
               label={dt.txt}
               // noParent={i}
@@ -29,7 +27,7 @@ const JenisKelamin = () => {
               keydata={index}
             />
             <Gap width={10} />
-          </>
+          </View>
         );
       })}
     </View>

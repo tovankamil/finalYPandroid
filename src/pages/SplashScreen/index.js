@@ -6,7 +6,7 @@ const SplashScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       // navigation.replace('SignIn');
-      navigation.replace('IdentitasResponden');
+      navigation.replace('TentangPKB');
     }, 1000);
   });
 

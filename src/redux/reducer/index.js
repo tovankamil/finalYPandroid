@@ -7,6 +7,7 @@ import dataKorespondenReducer from './dataKoresponden';
 import settingRelawanReducer from './setting';
 import topKotaReducer from './topkota';
 import qaloadreducer from './dataqa';
+import questionReducer from './question';
 
 const reducer = combineReducers({
   registerReducer,
@@ -17,5 +18,6 @@ const reducer = combineReducers({
   settingRelawanReducer,
   topKotaReducer,
   qaloadreducer,
+  questionReducer,
 });
 export default reducer;
