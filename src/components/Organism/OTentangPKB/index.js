@@ -1,12 +1,28 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {ATOMJawaban, Gap} from '../../atoms';
+import {StyleSheet, Text, View} from 'react-native';
+import {ATOMJawaban, AtomJawabanField, ATOMJawabanMC, Gap} from '../../atoms';
+import {CBQANEWv2} from '../../molecules';
 
 const OTentangPKB = ({data}) => {
-  const selector = useSelector(state => state.questionReducer);
-
+  const SC = () => {
+    if (data.tipejawaban == 'field') {
+      return (
+        <AtomJawabanField
+          idPertanyaan="xxxx"
+          namaResponden="tofan"
+          tipe={data.tipejawaban}
+        />
+      );
+    }
+    if (data.tipejawaban == 'sc') {
+      return <CBQANEWv2 dataQA={data} tipe={data.tipejawaban} />;
+    }
+    if (data.tipejawaban == 'mc') {
+      return data.jawaban.map((d, i) => {
+        return <ATOMJawabanMC data={d} key={i} tipe={data.tipejawaban} />;
+      });
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.rowQuestion}>
@@ -14,9 +30,7 @@ const OTentangPKB = ({data}) => {
         <Gap width={4} />
         <Text style={styles.pertanyaan}>{data.namapertanyaan}</Text>
       </View>
-      {data.jawaban.map((d, i) => {
-        return <ATOMJawaban data={d} key={i} />;
-      })}
+      {<SC />}
     </View>
   );
 };

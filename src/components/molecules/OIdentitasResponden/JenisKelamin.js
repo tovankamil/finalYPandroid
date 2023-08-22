@@ -9,6 +9,7 @@ import {Gap, ATOMJK} from '../../atoms';
 const JenisKelamin = () => {
   const dispatch = useDispatch();
   const dataJenisKelamin = useSelector(state => state.qaloadreducer);
+  console.log('jenisekelamin', dataJenisKelamin);
   useEffect(() => {
     dispatch(setLoadingJK(jeniskelamin));
   }, []);

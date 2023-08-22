@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
 import Gap from '../Gap';
 
-const ATOMJawaban = ({
+const ATOMJawabanMC = ({
   data,
   idPertanyaan,
   namaResponden,
@@ -50,7 +50,7 @@ const ATOMJawaban = ({
   );
 };
 
-export default ATOMJawaban;
+export default React.memo(ATOMJawabanMC);
 const styles = StyleSheet.create({
   detailPertanyaan: {
     display: 'flex',

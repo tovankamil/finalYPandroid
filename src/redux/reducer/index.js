@@ -8,6 +8,7 @@ import settingRelawanReducer from './setting';
 import topKotaReducer from './topkota';
 import qaloadreducer from './dataqa';
 import questionReducer from './question';
+import jawabanRespondenReducer from './jawabanResponden';
 
 const reducer = combineReducers({
   registerReducer,
@@ -19,5 +20,6 @@ const reducer = combineReducers({
   topKotaReducer,
   qaloadreducer,
   questionReducer,
+  jawabanRespondenReducer,
 });
 export default reducer;

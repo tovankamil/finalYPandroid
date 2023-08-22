@@ -13,6 +13,8 @@ import Card from './Card';
 export * from './CBAtrribute';
 import CBQA from './CBQA';
 import CBQANEW from './CBQANEW';
+import CBQANEWv2 from './CBQANEWv2';
+import CBQAMC from './CBQAMC';
 export * from './OIdentitasResponden';
 
 export {
@@ -28,4 +30,6 @@ export {
   Card,
   CBQA,
   CBQANEW,
+  CBQANEWv2,
+  CBQAMC,
 };

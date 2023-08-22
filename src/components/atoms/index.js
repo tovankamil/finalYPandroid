@@ -9,6 +9,8 @@ import SelectKoresponden from './SelectKoresponden';
 import ATOMQA from './ATOMQA';
 import ATOMJK from './ATOMJK';
 import ATOMJawaban from './ATOMJawaban';
+import AtomJawabanField from './AtomJawabanField';
+import ATOMJawabanMC from './ATOMJawabanMC';
 export {
   TextInput,
   Button,
@@ -21,4 +23,6 @@ export {
   ATOMQA,
   ATOMJK,
   ATOMJawaban,
+  AtomJawabanField,
+  ATOMJawabanMC,
 };
