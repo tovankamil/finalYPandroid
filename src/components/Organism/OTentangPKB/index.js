@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {AtomJawabanField, ATOMJawabanMC, Gap} from '../../atoms';
 import {CBQANEWv2} from '../../molecules';
+import CBQASCF from '../../molecules/CBQASCF';
 
 const OTentangPKB = ({data}) => {
   const SC = () => {
@@ -17,6 +18,11 @@ const OTentangPKB = ({data}) => {
     if (data.tipejawaban == 'sc') {
       return <CBQANEWv2 dataQA={data} tipe={data.tipejawaban} />;
     }
+
+    if (data.tipejawaban == 'scf') {
+      return <CBQASCF dataQA={data} tipe={data.tipejawaban} />;
+    }
+
     if (data.tipejawaban == 'mc') {
       return data.jawaban.map((d, i) => {
         return (

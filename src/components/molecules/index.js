@@ -17,7 +17,7 @@ import CBQANEWv2 from './CBQANEWv2';
 import CBQAMC from './CBQAMC';
 export * from './OIdentitasResponden';
 import MSUBJAWABAN from './MSUBJAWABAN';
-
+import SCFJAWABAN from './SCFJAWABAN';
 export {
   Header,
   SignUpAlamat,
@@ -34,4 +34,5 @@ export {
   CBQANEWv2,
   CBQAMC,
   MSUBJAWABAN,
+  SCFJAWABAN,
 };

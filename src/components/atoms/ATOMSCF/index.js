@@ -2,22 +2,25 @@ import CheckBox from '@react-native-community/checkbox';
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
+import {scfjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
+import {SCFJAWABAN} from '../../molecules';
 import Gap from '../Gap';
 
-const ATOMJawaban = ({
+const ATOMSCF = ({
   data,
   idPertanyaan,
   namaResponden,
   idjawaban,
   keydata,
   check,
+  tipesubjawaban,
   tipe,
 }) => {
   const dispatch = useDispatch();
 
   const [checked, setChecked] = useState(false);
   const cek = id => {
+    console.log('check', tipe);
     setChecked(prev => !prev);
     let datajawaban = {
       idPertanyaan,
@@ -28,9 +31,23 @@ const ATOMJawaban = ({
       checked: !checked,
       subjawaban: '',
     };
-    dispatch(jawabanRespondenbaru(datajawaban));
+    dispatch(scfjawabanRespondenbaru(datajawaban));
   };
-
+  const SubJawaban = ({data}) => {
+    if (tipesubjawaban == 'y') {
+      return (
+        <View style={styles.boxSubJawaban}>
+          <SCFJAWABAN
+            idjawaban={idjawaban}
+            idPertanyaan={idPertanyaan}
+            namaResponden={namaResponden}
+            tipe={tipe}
+          />
+        </View>
+      );
+    }
+    return <View style={styles.boxSubJawaban}></View>;
+  };
   return (
     <View>
       <Gap height={2} />
@@ -46,13 +63,15 @@ const ATOMJawaban = ({
             tintColors={{true: 'green', false: '#ddd'}}
           />
           <Text>{data.namaJawaban}</Text>
+          {<SubJawaban data={data} />}
         </View>
       </View>
     </View>
   );
 };
 
-export default ATOMJawaban;
+export default ATOMSCF;
+
 const styles = StyleSheet.create({
   detailPertanyaan: {
     display: 'flex',

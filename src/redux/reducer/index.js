@@ -11,6 +11,8 @@ import questionReducer from './question';
 import jawabanRespondenReducer from './jawabanResponden';
 import subjawabanRespondenReducer from './fieldjawabanResponden';
 import fieldjawabanRespondenReducer from './fieldjawabanResponden';
+import scfjawabanRespondenReducer from './sfcjawabanresponden';
+import scfsubjawabanResponden from './scfsubjawabanResponden';
 
 const reducer = combineReducers({
   registerReducer,
@@ -25,5 +27,7 @@ const reducer = combineReducers({
   jawabanRespondenReducer,
   subjawabanRespondenReducer,
   fieldjawabanRespondenReducer,
+  scfjawabanRespondenReducer,
+  scfsubjawabanResponden,
 });
 export default reducer;
