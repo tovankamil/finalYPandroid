@@ -19,7 +19,19 @@ const OTentangPKB = ({data}) => {
     }
     if (data.tipejawaban == 'mc') {
       return data.jawaban.map((d, i) => {
-        return <ATOMJawabanMC data={d} key={i} tipe={data.tipejawaban} />;
+        return (
+          <ATOMJawabanMC
+            data={d}
+            idPertanyaan={d.idPertanyaan}
+            namaResponden="tofan"
+            idjawaban={d._id}
+            keydata={i}
+            key={i}
+            check={d.checked}
+            tipe={data.tipejawaban}
+            subjawaban={d.subjawaban}
+          />
+        );
       });
     }
   };

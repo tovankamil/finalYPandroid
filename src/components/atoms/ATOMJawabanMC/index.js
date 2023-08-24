@@ -1,8 +1,10 @@
 import CheckBox from '@react-native-community/checkbox';
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
+import {subjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
+import {MSUBJAWABAN} from '../../molecules';
 import Gap from '../Gap';
 
 const ATOMJawabanMC = ({
@@ -13,10 +15,12 @@ const ATOMJawabanMC = ({
   keydata,
   check,
   tipe,
+  subjawaban,
 }) => {
   const dispatch = useDispatch();
 
   const [checked, setChecked] = useState(false);
+
   const cek = id => {
     setChecked(prev => !prev);
     let datajawaban = {
@@ -25,25 +29,46 @@ const ATOMJawabanMC = ({
       idjawaban,
       tipe,
       checked: !checked,
+      fieldjawaban: '',
+      subjawaban: '',
     };
+    // console.log('datajawaban', datajawaban);
     dispatch(jawabanRespondenbaru(datajawaban));
+    dispatch(subjawabanRespondenbaru(datajawaban));
   };
 
+  const SubJawaban = ({data}) => {
+    if (subjawaban == 'y' && checked === true) {
+      return (
+        <MSUBJAWABAN
+          idjawaban={idjawaban}
+          idPertanyaan={idPertanyaan}
+          namaResponden={namaResponden}
+          tipe={tipe}
+        />
+      );
+    }
+    return (
+      <View style={styles.boxSubJawaban}>
+        <Text>{data.namaJawaban}</Text>
+      </View>
+    );
+  };
   return (
-    <View>
+    <View style={styles.container}>
       <Gap height={2} />
       <View style={styles.detailPertanyaan}>
         <View style={styles.boxContainer}>
           <CheckBox
             key={keydata}
-            value={check}
+            value={checked}
             style={styles.checkbox}
             onValueChange={() => {
               cek(keydata);
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>{data.namaJawaban}</Text>
+          {<SubJawaban data={data} />}
         </View>
       </View>
     </View>
@@ -52,13 +77,25 @@ const ATOMJawabanMC = ({
 
 export default React.memo(ATOMJawabanMC);
 const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+  boxSubJawaban: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
   detailPertanyaan: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     borderColor: '#020202',
   },
   boxContainer: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

@@ -24,7 +24,9 @@ const ATOMJawaban = ({
       namaResponden,
       idjawaban,
       tipe,
+      fieldjawaban: '',
       checked: !checked,
+      subjawaban: '',
     };
     dispatch(jawabanRespondenbaru(datajawaban));
   };

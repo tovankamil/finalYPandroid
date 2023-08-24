@@ -2,11 +2,11 @@ const initStateRegister = {
   data_jawaban: [],
 };
 
-export default jawabanRespondenReducer = (
+export default subjawabanRespondenReducer = (
   state = initStateRegister,
   action,
 ) => {
-  if (action.type === 'POPULATE_DATA_JAWABAN_RESPONDEN_BARU') {
+  if (action.type === 'POPULATE_DATA_SUBJAWABAN_RESPONDEN_BARU') {
     // cek jika data jawaban array kosong
     if (state.data_jawaban.length <= 0) {
       state.data_jawaban.push(action.value);
@@ -42,12 +42,20 @@ export default jawabanRespondenReducer = (
               }
             });
           } else {
-            state.data_jawaban.push(action.value);
+            const ceksubjawaban = state.data_jawaban.findIndex(d => {
+              return action.value.idjawaban === d.idjawaban;
+            });
+            if (ceksubjawaban >= 0) {
+              state.data_jawaban[ceksubjawaban].subjawaban =
+                action.value.subjawaban;
+            } else {
+              state.data_jawaban.push(action.value);
+            }
           }
         }
       }
     }
-    console.log('state', state);
+    console.log('subjawabanstate', state);
     return {...state};
   }
 

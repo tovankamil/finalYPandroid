@@ -16,6 +16,7 @@ import CBQANEW from './CBQANEW';
 import CBQANEWv2 from './CBQANEWv2';
 import CBQAMC from './CBQAMC';
 export * from './OIdentitasResponden';
+import MSUBJAWABAN from './MSUBJAWABAN';
 
 export {
   Header,
@@ -32,4 +33,5 @@ export {
   CBQANEW,
   CBQANEWv2,
   CBQAMC,
+  MSUBJAWABAN,
 };

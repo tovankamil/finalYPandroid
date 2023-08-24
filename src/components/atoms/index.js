@@ -11,6 +11,7 @@ import ATOMJK from './ATOMJK';
 import ATOMJawaban from './ATOMJawaban';
 import AtomJawabanField from './AtomJawabanField';
 import ATOMJawabanMC from './ATOMJawabanMC';
+import TextInputQA from './TextInputQA';
 export {
   TextInput,
   Button,
@@ -25,4 +26,5 @@ export {
   ATOMJawaban,
   AtomJawabanField,
   ATOMJawabanMC,
+  TextInputQA,
 };
