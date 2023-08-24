@@ -14,12 +14,12 @@ const Button = ({text, color = '#FFC700', textColor = '#020202', onPress}) => {
 export default Button;
 
 const styles = StyleSheet.create({
-  container: (color) => ({
+  container: color => ({
     backgroundColor: color,
     padding: 12,
     borderRadius: 8,
   }),
-  text: (color) => ({
+  text: color => ({
     fontSize: 14,
     fontFamily: 'Poppins-Medium',
     color: color,

@@ -5,6 +5,7 @@ import {CBQANEWv2} from '../../molecules';
 import CBQASCF from '../../molecules/CBQASCF';
 
 const OTentangPKB = ({data}) => {
+  console.log('data', data);
   const SC = () => {
     if (data.tipejawaban == 'field') {
       return (

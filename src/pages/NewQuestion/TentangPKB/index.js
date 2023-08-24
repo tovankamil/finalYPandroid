@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Header, OTentangPKB} from '../../../components';
+import Button from '../../../components/Button';
 import {question} from '../../../redux/action/question';
 
-const TentangPKB = () => {
+const TentangPKB = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
   useEffect(() => {
@@ -36,13 +37,34 @@ const TentangPKB = () => {
               return <OTentangPKB data={d} key={i} />;
             })}
           </View>
+          <Gap height={10} />
+          <View style={styles.FlexButton}>
+            <View style={styles.boxButton}>
+              <Button
+                text="Kembali"
+                color="#8D92A3"
+                textColor="#F9F9F9"
+                onPress={() => navigation.navigate('IdentitasResponden')}
+              />
+            </View>
+
+            <View style={styles.boxButton}>
+              <Button
+                style={styles.button}
+                onPress={() => navigation.navigate('TentangCaleg')}
+                text="Selanjutnya"
+                textColor="#F9F9F9"
+                color="green"
+              />
+            </View>
+          </View>
         </View>
       </ScrollView>
     );
   }
   return (
     <View>
-      <Text>Tidak data</Text>
+      <Text>Tidak ada data</Text>
     </View>
   );
 };
@@ -73,10 +95,17 @@ const styles = StyleSheet.create({
   },
   boxButton: {
     padding: 10,
-    width: '100%',
+    width: '50%',
     justifyContent: 'center',
   },
   button: {
     color: 'red',
+  },
+  FlexButton: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
 });
