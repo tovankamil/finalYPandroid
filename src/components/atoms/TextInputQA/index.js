@@ -2,9 +2,16 @@ import React, {Component} from 'react';
 import {Text, StyleSheet, View, TextInput as TextInputRN} from 'react-native';
 import Gap from '../Gap';
 
-const TextInputQA = ({placeholder, label, numeric, sublabel, ...restProps}) => {
+const TextInputQA = ({
+  placeholder,
+  label,
+  numeric,
+  sublabel,
+  width,
+  ...restProps
+}) => {
   return (
-    <View style={styles.boxContainer}>
+    <View style={styles.boxContainer(width)}>
       <TextInputRN
         placeholder={placeholder}
         style={styles.input}
@@ -18,9 +25,9 @@ const TextInputQA = ({placeholder, label, numeric, sublabel, ...restProps}) => {
 export default React.memo(TextInputQA);
 
 const styles = StyleSheet.create({
-  boxContainer: {
-    width: '50%',
-  },
+  boxContainer: width => ({
+    width: width,
+  }),
   wajibdiisi: {
     color: 'red',
     fontSize: 10,

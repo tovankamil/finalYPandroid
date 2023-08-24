@@ -20,7 +20,6 @@ const ATOMSCF = ({
 
   const [checked, setChecked] = useState(false);
   const cek = id => {
-    console.log('check', tipe);
     setChecked(prev => !prev);
     let datajawaban = {
       idPertanyaan,
@@ -83,6 +82,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
   },
   label: {
     fontWeight: 'bold',
@@ -96,5 +96,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 15,
     fontFamily: 'Poppins-Medium',
+  },
+  boxSubJawaban: {
+    width: '100%',
   },
 });

@@ -5,7 +5,7 @@ import {Gap, Header, OTentangPKB} from '../../../components';
 import Button from '../../../components/Button';
 import {question} from '../../../redux/action/question';
 
-const TentangCaleg = () => {
+const TentangCaleg = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
   useEffect(() => {
@@ -44,7 +44,7 @@ const TentangCaleg = () => {
                 text="Kembali"
                 color="#8D92A3"
                 textColor="#F9F9F9"
-                onPress={() => navigation.navigate('IdentitasResponden')}
+                onPress={() => navigation.navigate('TentangPKB')}
               />
             </View>
 

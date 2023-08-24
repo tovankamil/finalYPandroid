@@ -34,6 +34,7 @@ const SCFJAWABAN = ({idPertanyaan, namaResponden, idjawaban, tipe}) => {
         placeholder=""
         value={form.jawaban}
         onChangeText={value => setForm('jawaban', value)}
+        width="70%"
       />
     </View>
   );
