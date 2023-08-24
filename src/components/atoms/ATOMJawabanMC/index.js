@@ -13,7 +13,7 @@ const ATOMJawabanMC = ({
   namaResponden,
   idjawaban,
   keydata,
-  check,
+
   tipe,
   subjawaban,
 }) => {
@@ -40,12 +40,16 @@ const ATOMJawabanMC = ({
   const SubJawaban = ({data}) => {
     if (subjawaban == 'y' && checked === true) {
       return (
-        <MSUBJAWABAN
-          idjawaban={idjawaban}
-          idPertanyaan={idPertanyaan}
-          namaResponden={namaResponden}
-          tipe={tipe}
-        />
+        <View style={styles.boxSubJawaban}>
+          <Text>{data.namaJawaban}</Text>
+
+          <MSUBJAWABAN
+            idjawaban={idjawaban}
+            idPertanyaan={idPertanyaan}
+            namaResponden={namaResponden}
+            tipe={tipe}
+          />
+        </View>
       );
     }
     return (

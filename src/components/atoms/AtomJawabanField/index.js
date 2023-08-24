@@ -1,20 +1,36 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-import {useForm} from '../../../utils';
-import TextInput from '../TextInput';
+import React, {useEffect, useMemo} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {fieldjawabanRespondenbaru} from '../../../redux/action/fieldjawabanResponden';
 
-const AtomJawabanField = ({idPertanyaan, namaResponden}) => {
+import {useForm} from '../../../utils';
+import TextInputQA from '../TextInputQA';
+
+const AtomJawabanField = ({idPertanyaan, namaResponden, tipe}) => {
+  const dispatch = useDispatch();
   const [form, setForm] = useForm({
-    idPertanyan: '',
-    idrepsonden: '',
     jawaban: '',
   });
+
+  if (form.jawaban.length > 0) {
+    let datajawaban = {
+      idPertanyaan,
+      namaResponden,
+      idjawaban: '',
+      tipe,
+      checked: false,
+      fieldjawaban: form.jawaban,
+      subjawaban: '',
+    };
+    dispatch(fieldjawabanRespondenbaru(datajawaban));
+  }
+
   return (
-    <View>
-      <TextInput
-        label=""
-        placeholder="Masukan jawaban anda"
-        value={form.name}
+    <View style={styles.inputjawaban}>
+      <TextInputQA
+        label="Jawaban"
+        placeholder=""
+        value={form.jawaban}
         onChangeText={value => setForm('jawaban', value)}
       />
     </View>
@@ -22,3 +38,9 @@ const AtomJawabanField = ({idPertanyaan, namaResponden}) => {
 };
 
 export default React.memo(AtomJawabanField);
+
+const styles = StyleSheet.create({
+  inputjawaban: {
+    paddingVertical: 15,
+  },
+});

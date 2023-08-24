@@ -7,7 +7,6 @@ import {question} from '../../../redux/action/question';
 const TentangPKB = () => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-
   useEffect(() => {
     grepData();
     return () => {};

@@ -55,7 +55,6 @@ export default subjawabanRespondenReducer = (
         }
       }
     }
-    console.log('subjawabanstate', state);
     return {...state};
   }
 

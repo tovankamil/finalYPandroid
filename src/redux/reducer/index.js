@@ -9,7 +9,8 @@ import topKotaReducer from './topkota';
 import qaloadreducer from './dataqa';
 import questionReducer from './question';
 import jawabanRespondenReducer from './jawabanResponden';
-import subjawabanRespondenReducer from './subjawabanResponden';
+import subjawabanRespondenReducer from './fieldjawabanResponden';
+import fieldjawabanRespondenReducer from './fieldjawabanResponden';
 
 const reducer = combineReducers({
   registerReducer,
@@ -23,5 +24,6 @@ const reducer = combineReducers({
   questionReducer,
   jawabanRespondenReducer,
   subjawabanRespondenReducer,
+  fieldjawabanRespondenReducer,
 });
 export default reducer;

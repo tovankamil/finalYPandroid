@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ATOMJawaban, AtomJawabanField, ATOMJawabanMC, Gap} from '../../atoms';
+import {AtomJawabanField, ATOMJawabanMC, Gap} from '../../atoms';
 import {CBQANEWv2} from '../../molecules';
 
 const OTentangPKB = ({data}) => {
@@ -8,7 +8,7 @@ const OTentangPKB = ({data}) => {
     if (data.tipejawaban == 'field') {
       return (
         <AtomJawabanField
-          idPertanyaan="xxxx"
+          idPertanyaan={data._id}
           namaResponden="tofan"
           tipe={data.tipejawaban}
         />
