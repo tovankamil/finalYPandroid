@@ -19,6 +19,10 @@ const IdentitasLain = ({navigation}) => {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Identitas Pemilih') return d;
     });
+
+    const submit = () => {
+      console.log('submit data');
+    };
     return (
       <ScrollView>
         <View style={styles.content}>
@@ -52,8 +56,8 @@ const IdentitasLain = ({navigation}) => {
               <View style={styles.boxButton}>
                 <Button
                   style={styles.button}
-                  onPress={() => navigation.navigate('IdentitasResponden')}
-                  text="Selanjutnya"
+                  onPress={submit}
+                  text="Simpan"
                   textColor="#F9F9F9"
                   color="green"
                 />

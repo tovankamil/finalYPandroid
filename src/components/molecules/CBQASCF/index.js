@@ -32,4 +32,4 @@ const CBQASCF = ({dataQA, tipe}) => {
   );
 };
 
-export default CBQASCF;
+export default React.memo(CBQASCF);

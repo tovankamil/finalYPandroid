@@ -18,10 +18,23 @@ export default fieldjawabanRespondenReducer = (
           return action.value.idPertanyaan === d.idPertanyaan;
         });
 
-        if (index <= -1) {
-          state.data_jawaban.push(action.value);
+        if (Object.values(action.value.jawabanForm).length > 0) {
+          state.data_jawaban[index].jawabanForm.push(action.value.jawabanForm);
+          console.log(
+            'action.value.jawabanForm.length',
+            state.data_jawaban[index].jawabanForm,
+          );
         } else {
-          state.data_jawaban[0].fieldjawaban = action.value.fieldjawaban;
+          if (index <= -1) {
+            state.data_jawaban.push(action.value);
+          } else {
+            if (action.value.fieldjawaban?.length > 0) {
+              state.data_jawaban[index].fieldjawaban =
+                action.value.fieldjawaban;
+            } else {
+              state?.data_jawaban?.splice(index, 1);
+            }
+          }
         }
       }
     }

@@ -2,15 +2,15 @@ import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {jeniskelamin} from '../../../constants/QA';
-import {setLoadingJK} from '../../../redux/action/qa';
-import {ATOMJK, Gap} from '../../atoms';
+import {setLoadingJKIdentitasLainnya} from '../../../redux/action/qa';
 
-const JenisKelamin = () => {
+import {ATOMJKIdentitasLainnya, Gap} from '../../atoms';
+
+const JenisKelamin = ({dataJenisKelaminX}) => {
   const dispatch = useDispatch();
-  const dataJenisKelamin = useSelector(state => state.qaloadreducer);
-  console.log('jenisekelamin', dataJenisKelamin);
+
   useEffect(() => {
-    dispatch(setLoadingJK(jeniskelamin));
+    dispatch(setLoadingJKIdentitasLainnya(jeniskelamin));
   }, []);
   return (
     <View>
@@ -18,11 +18,11 @@ const JenisKelamin = () => {
       {jeniskelamin.map((dt, index) => {
         return (
           <View key={index}>
-            <ATOMJK
+            <ATOMJKIdentitasLainnya
               label={dt.txt}
               // noParent={i}
               isChecked={dt.isChecked}
-              dataQA={dataJenisKelamin.dataJK}
+              dataQA={dataJenisKelaminX.dataJK}
               key={index}
               keydata={index}
             />

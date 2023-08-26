@@ -1,10 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {
-  scffieldjawabanRespondenbaru,
-  scfjawabanRespondenbaru,
-} from '../../../redux/action/subjawabanResponden';
+import {scffieldjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
 import {useForm} from '../../../utils';
 import {Gap, TextInputQA} from '../../atoms';
 

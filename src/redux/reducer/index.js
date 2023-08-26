@@ -13,6 +13,7 @@ import subjawabanRespondenReducer from './fieldjawabanResponden';
 import fieldjawabanRespondenReducer from './fieldjawabanResponden';
 import scfjawabanRespondenReducer from './sfcjawabanresponden';
 import scfsubjawabanResponden from './scfsubjawabanResponden';
+import qaloadidentitaslainnyareducer from './dataqaidentitaslainnya';
 
 const reducer = combineReducers({
   registerReducer,
@@ -29,5 +30,6 @@ const reducer = combineReducers({
   fieldjawabanRespondenReducer,
   scfjawabanRespondenReducer,
   scfsubjawabanResponden,
+  qaloadidentitaslainnyareducer,
 });
 export default reducer;
