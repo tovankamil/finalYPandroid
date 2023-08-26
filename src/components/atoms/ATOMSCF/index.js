@@ -15,6 +15,7 @@ const ATOMSCF = ({
   check,
   tipesubjawaban,
   tipe,
+  placeholder,
 }) => {
   const dispatch = useDispatch();
 
@@ -41,6 +42,7 @@ const ATOMSCF = ({
             idPertanyaan={idPertanyaan}
             namaResponden={namaResponden}
             tipe={tipe}
+            placeholder={placeholder}
           />
         </View>
       );

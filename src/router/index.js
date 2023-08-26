@@ -17,7 +17,12 @@ import {
   Keluar,
 } from '../pages';
 import {BottomNavigator} from '../components';
-import {TentangCaleg, TentangPKB} from '../pages/NewQuestion';
+import {
+  Attribut,
+  IdentitasLain,
+  TentangCaleg,
+  TentangPKB,
+} from '../pages/NewQuestion';
 import IdentitasResponden from '../pages/NewQuestion/IdentitasResponden';
 
 const Stack = createNativeStackNavigator();
@@ -115,11 +120,16 @@ const Router = () => {
         component={TentangPKB}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Attribute"
-        component={Attribute}
+        component={Attribut}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name="IdentitasLain"
+        component={IdentitasLain}
+        options={{headerShown: false}}
+      />
 
       {/* Form Question */}
       <Stack.Screen

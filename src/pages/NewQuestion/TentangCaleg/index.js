@@ -51,7 +51,7 @@ const TentangCaleg = ({navigation}) => {
             <View style={styles.boxButton}>
               <Button
                 style={styles.button}
-                onPress={() => navigation.navigate('IdentitasResponden')}
+                onPress={() => navigation.navigate('Attribute')}
                 text="Selanjutnya"
                 textColor="#F9F9F9"
                 color="green"

@@ -18,6 +18,7 @@ import CBQAMC from './CBQAMC';
 export * from './OIdentitasResponden';
 import MSUBJAWABAN from './MSUBJAWABAN';
 import SCFJAWABAN from './SCFJAWABAN';
+import MSUBJAWABANFORM from './MSUBJAWABANFORM';
 export {
   Header,
   SignUpAlamat,
@@ -35,4 +36,5 @@ export {
   CBQAMC,
   MSUBJAWABAN,
   SCFJAWABAN,
+  MSUBJAWABANFORM,
 };

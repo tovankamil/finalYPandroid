@@ -23,7 +23,11 @@ export default jawabanRespondenReducer = (
           const index = state.data_jawaban.findIndex(d => {
             return action.value.idPertanyaan === d.idPertanyaan;
           });
-          state.data_jawaban[index].idjawaban = action.value.idjawaban;
+          if (index <= -1) {
+            state.data_jawaban.push(action.value);
+          } else {
+            state.data_jawaban[index].idjawaban = action.value.idjawaban;
+          }
         }
       }
       // Multiple answer

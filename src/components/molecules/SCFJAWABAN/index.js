@@ -8,7 +8,13 @@ import {
 import {useForm} from '../../../utils';
 import {Gap, TextInputQA} from '../../atoms';
 
-const SCFJAWABAN = ({idPertanyaan, namaResponden, idjawaban, tipe}) => {
+const SCFJAWABAN = ({
+  idPertanyaan,
+  namaResponden,
+  idjawaban,
+  tipe,
+  placeholder,
+}) => {
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
     jawaban: '',
@@ -31,7 +37,7 @@ const SCFJAWABAN = ({idPertanyaan, namaResponden, idjawaban, tipe}) => {
       <Gap width={5} />
       <TextInputQA
         label="Jawaban"
-        placeholder=""
+        placeholder={placeholder}
         value={form.jawaban}
         onChangeText={value => setForm('jawaban', value)}
         width="70%"

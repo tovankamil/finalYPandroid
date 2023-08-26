@@ -13,6 +13,7 @@ const OTentangPKB = ({data}) => {
           idPertanyaan={data._id}
           namaResponden="tofan"
           tipe={data.tipejawaban}
+          formdata={data.formdata}
         />
       );
     }
@@ -37,6 +38,7 @@ const OTentangPKB = ({data}) => {
             check={d.checked}
             tipe={data.tipejawaban}
             subjawaban={d.subjawaban}
+            placeholder={d.placeholder}
           />
         );
       });

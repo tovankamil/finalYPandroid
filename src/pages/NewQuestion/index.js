@@ -1,4 +1,5 @@
 import TentangPKB from './TentangPKB';
 import TentangCaleg from './TentangCaleg';
-
-export {TentangPKB, TentangCaleg};
+import Attribut from './Attribut';
+import IdentitasLain from './IdentitasLain';
+export {TentangPKB, TentangCaleg, Attribut, IdentitasLain};

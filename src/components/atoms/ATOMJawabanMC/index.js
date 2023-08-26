@@ -13,7 +13,7 @@ const ATOMJawabanMC = ({
   namaResponden,
   idjawaban,
   keydata,
-
+  placeholder,
   tipe,
   subjawaban,
 }) => {
@@ -48,6 +48,7 @@ const ATOMJawabanMC = ({
             idPertanyaan={idPertanyaan}
             namaResponden={namaResponden}
             tipe={tipe}
+            placeholder={placeholder}
           />
         </View>
       );

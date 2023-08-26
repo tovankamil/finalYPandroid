@@ -22,6 +22,7 @@ const CBQASCF = ({dataQA, tipe}) => {
             idPertanyaan={dataQA._id}
             namaResponden="tofan"
             idjawaban={d._id}
+            placeholder={d.placeholder}
             tipesubjawaban={d.subjawaban}
             check={carijawaban >= 0 ? true : false}
           />
