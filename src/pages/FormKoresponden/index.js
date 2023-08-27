@@ -41,7 +41,6 @@ const FormKoresponden = ({navigation}) => {
   const onPressLearnMore = () => {
     globalState.qa0.map((datax, ind) => {
       datax.jawaban.map((dtx, index) => {
-        console.log('datax', dtx);
         if (dtx.isChecked) {
           cekqa++;
         }
@@ -70,7 +69,6 @@ const FormKoresponden = ({navigation}) => {
     }
 
     let temp = globalState?.attribute?.findIndex(d => d.isChecked == true);
-    console.log('temp', temp);
     if (temp === -1 && globalState.lainnya.length < 1) {
       dispatch(setATR('Silahkan Pilih Attribute'));
       dispatch(setTabindexinputkoresponden(2));
@@ -112,7 +110,6 @@ const FormKoresponden = ({navigation}) => {
       dispatch(setQA(''));
       dispatch(setTabindexinputkoresponden(1));
     }
-    console.log('globalState', globalState);
     if (
       globalState?.nama?.length == 0 ||
       globalState?.nama?.length > 20 ||

@@ -24,7 +24,6 @@ export const signUpKorespondenAction = (
       navigation.navigate('DataKoresponden');
     })
     .catch(err => {
-      console.log('err.response.data.msg', err.response.data.msg);
       dispatch(setLoading(false));
       dispatch(setTabindexinputkoresponden(0));
       err.response.data.msg.length > 0 &&

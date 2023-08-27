@@ -1,11 +1,26 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {AtomJawabanField, ATOMJawabanMC, Gap} from '../../atoms';
+import {
+  AtomJawabanField,
+  AtomJawabanFieldWithForm,
+  ATOMJawabanMC,
+  Gap,
+} from '../../atoms';
 import {CBQANEWv2} from '../../molecules';
 import CBQASCF from '../../molecules/CBQASCF';
 
 const OTentangPKB = ({data}) => {
   const SC = () => {
+    if (data.tipejawaban == 'field' && data.jawabanForm) {
+      return (
+        <AtomJawabanFieldWithForm
+          idPertanyaan={data._id}
+          namaResponden="tofan"
+          tipe={data.tipejawaban}
+          formdata={data.formdata}
+        />
+      );
+    }
     if (data.tipejawaban == 'field') {
       return (
         <AtomJawabanField

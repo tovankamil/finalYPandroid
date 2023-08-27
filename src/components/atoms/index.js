@@ -14,6 +14,7 @@ import ATOMJawabanMC from './ATOMJawabanMC';
 import TextInputQA from './TextInputQA';
 import ATOMSCF from './ATOMSCF';
 import ATOMJKIdentitasLainnya from './ATOMJKIdentitasLainnya';
+import AtomJawabanFieldWithForm from './AtomJawabanFieldWithForm';
 export {
   TextInput,
   Button,
@@ -31,4 +32,5 @@ export {
   TextInputQA,
   ATOMSCF,
   ATOMJKIdentitasLainnya,
+  AtomJawabanFieldWithForm,
 };

@@ -55,3 +55,8 @@ export const jeniskelamin = [
   {id: 1, txt: 'L', isChecked: false},
   {id: 2, txt: 'P', isChecked: false},
 ];
+
+export const jeniskelaminIdentitasLainnya = [
+  {id: 1, txt: 'L', isChecked: false},
+  {id: 2, txt: 'P', isChecked: false},
+];

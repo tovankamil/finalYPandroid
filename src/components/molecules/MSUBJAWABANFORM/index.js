@@ -2,11 +2,15 @@ import React from 'react';
 import {Text} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {fieldjawabanRespondenbaru} from '../../../redux/action/fieldjawabanResponden';
+import {useDispatch} from 'react-redux';
 import {useForm} from '../../../utils';
 import {Button, Gap, TextInputQA} from '../../atoms';
-import JenisKelamin from './JenisKelamin';
+import {jeniskelaminIdentitasLainnya} from '../../../constants/QA';
+import JenisKelaminIdentitasLain from './JenisKelaminIdentitasLain';
+import {
+  fieldjawabanRespondenbaru,
+  resetLoadingJKIdentitasLainnya,
+} from '../../../redux/action/fieldjawabanResponden';
 
 const MSUBJAWABANFORM = ({
   idPertanyaan,
@@ -18,9 +22,7 @@ const MSUBJAWABANFORM = ({
   dataJenisKelaminX,
 }) => {
   const dispatch = useDispatch();
-  //   const dataJenisKelamin = useSelector(
-  //     state => state.qaloadidentitaslainnyareducer,
-  //   );
+
   const [form, setForm] = useForm({
     nama: '',
     umur: '',
@@ -51,14 +53,10 @@ const MSUBJAWABANFORM = ({
         subjawaban: '',
         jawabanForm: form,
       };
-      setForm({
-        nama: '',
-        umur: '',
-        hp: '',
-        jk: '',
-        agama: '',
-      });
+
       dispatch(fieldjawabanRespondenbaru(datajawaban));
+      dispatch(resetLoadingJKIdentitasLainnya(jeniskelaminIdentitasLainnya));
+      setForm('reset');
     }
   };
 
@@ -69,7 +67,7 @@ const MSUBJAWABANFORM = ({
       <TextInputQA
         label="nama"
         placeholder={placeholder}
-        value={form.jawaban}
+        value={form.nama}
         onChangeText={value => setForm('nama', value)}
         width={width}
       />
@@ -98,7 +96,7 @@ const MSUBJAWABANFORM = ({
       />
 
       <Gap height={15} />
-      <JenisKelamin
+      <JenisKelaminIdentitasLain
         identitasLainnya={true}
         dataJenisKelaminX={dataJenisKelaminX}
       />

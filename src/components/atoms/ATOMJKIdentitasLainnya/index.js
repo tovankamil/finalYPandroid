@@ -2,15 +2,14 @@ import CheckBox from '@react-native-community/checkbox';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {setLoadingJKIdentitasLainnya} from '../../../redux/action/qa';
+import {setLoadingJKIdentitasLainnya} from '../../../redux/action/fieldjawabanResponden';
 
 const ATOMJKIdentitasLainnya = ({
   label,
-  noParent,
+
   dataQA,
   isChecked,
   keydata,
-  identitasLainnya,
 }) => {
   const dispatch = useDispatch();
   const cek = id => {
@@ -19,10 +18,7 @@ const ATOMJKIdentitasLainnya = ({
     });
     dataQA[keydata].isChecked = true;
     dispatch(setLoadingJKIdentitasLainnya(dataQA));
-
-    //dispatch(scffieldjawabanRespondenbaru);
   };
-
   return (
     <View style={styles.detailPertanyaan}>
       <CheckBox

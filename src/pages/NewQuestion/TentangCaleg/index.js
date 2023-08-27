@@ -8,13 +8,13 @@ import {question} from '../../../redux/action/question';
 const TentangCaleg = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-  useEffect(() => {
-    grepData();
-    return () => {};
-  }, []);
-  const grepData = () => {
-    dispatch(question());
-  };
+  // useEffect(() => {
+  //   grepData();
+  //   return () => {};
+  // }, []);
+  // const grepData = () => {
+  //   dispatch(question());
+  // };
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Tentang Caleg') return d;

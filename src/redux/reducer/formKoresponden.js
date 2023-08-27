@@ -37,6 +37,7 @@ export const formKorespondenReducer = (
       nik: action.value.nik,
       usia: action.value.usia,
       alamat: action.value.alamat,
+      jk: action.value.jk,
     };
 
   if (action.type === 'SET_KOTA_KORESPONDEN')

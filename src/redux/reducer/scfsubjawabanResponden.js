@@ -7,7 +7,6 @@ export default scfsubjawabanRespondenReducer = (
   action,
 ) => {
   if (action.type === 'POPULATE_DATA_SCF_FIELD_SUBJAWABAN_RESPONDEN_BARU') {
-    console.log('action.value.tipe', action.value);
     // cek jika data jawaban array kosong
     if (state.data_jawaban.length <= 0) {
       state.data_jawaban.push(action.value);

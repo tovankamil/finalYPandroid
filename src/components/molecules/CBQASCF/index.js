@@ -5,7 +5,7 @@ import {ATOMJawaban, ATOMSCF} from '../../atoms';
 
 const CBQASCF = ({dataQA, tipe}) => {
   const selector1 = useSelector(state => state.scfjawabanRespondenReducer);
-  console.log('selector1', selector1);
+
   return (
     <View>
       {dataQA.jawaban.map((d, i) => {

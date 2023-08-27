@@ -8,9 +8,16 @@ import {MSUBJAWABANFORM} from '../../molecules';
 import Gap from '../Gap';
 import TextInputQA from '../TextInputQA';
 
-const AtomJawabanField = ({idPertanyaan, namaResponden, tipe, formdata}) => {
+const AtomJawabanFieldWithForm = ({
+  idPertanyaan,
+  namaResponden,
+  tipe,
+  formdata,
+}) => {
   const dispatch = useDispatch();
-
+  const dataJenisKelamin = useSelector(
+    state => state.qaloadidentitaslainnyareducer,
+  );
   const [form, setForm] = useForm({
     jawaban: '',
   });
@@ -29,6 +36,7 @@ const AtomJawabanField = ({idPertanyaan, namaResponden, tipe, formdata}) => {
     dispatch(fieldjawabanRespondenbaru(datajawaban));
     return () => {};
   }, []);
+
   return (
     <View style={styles.inputjawaban}>
       <TextInputQA
@@ -39,11 +47,31 @@ const AtomJawabanField = ({idPertanyaan, namaResponden, tipe, formdata}) => {
         width="100%"
       />
       <Gap height={25} />
+      <View>
+        {formdata && form.jawaban > 0 ? (
+          <>
+            <View style={styles.formdata}>
+              <Text style={styles.identitaslainnya}>Identitas Lainnya</Text>
+              <Gap height={25} />
+              <MSUBJAWABANFORM
+                idPertanyaan={idPertanyaan}
+                namaResponden={namaResponden}
+                idjawaban=""
+                tipe={tipe}
+                formdata={formdata}
+                dataJenisKelaminX={dataJenisKelamin}
+              />
+            </View>
+          </>
+        ) : (
+          ''
+        )}
+      </View>
     </View>
   );
 };
 
-export default React.memo(AtomJawabanField);
+export default React.memo(AtomJawabanFieldWithForm);
 
 const styles = StyleSheet.create({
   inputjawaban: {

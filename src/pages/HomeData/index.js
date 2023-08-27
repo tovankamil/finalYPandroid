@@ -68,7 +68,6 @@ const HomeData = ({navigation}) => {
     globalTopkota?.data?.data &&
       globalTopkota?.data?.data.map((d, i) => {
         if (i === index) {
-          console.log('submit', index);
         }
       });
   };

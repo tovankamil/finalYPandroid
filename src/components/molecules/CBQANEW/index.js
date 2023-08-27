@@ -34,7 +34,6 @@ const index = () => {
                   <Gap height={10} />
                   <View style={styles.containerjawaban}>
                     {d.jawaban.map((dt, index) => {
-                      console.log('dd', dt);
                       return (
                         <>
                           <ATOMQA

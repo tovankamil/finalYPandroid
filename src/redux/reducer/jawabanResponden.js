@@ -71,7 +71,6 @@ export default jawabanRespondenReducer = (
         }
       }
     }
-    console.log('jawabanresponden baru', state);
     return {...state};
   }
 

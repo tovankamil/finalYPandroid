@@ -1,21 +1,22 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {jeniskelamin} from '../../../constants/QA';
-import {setLoadingJKIdentitasLainnya} from '../../../redux/action/qa';
+import {jeniskelaminIdentitasLainnya} from '../../../constants/QA';
+import {setLoadingJKIdentitasLainnya} from '../../../redux/action/fieldjawabanResponden';
 
 import {ATOMJKIdentitasLainnya, Gap} from '../../atoms';
 
-const JenisKelamin = ({dataJenisKelaminX}) => {
+const JenisKelaminIdentitasLain = ({dataJenisKelaminX}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLoadingJKIdentitasLainnya(jeniskelamin));
+    dispatch(setLoadingJKIdentitasLainnya(jeniskelaminIdentitasLainnya));
   }, []);
+
   return (
     <View>
       <Text style={styles.label}>Jenis Kelamin</Text>
-      {jeniskelamin.map((dt, index) => {
+      {jeniskelaminIdentitasLainnya?.map((dt, index) => {
         return (
           <View key={index}>
             <ATOMJKIdentitasLainnya
@@ -34,7 +35,7 @@ const JenisKelamin = ({dataJenisKelaminX}) => {
   );
 };
 
-export default React.memo(JenisKelamin);
+export default React.memo(JenisKelaminIdentitasLain);
 
 const styles = StyleSheet.create({
   container: {

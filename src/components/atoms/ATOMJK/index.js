@@ -17,7 +17,6 @@ const ATOMJK = ({label, noParent, dataQA, isChecked, keydata}) => {
       value: dataQA,
     });
   };
-
   return (
     <View style={styles.detailPertanyaan}>
       <CheckBox

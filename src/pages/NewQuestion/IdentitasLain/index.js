@@ -8,21 +8,13 @@ import {question} from '../../../redux/action/question';
 const IdentitasLain = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-  useEffect(() => {
-    grepData();
-    return () => {};
-  }, []);
-  const grepData = () => {
-    dispatch(question());
-  };
+
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Identitas Pemilih') return d;
     });
 
-    const submit = () => {
-      console.log('submit data');
-    };
+    const submit = () => {};
     return (
       <ScrollView>
         <View style={styles.content}>

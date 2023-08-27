@@ -11,11 +11,12 @@ import {
   TextInput,
 } from '../../../components';
 import {dataProvinsi} from '../../../redux/action';
+import {question} from '../../../redux/action/question';
 import {useForm, showMessage} from '../../../utils';
 
 const IdentitasResponden = ({navigation}) => {
   const globalState = useSelector(state => state.globalReducer);
-
+  const dataJenisKelamin = useSelector(state => state.qaloadreducer);
   const [errordata, setErrordata] = useState({
     namaEr: '',
     nikEr: '',
@@ -38,24 +39,39 @@ const IdentitasResponden = ({navigation}) => {
       type: 'RESET_PROVINSI',
     });
     dispatch(dataProvinsi());
+    grepData();
     return () => {};
   }, []);
+
+  const grepData = () => {
+    dispatch(question());
+  };
   const ToDispatch = () => {
     let checkData = '';
+    console.log('dataJenisKelamin', dataJenisKelamin);
+    let indexjeniskelamin = dataJenisKelamin?.dataJK?.findIndex((d, i) => {
+      return d.isChecked === true;
+    });
 
+    indexjeniskelamin =
+      indexjeniskelamin >= 0
+        ? dataJenisKelamin?.dataJK[indexjeniskelamin].txt
+        : `''`;
+    console.log('indexjeniskelamin', indexjeniskelamin);
+    form['jk'] = indexjeniskelamin;
     if (form.nama.length <= 0) {
       return showMessage('Silahkan masukan nama responden', 'danger');
     }
-
+    console.log('form', form);
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
+    navigation.navigate('TentangPKB');
   };
 
   const DataProvinsi = useCallback(() => {
     return <OIdentitasResponden />;
   });
   const submit = useCallback(() => {
-    ToDispatch();
-    navigation.navigate('TentangPKB');
+    return ToDispatch();
   }, [form]);
   return (
     <ScrollView>

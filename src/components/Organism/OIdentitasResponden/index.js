@@ -6,7 +6,6 @@ import {useForm} from '../../../utils';
 
 const OIdentitasResponden = ({navigation}) => {
   const globalStateProvinsi = useSelector(state => state?.dataProvinsiReducer);
-  console.log(globalStateProvinsi);
   const [form, setForm] = useForm({
     nama_kota: '',
     kota: '',
