@@ -1,18 +1,26 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {fieldjawabanRespondenbaru} from '../../../redux/action/fieldjawabanResponden';
 
 import {useForm} from '../../../utils';
-import {MSUBJAWABANFORM} from '../../molecules';
 import Gap from '../Gap';
 import TextInputQA from '../TextInputQA';
 
 const AtomJawabanField = ({idPertanyaan, namaResponden, tipe, formdata}) => {
   const dispatch = useDispatch();
-
+  const datafield = useSelector(state => state.fieldjawabanRespondenReducer);
+  let index;
+  if (datafield?.data_jawaban?.length > 0) {
+    index = datafield?.data_jawaban?.findIndex(f => {
+      return f.idPertanyaan === idPertanyaan;
+    });
+  }
   const [form, setForm] = useForm({
-    jawaban: '',
+    jawaban:
+      datafield?.data_jawaban?.length > 0
+        ? datafield?.data_jawaban[index]?.fieldjawaban
+        : '',
   });
 
   useEffect(() => {
@@ -27,8 +35,9 @@ const AtomJawabanField = ({idPertanyaan, namaResponden, tipe, formdata}) => {
       jawabanForm: [],
     };
     dispatch(fieldjawabanRespondenbaru(datajawaban));
+
     return () => {};
-  }, []);
+  }, [form]);
   return (
     <View style={styles.inputjawaban}>
       <TextInputQA

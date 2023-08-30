@@ -47,8 +47,6 @@ const IdentitasResponden = ({navigation}) => {
     dispatch(question());
   };
   const ToDispatch = () => {
-    let checkData = '';
-    console.log('dataJenisKelamin', dataJenisKelamin);
     let indexjeniskelamin = dataJenisKelamin?.dataJK?.findIndex((d, i) => {
       return d.isChecked === true;
     });
@@ -57,12 +55,10 @@ const IdentitasResponden = ({navigation}) => {
       indexjeniskelamin >= 0
         ? dataJenisKelamin?.dataJK[indexjeniskelamin].txt
         : `''`;
-    console.log('indexjeniskelamin', indexjeniskelamin);
     form['jk'] = indexjeniskelamin;
-    if (form.nama.length <= 0) {
-      return showMessage('Silahkan masukan nama responden', 'danger');
-    }
-    console.log('form', form);
+    // if (form.nama.length <= 0) {
+    //   return showMessage('Silahkan masukan nama responden', 'danger');
+    // }
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
     navigation.navigate('TentangPKB');
   };

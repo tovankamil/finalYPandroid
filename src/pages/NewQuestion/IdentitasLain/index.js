@@ -8,13 +8,94 @@ import {question} from '../../../redux/action/question';
 const IdentitasLain = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
+  const dataresponden = useSelector(state => state.formKorespondenReducer);
+  const datamc = useSelector(state => state.jawabanRespondenReducer);
+  const datasubjawaban = useSelector(state => state.subjawabanRespondenReducer);
+  const datasc = useSelector(state => state.jawabanRespondenReducer);
+
+  const datafield = useSelector(state => state.fieldjawabanRespondenReducer);
+  const datascf = useSelector(state => state.scfjawabanRespondenReducer);
+  const datascfsub = useSelector(state => state.scfsubjawabanResponden);
 
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Identitas Pemilih') return d;
     });
 
-    const submit = () => {};
+    const submit = () => {
+      let datafinal = [];
+      let listjawaban = [];
+
+      if (datamc?.data_jawaban?.length > 0) {
+        /* tipe SC */
+
+        datamc?.data_jawaban?.map((d, i) => {
+          // cari data subjawaban
+          const indexsubjawaban = datasubjawaban.data_jawaban.findIndex(s => {
+            return s.subjawaban === d.subjawaban;
+          });
+
+          const data = {
+            idPertanyaan: d.idPertanyaan,
+            idjawaban: d.idjawaban,
+            fieldjawaban: d.fieldjawaban,
+            subjawaban:
+              indexsubjawaban >= 0
+                ? datasubjawaban.data_jawaban[indexsubjawaban].subjawaban
+                : '',
+            tipe: d.tipe,
+          };
+          listjawaban.push(data);
+        });
+      }
+
+      if (datafield?.data_jawaban?.length > 0) {
+        datafield.data_jawaban.map(d => {
+          const data = {
+            idPertanyaan: d.idPertanyaan,
+            idjawaban: d.idjawaban,
+            fieldjawaban: d.fieldjawaban === undefined ? '' : d.fieldjawaban,
+            subjawaban: '',
+            tipe: d.tipe,
+          };
+          listjawaban.push(data);
+        });
+      }
+
+      if (datasc.data_jawaban.length > 0) {
+        datasc.data_jawaban.map(d => {
+          const data = {
+            idPertanyaan: d.idPertanyaan,
+            idjawaban: d.idjawaban,
+            fieldjawaban: d.fieldjawaban,
+            subjawaban: '',
+            tipe: d.tipe,
+          };
+          listjawaban.push(data);
+        });
+      }
+
+      if (datascf.data_jawaban.length > 0) {
+        datascf.data_jawaban.map(dx => {
+          if (datascfsub?.data_jawaban?.length > 0) {
+            const cariindex = datascfsub.data_jawaban.findIndex(d => {
+              return d.idjawaban === dx.idjawaban;
+            });
+
+            const data = {
+              idPertanyaan: dx.idpertamyaan,
+              idjawaban: dx.idjawaban,
+              fieldjawaban: dx.fieldjawaban,
+              subjawaban: datascfsub.data_jawaban[cariindex].subjawaban,
+              tipe: dx.tipe,
+            };
+
+            listjawaban.push(data);
+          }
+        });
+      }
+      console.log('listjawaban', listjawaban);
+    };
     return (
       <ScrollView>
         <View style={styles.content}>
@@ -41,7 +122,7 @@ const IdentitasLain = ({navigation}) => {
                   text="Kembali"
                   color="#8D92A3"
                   textColor="#F9F9F9"
-                  onPress={() => navigation.navigate('TentangPKB')}
+                  onPress={() => navigation.navigate('Attribute')}
                 />
               </View>
 

@@ -1,5 +1,5 @@
 import CheckBox from '@react-native-community/checkbox';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
@@ -16,29 +16,48 @@ const ATOMJawabanMC = ({
   placeholder,
   tipe,
   subjawaban,
+  check,
+  dataquestion,
 }) => {
   const dispatch = useDispatch();
-
+  let index = 0;
+  const selector = useSelector(state => state.questionReducer);
   const [checked, setChecked] = useState(false);
 
+  useEffect(() => {}, []);
   const cek = id => {
-    setChecked(prev => !prev);
+    const cekdata = selector?.dataQuestion?.findIndex(d => {
+      return d._id === idPertanyaan;
+    });
     let datajawaban = {
       idPertanyaan,
       namaResponden,
       idjawaban,
       tipe,
-      checked: !checked,
+      // checked: !checked,
       fieldjawaban: '',
       subjawaban: '',
     };
-    // console.log('datajawaban', datajawaban);
+    const finindex = selector.dataCheckList.findIndex(d => {
+      return d.idJawaban === idjawaban;
+    });
+    selector.dataCheckList[finindex].isChecked =
+      selector.dataCheckList[finindex].isChecked === false ? true : false;
+
+    dispatch({type: 'UPDATE_CHECKED', value: selector.dataCheckList[finindex]});
     dispatch(jawabanRespondenbaru(datajawaban));
     dispatch(subjawabanRespondenbaru(datajawaban));
   };
 
+  const cekdata = selector.dataCheckList.findIndex(d => {
+    return d.idJawaban === idjawaban;
+  });
+
   const SubJawaban = ({data}) => {
-    if (subjawaban == 'y' && checked === true) {
+    if (
+      subjawaban == 'y' &&
+      selector.dataCheckList[cekdata]?.isChecked === true
+    ) {
       return (
         <View style={styles.boxSubJawaban}>
           <Text>{data.namaJawaban}</Text>
@@ -59,6 +78,7 @@ const ATOMJawabanMC = ({
       </View>
     );
   };
+
   return (
     <View style={styles.container}>
       <Gap height={2} />
@@ -66,7 +86,11 @@ const ATOMJawabanMC = ({
         <View style={styles.boxContainer}>
           <CheckBox
             key={keydata}
-            value={checked}
+            value={
+              selector.dataCheckList[cekdata]?.isChecked === 'undefined'
+                ? false
+                : selector.dataCheckList[cekdata]?.isChecked
+            }
             style={styles.checkbox}
             onValueChange={() => {
               cek(keydata);

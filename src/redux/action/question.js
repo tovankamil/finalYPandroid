@@ -7,6 +7,7 @@ export const question = () => dispatch => {
   Axios.get(`${API_HOST.url}/be/daftarpertanyaan`)
     .then(res => {
       dispatch({type: 'LIST_QUESTION', value: res?.data?.data});
+      dispatch({type: 'LIST_CHECKED', value: res?.data?.data});
     })
     .catch(err => {
       dispatch(setLoading(false));

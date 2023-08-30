@@ -15,20 +15,18 @@ export default scfsubjawabanRespondenReducer = (
 
       if (state.data_jawaban.length > 0 && action.value.tipe == 'scf') {
         const index = state.data_jawaban.findIndex(d => {
-          return action.value.idPertanyaan === d.idPertanyaan;
+          return action.value.idjawaban === d.idjawaban;
         });
 
         if (index <= -1) {
           state.data_jawaban.push(action.value);
         } else {
-          state.data_jawaban[0].idjawaban = action.value.idjawaban;
-          if (action.value.subjawaban.length > 0) {
-            state.data_jawaban[0].subjawaban = action.value.subjawaban;
-          }
+          // state.data_jawaban[0].idjawaban = action.value.idjawaban;
+
+          state.data_jawaban[index].subjawaban = action.value.subjawaban;
         }
       }
     }
-
     return {...state};
   }
 

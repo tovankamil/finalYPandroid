@@ -8,15 +8,7 @@ import {question} from '../../../redux/action/question';
 const TentangPKB = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-  const dataresponden = useSelector(state => state.formKorespondenReducer);
-  console.log('dataresponden', dataresponden);
-  // useEffect(() => {
-  //   grepData();
-  //   return () => {};
-  // }, []);
-  // const grepData = () => {
-  //   dispatch(question());
-  // };
+
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Tentang PKB') return d;

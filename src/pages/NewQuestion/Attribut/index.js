@@ -8,13 +8,7 @@ import {question} from '../../../redux/action/question';
 const Attribut = ({navigation}) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-  useEffect(() => {
-    grepData();
-    return () => {};
-  }, []);
-  const grepData = () => {
-    dispatch(question());
-  };
+
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Atribut') return d;
@@ -44,7 +38,7 @@ const Attribut = ({navigation}) => {
                 text="Kembali"
                 color="#8D92A3"
                 textColor="#F9F9F9"
-                onPress={() => navigation.navigate('TentangPKB')}
+                onPress={() => navigation.navigate('TentangCaleg')}
               />
             </View>
 

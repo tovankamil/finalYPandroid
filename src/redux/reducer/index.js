@@ -9,7 +9,7 @@ import topKotaReducer from './topkota';
 import qaloadreducer from './dataqa';
 import questionReducer from './question';
 import jawabanRespondenReducer from './jawabanResponden';
-import subjawabanRespondenReducer from './fieldjawabanResponden';
+import subjawabanRespondenReducer from './subjawabanResponden';
 import fieldjawabanRespondenReducer from './fieldjawabanResponden';
 import scfjawabanRespondenReducer from './sfcjawabanresponden';
 import scfsubjawabanResponden from './scfsubjawabanResponden';

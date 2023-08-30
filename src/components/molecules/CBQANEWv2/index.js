@@ -5,6 +5,7 @@ import {ATOMJawaban} from '../../atoms';
 
 const CBQANEWv2 = ({dataQA, tipe}) => {
   const selector1 = useSelector(state => state.jawabanRespondenReducer);
+
   return (
     <View>
       {dataQA.jawaban.map((d, i) => {

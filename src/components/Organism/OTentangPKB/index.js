@@ -44,6 +44,7 @@ const OTentangPKB = ({data}) => {
         return (
           <ATOMJawabanMC
             data={d}
+            dataquestion={data}
             idPertanyaan={d.idPertanyaan}
             namaResponden="tofan"
             idjawaban={d._id}

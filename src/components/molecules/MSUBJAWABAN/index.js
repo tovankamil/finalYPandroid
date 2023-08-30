@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
 import {subjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
 import {useForm} from '../../../utils';
@@ -13,11 +13,23 @@ const MSUBJAWABAN = ({
   tipe,
   placeholder,
 }) => {
+  let index;
   const dispatch = useDispatch();
+  const selector = useSelector(state => state.subjawabanRespondenReducer);
+  if (selector.data_jawaban?.length > 0) {
+    index = selector.data_jawaban.findIndex(d => {
+      return d.idjawaban === idjawaban;
+    });
+    console.log('selector', index);
+  }
+
   const [form, setForm] = useForm({
-    jawaban: '',
+    jawaban:
+      selector.data_jawaban?.length > 0
+        ? selector.data_jawaban[index]?.subjawaban
+        : '',
   });
-  if (form.jawaban.length > 0) {
+  useEffect(() => {
     let datajawaban = {
       idPertanyaan,
       namaResponden,
@@ -27,9 +39,11 @@ const MSUBJAWABAN = ({
       fieldjawaban: '',
       subjawaban: form.jawaban,
     };
-    // console.log('datajawaban', datajawaban);
     dispatch(subjawabanRespondenbaru(datajawaban));
-  }
+
+    return () => {};
+  }, [form]);
+
   return (
     <View style={styles.boxSubJawaban}>
       <Gap width={5} />

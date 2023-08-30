@@ -30,7 +30,7 @@ export default fieldjawabanRespondenReducer = (
       }
     }
 
-    return state;
+    return {...state};
   }
 
   return state;
