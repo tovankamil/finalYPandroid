@@ -56,9 +56,9 @@ const IdentitasResponden = ({navigation}) => {
         ? dataJenisKelamin?.dataJK[indexjeniskelamin].txt
         : `''`;
     form['jk'] = indexjeniskelamin;
-    // if (form.nama.length <= 0) {
-    //   return showMessage('Silahkan masukan nama responden', 'danger');
-    // }
+    if (form.nama.length <= 0) {
+      return showMessage('Silahkan masukan nama responden', 'danger');
+    }
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
     navigation.navigate('TentangPKB');
   };

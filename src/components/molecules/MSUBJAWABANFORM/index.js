@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {useForm} from '../../../utils';
+import {useForm, showMessage} from '../../../utils';
 import {Button, Gap, TextInputQA} from '../../atoms';
 import {jeniskelaminIdentitasLainnya} from '../../../constants/QA';
 import JenisKelaminIdentitasLain from './JenisKelaminIdentitasLain';
@@ -53,7 +53,7 @@ const MSUBJAWABANFORM = ({
         subjawaban: '',
         jawabanForm: form,
       };
-
+      showMessage('Data Berhasil di tambahkan', 'success');
       dispatch(fieldjawabanRespondenbaru(datajawaban));
       dispatch(resetLoadingJKIdentitasLainnya(jeniskelaminIdentitasLainnya));
       setForm('reset');

@@ -57,8 +57,21 @@ const IdentitasLain = ({navigation}) => {
             fieldjawaban: d.fieldjawaban === undefined ? '' : d.fieldjawaban,
             subjawaban: '',
             tipe: d.tipe,
+            jawabanForm: [],
           };
           listjawaban.push(data);
+          const checkindex = listjawaban.findIndex(ls => {
+            return ls.idPertanyaan === d.idPertanyaan;
+          });
+          if (d?.jawabanForm.length > 0) {
+            d.jawabanForm.map(dj => {
+              listjawaban[checkindex].jawabanForm.push(dj);
+            });
+          }
+          console.log('listjawaban', listjawaban[checkindex].jawabanForm);
+          if (listjawaban?.jawabanForm?.length > 0) {
+            console.log('datafieldwithform', listjawaban.jawabanForm);
+          }
         });
       }
 
@@ -94,7 +107,6 @@ const IdentitasLain = ({navigation}) => {
           }
         });
       }
-      console.log('listjawaban', listjawaban);
     };
     return (
       <ScrollView>

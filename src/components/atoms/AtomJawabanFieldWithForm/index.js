@@ -35,7 +35,7 @@ const AtomJawabanFieldWithForm = ({
     };
     dispatch(fieldjawabanRespondenbaru(datajawaban));
     return () => {};
-  }, []);
+  }, [form]);
 
   return (
     <View style={styles.inputjawaban}>

@@ -14,11 +14,12 @@ export default qaloadidentitaslainnyareducer = (
     };
   }
   if (action.type === 'RESET_DATA_JK_IDENTITASLAINNYA') {
+    state.dataJK[0].isChecked = false;
+    state.dataJK[1].isChecked = false;
     return {
       ...state,
-      dataJK: action.value,
     };
   }
-
+  console.log(state);
   return state;
 };
