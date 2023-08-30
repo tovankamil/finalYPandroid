@@ -23,7 +23,7 @@ const IdentitasLain = ({navigation}) => {
     });
 
     const submit = () => {
-      let datafinal = [];
+      let datafinal;
       let listjawaban = [];
 
       if (datamc?.data_jawaban?.length > 0) {
@@ -68,10 +68,6 @@ const IdentitasLain = ({navigation}) => {
               listjawaban[checkindex].jawabanForm.push(dj);
             });
           }
-          console.log('listjawaban', listjawaban[checkindex].jawabanForm);
-          if (listjawaban?.jawabanForm?.length > 0) {
-            console.log('datafieldwithform', listjawaban.jawabanForm);
-          }
         });
       }
 
@@ -107,6 +103,9 @@ const IdentitasLain = ({navigation}) => {
           }
         });
       }
+      datafinal = dataresponden;
+
+      datafinal['listjawaban'] = listjawaban;
     };
     return (
       <ScrollView>
@@ -142,7 +141,7 @@ const IdentitasLain = ({navigation}) => {
                 <Button
                   style={styles.button}
                   onPress={submit}
-                  text="Simpan"
+                  text="Submit"
                   textColor="#F9F9F9"
                   color="green"
                 />

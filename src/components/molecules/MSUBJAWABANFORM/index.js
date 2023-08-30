@@ -93,6 +93,7 @@ const MSUBJAWABANFORM = ({
         value={form.hp}
         onChangeText={value => setForm('hp', value)}
         width={width}
+        numeric="numeric"
       />
 
       <Gap height={15} />

@@ -20,6 +20,6 @@ export default qaloadidentitaslainnyareducer = (
       ...state,
     };
   }
-  console.log(state);
+
   return state;
 };
