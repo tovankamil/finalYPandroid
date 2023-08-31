@@ -1,5 +1,5 @@
 import {Picker} from '@react-native-community/picker';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {dataDesa, dataKecamatan2} from '../../../redux/action';
@@ -12,7 +12,7 @@ const Select = ({
   datax,
   koresponden,
 }) => {
-  const Pilih = () => {
+  const Pilih = useCallback(() => {
     const dispatch = useDispatch();
     if (namaSelect === 'Pilih Kota') {
       if (
@@ -204,7 +204,7 @@ const Select = ({
         );
       }
     }
-  };
+  }, [onSelectChange]);
 
   return (
     <View>

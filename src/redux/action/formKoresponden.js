@@ -50,7 +50,7 @@ export const signUpKorespondenAction = (
 
 export const getDataKoresponden = token => dispatch => {
   dispatch(setLoading(true));
-  Axios.get(`${API_HOST.url}/fe/users/login/listKoresponden`, {
+  Axios.get(`${API_HOST.url}/fe/users/login/listresponden`, {
     headers: {
       Authorization: `Bearer ${token?.value}`,
       'Content-Type': 'application/json',

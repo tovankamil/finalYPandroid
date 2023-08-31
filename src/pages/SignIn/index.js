@@ -1,27 +1,28 @@
 import React, {useEffect} from 'react';
-import Axios from 'axios';
-import {StyleSheet, Text, View} from 'react-native';
-import {Button, Gap, Header, TextInput} from '../../components';
-import {getData, useForm} from '../../utils';
-import {useDispatch, useSelector} from 'react-redux';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {Button, Gap, TextInput} from '../../components';
 import {signInAction} from '../../redux/action/auth';
+import {getData, useForm} from '../../utils';
 
-import {removeData} from '../../utils';
 import {ICSplashScreen} from '../../assets';
 import {setLogout, setTabindexinputkoresponden} from '../../redux/action';
+import {removeData} from '../../utils';
 const SignIn = ({navigation}) => {
   const [form, setForm] = useForm({
     username: '',
     password: '',
   });
   const dispatch = useDispatch();
-  dispatch(setLogout(false));
-  dispatch(dispatch(setTabindexinputkoresponden(0)));
+
   useEffect(() => {
+    dispatch(setLogout(false));
+    dispatch(dispatch(setTabindexinputkoresponden(0)));
     dispatch({type: 'SET_RESET_SETTING_RELAWAN'});
     getData('token').then(res => {
       if (res) {
-        navigation.reset({index: 0, routes: [{name: 'Home'}]});
+        navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+        // navigation.reset({index: 0, routes: [{name: 'IdentitasLain'}]});
       }
     });
   });

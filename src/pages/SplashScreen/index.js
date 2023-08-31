@@ -5,8 +5,8 @@ import {ICSplashScreen} from '../../assets';
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      // navigation.replace('SignIn');
-      navigation.replace('IdentitasResponden');
+      navigation.replace('SignIn');
+      // navigation.replace('IdentitasResponden');
     }, 1000);
   });
 

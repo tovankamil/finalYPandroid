@@ -3,7 +3,9 @@ import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Header, OTentangPKB} from '../../../components';
 import Button from '../../../components/Button';
+import {inpudataresponden} from '../../../redux/action/inputdataresponden';
 import {question} from '../../../redux/action/question';
+import {getData} from '../../../utils';
 
 const IdentitasLain = ({navigation}) => {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const IdentitasLain = ({navigation}) => {
       if (d.idKategori?.namakategori === 'Identitas Pemilih') return d;
     });
 
-    const submit = () => {
+    const submit = async () => {
       let datafinal;
       let listjawaban = [];
 
@@ -106,6 +108,12 @@ const IdentitasLain = ({navigation}) => {
       datafinal = dataresponden;
 
       datafinal['listjawaban'] = listjawaban;
+      console.log('test', datafinalx);
+      getData('token')
+        .then(data => {
+          dispatch(inpudataresponden(data, datafinal));
+        })
+        .catch(err => console.log(err));
     };
     return (
       <ScrollView>

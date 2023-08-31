@@ -88,7 +88,7 @@ const Router = () => {
       />
 
       <Stack.Screen
-        name="Home"
+        name="MainApp"
         component={MainApp}
         options={{headerShown: false}}
       />

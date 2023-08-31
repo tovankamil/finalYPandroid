@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {jawabanRespondenbaru} from '../../../redux/action/jawabanResponden';
 import {subjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
 import {useForm} from '../../../utils';
 import {Gap, TextInputQA} from '../../atoms';
@@ -20,7 +19,6 @@ const MSUBJAWABAN = ({
     index = selector.data_jawaban.findIndex(d => {
       return d.idjawaban === idjawaban;
     });
-    console.log('selector', index);
   }
 
   const [form, setForm] = useForm({

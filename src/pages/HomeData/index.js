@@ -136,7 +136,7 @@ const HomeData = ({navigation}) => {
               globalTopkota?.data?.data.map((d, i) => {
                 if (i < 9) {
                   return (
-                    <>
+                    <View key={i}>
                       <View style={styles.boxLegend} key={i}>
                         <View style={styles.legend}>
                           <View style={styles.kotak(datafrontColor[i])}></View>
@@ -152,7 +152,7 @@ const HomeData = ({navigation}) => {
                           </Text>
                         </View>
                       </View>
-                    </>
+                    </View>
                   );
                 }
               })}
