@@ -14,7 +14,6 @@ const HomeData = ({navigation}) => {
   const [user, setUser] = useState({});
   const [bardata, setBardata] = useState({});
   const [refreshing, setRefreshing] = React.useState(false);
-
   useEffect(() => {
     getData('userProfile').then(data => {
       setUser(data);
@@ -142,7 +141,7 @@ const HomeData = ({navigation}) => {
                           <View style={styles.kotak(datafrontColor[i])}></View>
                           <View>
                             <Text>
-                              {globalTopkota?.data.data[i]._id[0].nama}
+                              {globalTopkota?.data?.data[i]?._id[0]?.nama}
                             </Text>
                           </View>
                         </View>

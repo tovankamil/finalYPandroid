@@ -54,7 +54,7 @@ const IdentitasResponden = ({navigation}) => {
     indexjeniskelamin =
       indexjeniskelamin >= 0
         ? dataJenisKelamin?.dataJK[indexjeniskelamin].txt
-        : `''`;
+        : '';
     form['jk'] = indexjeniskelamin;
     if (form.nama.length <= 0) {
       return showMessage('Silahkan masukan nama responden', 'danger');

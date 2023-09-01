@@ -4,7 +4,7 @@ import {getData, showMessage} from '../../utils';
 import {setLoading} from './global';
 
 export const inpudataresponden = (token, data) => dispatch => {
-  //   dispatch(setLoading(true));
+  dispatch(setLoading(true));
   Axios.post(`${API_HOST.url}/fe/users/login/inputresponden`, data, {
     headers: {
       Authorization: `Bearer ${token?.value}`,
@@ -14,9 +14,10 @@ export const inpudataresponden = (token, data) => dispatch => {
     timeout: 900,
   })
     .then(res => {
-      //   dispatch(setLoading(false));
-      console.log('res', res);
-      //   dispatch({type: 'LIST_DATA_KORESPONDEN', value: res.data});
+      dispatch(setLoading(false));
+      if (res?.data?.data?.length > 0) {
+        console.log('res', res.data?.data?.length);
+      }
     })
     .catch(err => {
       if (err.response.status === 404) {
