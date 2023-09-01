@@ -1,5 +1,6 @@
 const initStateRegister = {
   data_jawaban: [],
+  dataChecked: [],
 };
 
 export default scfjawabanRespondenReducer = (
@@ -10,6 +11,11 @@ export default scfjawabanRespondenReducer = (
     // cek jika data jawaban array kosong
     if (state.data_jawaban.length <= 0) {
       state.data_jawaban.push(action.value);
+      let data = {
+        idjawaban: action.value.idjawaban,
+        checked: true,
+      };
+      state.dataChecked.push(data);
     } else {
       // field answer
 
@@ -21,7 +27,21 @@ export default scfjawabanRespondenReducer = (
         if (index <= -1) {
           state.data_jawaban.push(action.value);
         } else {
-          state.data_jawaban[0].idjawaban = action.value.idjawaban;
+          state.data_jawaban[index].idjawaban = action.value.idjawaban;
+          if (state.dataChecked.length <= 0) {
+            let data = {
+              idjawaban: action.value.idjawaban,
+              checked: true,
+            };
+            state.dataChecked.push(data);
+          } else {
+          }
+          const index2 = state.dataChecked.map((dx, i) => {
+            state.dataChecked[i].checked = false;
+            if (action.value.idjawaban === dx.idjawaban) {
+              state.dataChecked[i].checked = true;
+            }
+          });
         }
       }
     }

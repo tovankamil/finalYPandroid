@@ -1,7 +1,7 @@
 import CheckBox from '@react-native-community/checkbox';
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {scfjawabanRespondenbaru} from '../../../redux/action/subjawabanResponden';
 import {SCFJAWABAN} from '../../molecules';
 import Gap from '../Gap';
@@ -18,9 +18,26 @@ const ATOMSCF = ({
   placeholder,
 }) => {
   const dispatch = useDispatch();
+  const selector1 = useSelector(state => state.scfjawabanRespondenReducer);
+  let carijawaban;
+  const [checked, setChecked] = useState();
+  useEffect(() => {
+    if (selector1?.data_jawaban?.length > 0) {
+      const index = selector1?.data_jawaban?.findIndex(dx => {
+        console.log('dx.idjawaban', dx.idjawaban);
+        console.log(idjawaban);
+        return dx.idjawaban === idjawaban;
+      });
+      if (index >= 0) {
+        setChecked(true);
+      } else {
+        setChecked(false);
+      }
+      console.log('selector2', index);
+    }
+  }, [selector1]);
 
-  const [checked, setChecked] = useState(false);
-  const cek = id => {
+  const cek = useCallback(id => {
     setChecked(prev => !prev);
     let datajawaban = {
       idPertanyaan,
@@ -28,11 +45,12 @@ const ATOMSCF = ({
       idjawaban,
       tipe,
       fieldjawaban: '',
-      checked: !checked,
+      checked,
       subjawaban: '',
     };
     dispatch(scfjawabanRespondenbaru(datajawaban));
-  };
+  }, []);
+  console.log('checked', checked);
   const SubJawaban = ({data}) => {
     if (tipesubjawaban == 'y') {
       return (
@@ -49,6 +67,7 @@ const ATOMSCF = ({
     }
     return <View style={styles.boxSubJawaban}></View>;
   };
+
   return (
     <View>
       <Gap height={2} />
@@ -56,14 +75,17 @@ const ATOMSCF = ({
         <View style={styles.boxContainer}>
           <CheckBox
             key={keydata}
-            value={check}
+            value={checked}
             style={styles.checkbox}
             onValueChange={() => {
               cek(keydata);
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>{data.namaJawaban}</Text>
+          <Text>
+            {data.namaJawaban}
+            {carijawaban}
+          </Text>
           {<SubJawaban data={data} />}
         </View>
       </View>
@@ -71,7 +93,7 @@ const ATOMSCF = ({
   );
 };
 
-export default ATOMSCF;
+export default React.memo(ATOMSCF);
 
 const styles = StyleSheet.create({
   detailPertanyaan: {

@@ -92,23 +92,24 @@ const IdentitasLain = ({navigation}) => {
             const cariindex = datascfsub.data_jawaban.findIndex(d => {
               return d.idjawaban === dx.idjawaban;
             });
+            if (cariindex >= 0) {
+              const data = {
+                idPertanyaan: dx.idPertanyaan,
+                idjawaban: dx.idjawaban,
+                fieldjawaban: dx.fieldjawaban,
+                subjawaban: datascfsub?.data_jawaban[cariindex]?.subjawaban,
+                tipe: dx.tipe,
+              };
 
-            const data = {
-              idPertanyaan: dx.idpertamyaan,
-              idjawaban: dx.idjawaban,
-              fieldjawaban: dx.fieldjawaban,
-              subjawaban: datascfsub.data_jawaban[cariindex].subjawaban,
-              tipe: dx.tipe,
-            };
-
-            listjawaban.push(data);
+              listjawaban.push(data);
+            }
           }
         });
       }
       datafinal = dataresponden;
 
       datafinal['listjawaban'] = listjawaban;
-      console.log('test', datafinalx);
+      console.log('test', datafinal);
       getData('token')
         .then(data => {
           dispatch(inpudataresponden(data, datafinal));
