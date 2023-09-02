@@ -9,135 +9,13 @@ import {getData} from '../../../utils';
 import {v4 as uuidv4} from 'uuid';
 
 const IdentitasLain = ({navigation}) => {
-  const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
-  const dataresponden = useSelector(state => state.formKorespondenReducer);
-  const datamc = useSelector(state => state.jawabanRespondenReducer);
-  const datasubjawaban = useSelector(state => state.subjawabanRespondenReducer);
-  const datasc = useSelector(state => state.jawabanRespondenReducer);
-
-  const datafield = useSelector(state => state.fieldjawabanRespondenReducer);
-  const datascf = useSelector(state => state.scfjawabanRespondenReducer);
-  const datascfsub = useSelector(state => state.scfsubjawabanResponden);
 
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
       if (d.idKategori?.namakategori === 'Identitas Pemilih') return d;
     });
 
-    const submit = async () => {
-      let datafinal;
-      let listjawaban = [];
-
-      if (datamc?.data_jawaban?.length > 0) {
-        /* tipe SC */
-
-        datamc?.data_jawaban?.map((d, i) => {
-          // cari data subjawaban
-          const indexsubjawaban = datasubjawaban.data_jawaban.findIndex(s => {
-            return s.subjawaban === d.subjawaban;
-          });
-
-          const data = {
-            idPertanyaan: d.idPertanyaan,
-            idjawaban: d.idjawaban,
-            fieldjawaban: d.fieldjawaban,
-            subjawaban:
-              indexsubjawaban >= 0
-                ? datasubjawaban.data_jawaban[indexsubjawaban].subjawaban
-                : '',
-            tipe: d.tipe,
-          };
-          listjawaban.push(data);
-        });
-      }
-
-      if (datafield?.data_jawaban?.length > 0) {
-        datafield.data_jawaban.map(d => {
-          const data = {
-            idPertanyaan: d.idPertanyaan,
-            idjawaban: d.idjawaban,
-            fieldjawaban: d.fieldjawaban === undefined ? '' : d.fieldjawaban,
-            subjawaban: '',
-            tipe: d.tipe,
-            jawabanForm: [],
-          };
-          listjawaban.push(data);
-          const checkindex = listjawaban.findIndex(ls => {
-            return ls.idPertanyaan === d.idPertanyaan;
-          });
-          if (d?.jawabanForm.length > 0) {
-            d.jawabanForm.map(dj => {
-              listjawaban[checkindex].jawabanForm.push(dj);
-            });
-          }
-        });
-      }
-
-      if (datasc.data_jawaban.length > 0) {
-        datasc.data_jawaban.map(d => {
-          const data = {
-            idPertanyaan: d.idPertanyaan,
-            idjawaban: d.idjawaban,
-            fieldjawaban: d.fieldjawaban,
-            subjawaban: '',
-            tipe: d.tipe,
-          };
-          listjawaban.push(data);
-        });
-      }
-
-      if (datascf.data_jawaban.length > 0) {
-        datascf.data_jawaban.map(dx => {
-          if (datascfsub?.data_jawaban?.length > 0) {
-            const cariindex = datascfsub.data_jawaban.findIndex(d => {
-              return d.idjawaban === dx.idjawaban;
-            });
-            if (cariindex >= 0) {
-              const data = {
-                idPertanyaan: dx.idPertanyaan,
-                idjawaban: dx.idjawaban,
-                fieldjawaban: dx.fieldjawaban,
-                subjawaban: datascfsub?.data_jawaban[cariindex]?.subjawaban,
-                tipe: dx.tipe,
-              };
-
-              listjawaban.push(data);
-            }
-          }
-        });
-      }
-      datafinal = dataresponden;
-
-      datafinal['listjawaban'] = listjawaban;
-      const v4options = {
-        random: [
-          0x10,
-          0x91,
-          0x56,
-          0xbe,
-          0xc4,
-          0xfb,
-          0xc1,
-          0xea,
-          0x71,
-          0xb4,
-          0xef,
-          0xe1,
-          0x67,
-          0x1c,
-          0x58,
-          0x36,
-        ],
-      };
-
-      datafinal['uuid'] = await uuidv4(v4options);
-      getData('token')
-        .then(data => {
-          dispatch(inpudataresponden(data, datafinal));
-        })
-        .catch(err => console.log(err));
-    };
     return (
       <ScrollView>
         <View style={styles.content}>
@@ -171,8 +49,8 @@ const IdentitasLain = ({navigation}) => {
               <View style={styles.boxButton}>
                 <Button
                   style={styles.button}
-                  onPress={submit}
-                  text="Submit"
+                  onPress={() => navigation.navigate('TentangCalegPropinsi')}
+                  text="Selanjutnya"
                   textColor="#F9F9F9"
                   color="green"
                 />

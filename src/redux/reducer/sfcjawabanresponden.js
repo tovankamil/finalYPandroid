@@ -45,7 +45,6 @@ export default scfjawabanRespondenReducer = (
         }
       }
     }
-    console.log('scfjawabanRespondenReducer', state);
     return {...state};
   }
 

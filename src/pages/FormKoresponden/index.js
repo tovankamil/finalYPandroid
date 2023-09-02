@@ -152,7 +152,6 @@ const FormKoresponden = ({navigation}) => {
       globalState.lainnya.length >= 0
     ) {
       Object.assign(globalState, {dataattribute: dataattr});
-      console.log('globalstatefinal', globalState);
       dispatch(signUpKorespondenAction(globalState, navigation, user));
     }
   };

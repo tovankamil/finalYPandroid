@@ -22,3 +22,13 @@ export const setATR = value => {
 export const setIDENTITAS = value => {
   return {type: 'SET_IDENTITAS_ERROR', value};
 };
+
+export const SuccessCalegNasional = value => {
+  return {type: 'SET_SUCCESS_CALEG_NASIONAL', value};
+};
+export const SuccessCalegPropinsi = value => {
+  return {type: 'SET_SUCCESS_CALEG_PROPINSI', value};
+};
+export const SuccessCalegKabupaten = value => {
+  return {type: 'SET_SUCCESS_CALEG_KABUPATEN', value};
+};

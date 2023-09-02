@@ -8,6 +8,9 @@ const initGlobal = {
   qaerror: '',
   atrerror: '',
   identitasError: '',
+  calegnasional: false,
+  calegpropinsi: false,
+  calegkabupaten: false,
 };
 
 export const globalReducer = (state = initGlobal, action) => {
@@ -64,6 +67,12 @@ export const globalReducer = (state = initGlobal, action) => {
     return {
       ...state,
       identitasError: action.value,
+    };
+  }
+  if (action.type === 'SET_SUCCESS_CALEG_NASIONAL') {
+    return {
+      ...state,
+      calegnasional: action.value,
     };
   }
   return state;

@@ -4,25 +4,25 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Header, OTentangPKB} from '../../../components';
 import Button from '../../../components/Button';
 
-const TentangCaleg = ({navigation}) => {
+const TentangCalegPropinsi = ({navigation}) => {
   const selector = useSelector(state => state.questionReducer);
 
   if (selector) {
     const filter = selector?.dataQuestion.filter((d, i) => {
-      if (d.idKategori?.namakategori === 'Tentang Caleg') return d;
+      if (d.idKategori?.namakategori === 'Caleg Propinsi') return d;
     });
     return (
       <ScrollView>
         <View style={styles.content}>
           <Header
             title="Responden"
-            subTitle="Form Responden"
-            onBack={() => navigation.goBack()}
+            subTitle="Form Responden Caleg Propinsi"
+            // onBack={() => navigation.goBack()}
           />
           {/* Tab */}
           <View style={styles.container}>
             <View style={styles.boxH1}>
-              <Text style={styles.H1}>Tentang Caleg</Text>
+              <Text style={styles.H1}>Tentang Caleg Propinsi</Text>
             </View>
             <Gap height={14} />
             {filter.map((d, i) => {
@@ -33,17 +33,17 @@ const TentangCaleg = ({navigation}) => {
           <View style={styles.FlexButton}>
             <View style={styles.boxButton}>
               <Button
-                text="Kembali"
+                text="Sebelumnya"
                 color="#8D92A3"
                 textColor="#F9F9F9"
-                onPress={() => navigation.navigate('TentangPKB')}
+                onPress={() => navigation.navigate('IdentitasLain')}
               />
             </View>
 
             <View style={styles.boxButton}>
               <Button
                 style={styles.button}
-                onPress={() => navigation.navigate('Attribute')}
+                onPress={() => navigation.navigate('TentangCalegKabupaten')}
                 text="Selanjutnya"
                 textColor="#F9F9F9"
                 color="green"
@@ -61,7 +61,7 @@ const TentangCaleg = ({navigation}) => {
   );
 };
 
-export default TentangCaleg;
+export default React.memo(TentangCalegPropinsi);
 const styles = StyleSheet.create({
   container: {
     padding: 15,
@@ -98,5 +98,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-start',
+  },
+  boldText: {
+    color: 'green',
+    fontWeight: 'bold',
   },
 });

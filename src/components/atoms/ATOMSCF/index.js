@@ -24,8 +24,6 @@ const ATOMSCF = ({
   useEffect(() => {
     if (selector1?.data_jawaban?.length > 0) {
       const index = selector1?.data_jawaban?.findIndex(dx => {
-        console.log('dx.idjawaban', dx.idjawaban);
-        console.log(idjawaban);
         return dx.idjawaban === idjawaban;
       });
       if (index >= 0) {
@@ -33,7 +31,6 @@ const ATOMSCF = ({
       } else {
         setChecked(false);
       }
-      console.log('selector2', index);
     }
   }, [selector1]);
 
@@ -50,7 +47,7 @@ const ATOMSCF = ({
     };
     dispatch(scfjawabanRespondenbaru(datajawaban));
   }, []);
-  console.log('checked', checked);
+
   const SubJawaban = ({data}) => {
     if (tipesubjawaban == 'y') {
       return (

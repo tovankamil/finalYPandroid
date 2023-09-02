@@ -21,6 +21,8 @@ import {
   Attribut,
   IdentitasLain,
   TentangCaleg,
+  TentangCalegKabupaten,
+  TentangCalegPropinsi,
   TentangPKB,
 } from '../pages/NewQuestion';
 import IdentitasResponden from '../pages/NewQuestion/IdentitasResponden';
@@ -60,7 +62,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{animation: 'none'}}>
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
@@ -115,6 +117,17 @@ const Router = () => {
         component={TentangCaleg}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="TentangCalegPropinsi"
+        component={TentangCalegPropinsi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TentangCalegKabupaten"
+        component={TentangCalegKabupaten}
+        options={{headerShown: false}}
+      />
+
       <Stack.Screen
         name="TentangPKB"
         component={TentangPKB}

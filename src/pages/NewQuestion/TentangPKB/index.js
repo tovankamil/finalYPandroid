@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Header, OTentangPKB} from '../../../components';
 import Button from '../../../components/Button';
-import {question} from '../../../redux/action/question';
 
 const TentangPKB = ({navigation}) => {
   const dispatch = useDispatch();
