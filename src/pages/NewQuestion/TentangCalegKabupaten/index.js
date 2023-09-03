@@ -3,8 +3,12 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Header, OTentangPKB} from '../../../components';
 import Button from '../../../components/Button';
+import {inpudataresponden} from '../../../redux/action/inputdataresponden';
+import {getData} from '../../../utils';
+import {v4 as uuidv4} from 'uuid';
 
 const TentangCalegKabupaten = ({navigation}) => {
+  const dispatch = useDispatch();
   const selector = useSelector(state => state.questionReducer);
   const dataresponden = useSelector(state => state.formKorespondenReducer);
   const datamc = useSelector(state => state.jawabanRespondenReducer);
@@ -158,15 +162,15 @@ const TentangCalegKabupaten = ({navigation}) => {
                 text="Lewati"
                 color="#8D92A3"
                 textColor="#F9F9F9"
-                onPress={() => navigation.navigate('TentangPropinsi')}
+                onPress={() => navigation.navigate('TentangCalegPropinsi')}
               />
             </View>
 
             <View style={styles.boxButton}>
               <Button
                 style={styles.button}
-                onPress={() => navigation.navigate('TentangCalegKabupaten')}
-                text="Selanjutnya"
+                onPress={submit}
+                text="Simpan"
                 textColor="#F9F9F9"
                 color="green"
               />

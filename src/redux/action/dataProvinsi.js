@@ -7,7 +7,9 @@ export const dataProvinsi = () => dispatch => {
   dispatch(setLoading(true));
   Axios.get(`${API_HOST.url}/be/kota`)
     .then(res => {
-      dispatch({type: 'LIST_DATA_KOTA', value: res?.data});
+      // dispatch({type: 'LIST_DATA_KOTA', value: res?.data});
+      dispatch({type: 'NEW_LIST_DATA_KOTA', value: res?.data});
+
       dispatch(setLoading(false));
     })
     .catch(err => {
@@ -21,7 +23,7 @@ export const dataKecamatan2 = id => dispatch => {
 
   Axios.post(`${API_HOST.url}/be/kecamatan/byId`, id)
     .then(res => {
-      dispatch({type: 'LIST_DATA_KECAMATAN', value: res.data});
+      dispatch({type: 'NEW_LIST_DATA_KECAMATAN', value: res.data});
 
       dispatch(setLoading(false));
     })
@@ -32,10 +34,11 @@ export const dataKecamatan2 = id => dispatch => {
 };
 
 export const dataDesa = id => dispatch => {
+  console.log('id', id);
   dispatch(setLoading(true));
   Axios.post(`${API_HOST.url}/be/desa/ById`, id)
     .then(res => {
-      dispatch({type: 'LIST_DATA_DESA', value: res.data});
+      dispatch({type: 'NEW_LIST_DATA_DESA', value: res.data});
       dispatch(setLoading(false));
     })
     .catch(err => {

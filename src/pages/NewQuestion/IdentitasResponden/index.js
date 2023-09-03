@@ -16,6 +16,8 @@ import {useForm, showMessage} from '../../../utils';
 
 const IdentitasResponden = ({navigation}) => {
   const globalState = useSelector(state => state.globalReducer);
+  const provinsireducer = useSelector(state => state.formKorespondenReducer);
+
   const dataJenisKelamin = useSelector(state => state.qaloadreducer);
   const [errordata, setErrordata] = useState({
     namaEr: '',
@@ -59,8 +61,22 @@ const IdentitasResponden = ({navigation}) => {
     if (form.nama.length <= 0) {
       return showMessage('Silahkan masukan nama responden', 'danger');
     }
+    console.log('provinsireducer', provinsireducer);
+    if (provinsireducer?.kota?.length <= 5) {
+      return showMessage('Silahkan pilih kota', 'danger');
+    }
+    if (
+      provinsireducer?.kecamatan?.length <= 5 &&
+      provinsireducer?.kecamatan === false
+    ) {
+      return showMessage('Silahkan pilih kecamatan', 'danger');
+    }
+    if (provinsireducer?.desa?.length <= 5 && provinsireducer?.desa === false) {
+      return showMessage('Silahkan pilih desa', 'danger');
+    }
+
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
-    navigation.navigate('TentangPKB');
+    // navigation.navigate('TentangPKB');
   };
 
   const DataProvinsi = useCallback(() => {

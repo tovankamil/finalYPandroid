@@ -1,6 +1,12 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Gap, Select} from '../../../components';
+import {
+  DesaResponden,
+  Gap,
+  KecamatanResponden,
+  KotaResponden,
+  Select,
+} from '../../../components';
 import {dataProvinsi} from '../../../redux/action';
 import {useForm} from '../../../utils';
 
@@ -24,7 +30,7 @@ const OIdentitasResponden = ({navigation}) => {
     return () => {};
   }, []);
 
-  const memoKota = useMemo(() => {
+  const memoKota = useCallback(() => {
     return (
       <Select
         label="Kota"
@@ -37,7 +43,7 @@ const OIdentitasResponden = ({navigation}) => {
     );
   }, [form.kota, globalStateProvinsi?.data_kota]);
 
-  const memoKecamatan = useMemo(() => {
+  const memoKecamatan = useCallback(() => {
     return (
       <Select
         label="Kecamatan"
@@ -50,7 +56,7 @@ const OIdentitasResponden = ({navigation}) => {
     );
   }, [form.kecamatan, globalStateProvinsi?.data_kecamatan]);
 
-  const memoDesa = useMemo(() => {
+  const memoDesa = useCallback(() => {
     return (
       <Select
         label="Desa"
@@ -66,11 +72,11 @@ const OIdentitasResponden = ({navigation}) => {
   return (
     <>
       <Gap height={10} />
-      {memoKota}
+      <KotaResponden />
       <Gap height={20} />
-      {memoKecamatan}
+      <KecamatanResponden />
       <Gap height={20} />
-      {memoDesa}
+      <DesaResponden />
       <Gap height={14} />
     </>
   );

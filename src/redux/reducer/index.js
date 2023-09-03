@@ -15,6 +15,10 @@ import scfjawabanRespondenReducer from './sfcjawabanresponden';
 import scfsubjawabanResponden from './scfsubjawabanResponden';
 import qaloadidentitaslainnyareducer from './dataqaidentitaslainnya';
 
+// NEW Data KOTA KECAMATAN KELURAHAN
+import listkota from './listkota';
+import listkecamatan from './listkecamatan';
+import listdesa from './listdesa';
 const reducer = combineReducers({
   registerReducer,
   globalReducer,
@@ -31,5 +35,8 @@ const reducer = combineReducers({
   scfjawabanRespondenReducer,
   scfsubjawabanResponden,
   qaloadidentitaslainnyareducer,
+  listkota,
+  listkecamatan,
+  listdesa,
 });
 export default reducer;

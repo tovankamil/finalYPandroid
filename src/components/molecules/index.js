@@ -19,6 +19,9 @@ export * from './OIdentitasResponden';
 import MSUBJAWABAN from './MSUBJAWABAN';
 import SCFJAWABAN from './SCFJAWABAN';
 import MSUBJAWABANFORM from './MSUBJAWABANFORM';
+import KotaResponden from './KotaResponden';
+import KecamatanResponden from './KecamatanResponden';
+import DesaResponden from './DesaResponden';
 export {
   Header,
   SignUpAlamat,
@@ -37,4 +40,7 @@ export {
   MSUBJAWABAN,
   SCFJAWABAN,
   MSUBJAWABANFORM,
+  KotaResponden,
+  KecamatanResponden,
+  DesaResponden,
 };
