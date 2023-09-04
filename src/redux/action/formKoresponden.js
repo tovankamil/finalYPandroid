@@ -81,3 +81,7 @@ export const getDataKoresponden = token => dispatch => {
         }, 1000);
     });
 };
+
+export const resetDataFormKoresponden = () => {
+  return {type: 'SET_RESET_FORM'};
+};

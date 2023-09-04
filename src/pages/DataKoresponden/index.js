@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {Header} from '../../components';
 import TabListDataKoresponden from '../../components/molecules/TabListDataKoresponden';
+import {resetDataFormKoresponden} from '../../redux/action';
+import {resetjawabanRespondenbarufield} from '../../redux/action/fieldjawabanResponden';
+import {resetjawabanRespondenbaru} from '../../redux/action/jawabanResponden';
 
 const DataKoresponden = ({navigation}) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetDataFormKoresponden());
+    dispatch(resetjawabanRespondenbaru());
+    dispatch(resetjawabanRespondenbarufield());
+    return () => {};
+  }, []);
   return (
     <View style={styles.content}>
       <Header

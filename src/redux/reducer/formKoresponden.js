@@ -121,7 +121,8 @@ export const formKorespondenReducer = (
       jk: action.value,
     };
 
-  if (action.type === 'SET_RESET_FORM')
+  if (action.type === 'SET_RESET_FORM') {
     return (state = initStateRegisterKoresponden);
+  }
   return state;
 };

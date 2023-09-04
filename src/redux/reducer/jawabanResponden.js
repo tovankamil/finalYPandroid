@@ -73,6 +73,10 @@ export default jawabanRespondenReducer = (
     }
     return {...state};
   }
-
+  if (action.type === 'RESET_DATA_JAWABAN_RESPONDEN_BARU') {
+    console.log('reset jawaban responden');
+    state.data_jawaban = [];
+    return state;
+  }
   return state;
 };

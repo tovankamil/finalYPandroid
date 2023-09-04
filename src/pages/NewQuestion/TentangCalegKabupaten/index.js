@@ -142,13 +142,13 @@ const TentangCalegKabupaten = ({navigation}) => {
         <View style={styles.content}>
           <Header
             title="Responden"
-            subTitle="Form Responden Caleg Propinsi"
+            subTitle="Form Responden Caleg Kabupaten"
             // onBack={() => navigation.goBack()}
           />
           {/* Tab */}
           <View style={styles.container}>
             <View style={styles.boxH1}>
-              <Text style={styles.H1}>Tentang Caleg Propinsi</Text>
+              <Text style={styles.H1}>Tentang Caleg Kabupaten</Text>
             </View>
             <Gap height={14} />
             {filter.map((d, i) => {
@@ -159,7 +159,7 @@ const TentangCalegKabupaten = ({navigation}) => {
           <View style={styles.FlexButton}>
             <View style={styles.boxButton}>
               <Button
-                text="Lewati"
+                text="Kembali"
                 color="#8D92A3"
                 textColor="#F9F9F9"
                 onPress={() => navigation.navigate('TentangCalegPropinsi')}

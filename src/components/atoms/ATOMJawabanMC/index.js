@@ -74,10 +74,7 @@ const ATOMJawabanMC = ({
     }
     return (
       <View style={styles.boxSubJawaban}>
-        <Text>
-          {data.namaJawaban}
-          {idjawaban}
-        </Text>
+        <Text>{data.namaJawaban}</Text>
       </View>
     );
   };

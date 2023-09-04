@@ -1,11 +1,10 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   DesaResponden,
   Gap,
   KecamatanResponden,
   KotaResponden,
-  Select,
 } from '../../../components';
 import {dataProvinsi} from '../../../redux/action';
 import {useForm} from '../../../utils';
@@ -29,45 +28,6 @@ const OIdentitasResponden = ({navigation}) => {
     dispatch(dataProvinsi());
     return () => {};
   }, []);
-
-  const memoKota = useCallback(() => {
-    return (
-      <Select
-        label="Kota"
-        value={form.kota}
-        onSelectChange={value => setForm('kota', value)}
-        namaSelect="Pilih Kota"
-        datax={globalStateProvinsi?.data_kota}
-        koresponden
-      />
-    );
-  }, [form.kota, globalStateProvinsi?.data_kota]);
-
-  const memoKecamatan = useCallback(() => {
-    return (
-      <Select
-        label="Kecamatan"
-        value={form.kecamatan}
-        datax={globalStateProvinsi?.data_kecamatan}
-        namaSelect="Pilih Kecamatan"
-        onSelectChange={value => setForm('kecamatan', value)}
-        koresponden
-      />
-    );
-  }, [form.kecamatan, globalStateProvinsi?.data_kecamatan]);
-
-  const memoDesa = useCallback(() => {
-    return (
-      <Select
-        label="Desa"
-        value={form.desa}
-        datax={globalStateProvinsi?.data_desa}
-        onSelectChange={value => setForm('desa', value)}
-        namaSelect="Pilih Desa"
-        koresponden
-      />
-    );
-  }, [form.desa, globalStateProvinsi?.data_desa]);
 
   return (
     <>

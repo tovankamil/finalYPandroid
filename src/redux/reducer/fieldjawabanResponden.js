@@ -33,5 +33,10 @@ export default fieldjawabanRespondenReducer = (
     return {...state};
   }
 
+  if (action.type === 'RESET_DATA_JAWABAN_RESPONDEN_FIELD') {
+    state.data_jawaban = [];
+    return state;
+  }
+
   return state;
 };
