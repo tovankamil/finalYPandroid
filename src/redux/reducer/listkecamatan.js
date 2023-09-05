@@ -20,10 +20,9 @@ export default listkotaReducer = (state = initStateRegister, action) => {
   }
 
   if (action.type === 'RESET_NEW_DATA_KECAMATAN') {
-    return {
-      ...state,
-      data_kecamatan: [],
-    };
+    state.nama_kecamatan = '';
+    state.value = '';
+    return state;
   }
 
   return state;

@@ -15,6 +15,7 @@ import {
   DetailKoresponden,
   Setting,
   Keluar,
+  SuccesInputResponden,
 } from '../pages';
 import {BottomNavigator} from '../components';
 import {
@@ -125,6 +126,11 @@ const Router = () => {
       <Stack.Screen
         name="TentangCalegKabupaten"
         component={TentangCalegKabupaten}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SuccesInputResponden"
+        component={SuccesInputResponden}
         options={{headerShown: false}}
       />
 

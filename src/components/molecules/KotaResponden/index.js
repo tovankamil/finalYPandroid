@@ -4,19 +4,18 @@ import {Text, View} from 'react-native';
 
 import {StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {Gap} from '../../../components';
 import {dataKecamatan2, dataProvinsi} from '../../../redux/action';
 const KotaResponden = ({navigation}) => {
+  const globalState = useSelector(state => state.globalReducer);
   const listkotaReducer = useSelector(state => state?.listkota);
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({
-      type: 'RESET_PROVINSI',
-    });
     dispatch(dataProvinsi());
+    dispatch({type: 'RESET_NEW_DATA_KECAMATAN'});
+    dispatch({type: 'RESET_NEW_DATA_KOTA'});
+    dispatch({type: 'RESET_NEW_DATA_DESA'});
     return () => {};
-  }, []);
+  }, [globalState.successinput]);
 
   const submit = value => {
     dispatch(
@@ -59,7 +58,7 @@ const KotaResponden = ({navigation}) => {
   );
 };
 
-export default React.memo(KotaResponden);
+export default KotaResponden;
 
 const styles = StyleSheet.create({
   label: {

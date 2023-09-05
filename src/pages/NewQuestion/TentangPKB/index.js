@@ -44,6 +44,7 @@ const TentangPKB = ({navigation}) => {
             <View style={styles.boxButton}>
               <Button
                 style={styles.button}
+                // onPress={() => navigation.navigate('TentangCalegKabupaten')}
                 onPress={() => navigation.navigate('TentangCaleg')}
                 text="Selanjutnya"
                 textColor="#F9F9F9"

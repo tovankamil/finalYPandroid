@@ -1,15 +1,18 @@
 import {Picker} from '@react-native-community/picker';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {dataDesa} from '../../../redux/action';
 const KecamatanResponden = ({navigation}) => {
   const listkecamatan = useSelector(state => state?.listkecamatan);
-
+  const globalState = useSelector(state => state.globalReducer);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: 'RESET_NEW_DATA_KECAMATAN'});
 
+    return () => {};
+  }, [globalState.successinput]);
   const submit = value => {
-    console.log('value', value);
     dispatch(
       dataDesa({
         kecamatan: value.split('#')[0],

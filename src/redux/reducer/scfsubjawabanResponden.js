@@ -29,6 +29,11 @@ export default scfsubjawabanRespondenReducer = (
     }
     return {...state};
   }
-
+  if (
+    action.type === 'RESET_POPULATE_DATA_SCF_FIELD_SUBJAWABAN_RESPONDEN_BARU'
+  ) {
+    state.data_jawaban = [];
+    return state;
+  }
   return state;
 };

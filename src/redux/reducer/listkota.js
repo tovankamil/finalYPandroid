@@ -20,10 +20,9 @@ export default listkotaReducer = (state = initStateRegister, action) => {
   }
 
   if (action.type === 'RESET_NEW_DATA_KOTA') {
-    return {
-      ...state,
-      data_kota: [],
-    };
+    state.nama_kota = '';
+    state.value = '';
+    return state;
   }
 
   return state;

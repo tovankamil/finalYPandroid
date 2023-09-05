@@ -45,8 +45,12 @@ export default scfjawabanRespondenReducer = (
         }
       }
     }
+
     return {...state};
   }
-
+  if (action.type === 'RESET_POPULATE_DATA_SCF_SUBJAWABAN_RESPONDEN_BARU') {
+    state.data_jawaban = [];
+    state.dataChecked = [];
+  }
   return state;
 };

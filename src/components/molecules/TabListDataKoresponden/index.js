@@ -73,19 +73,6 @@ const DataTerinput = () => {
   );
 };
 
-// const DataTerpending = () => {
-//   return (
-//     <ScrollView>
-//       <View style={styles.tabViewContainer}>
-//         <View style={styles.tabView}>
-//           <ListDataKoresponden />
-//           <Gap height={14} />
-//         </View>
-//       </View>
-//     </ScrollView>
-//   );
-// };
-
 const DataTerpending = () => {
   return (
     <ScrollView>

@@ -12,6 +12,7 @@ import DetailKoresponden from './DetailKoresponden';
 import Setting from './Setting';
 import Keluar from './Keluar';
 import * as NewQuestion from './NewQuestion';
+import SuccesInputResponden from './SuccesInputResponden';
 export {
   Keluar,
   SplashScreen,
@@ -27,4 +28,5 @@ export {
   DetailKoresponden,
   Setting,
   NewQuestion,
+  SuccesInputResponden,
 };

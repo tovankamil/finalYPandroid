@@ -25,7 +25,7 @@ const ATOMJawaban = ({
       idjawaban,
       tipe,
       fieldjawaban: '',
-      checked: !checked,
+      checked: check,
       subjawaban: '',
     };
     dispatch(jawabanRespondenbaru(datajawaban));
@@ -45,7 +45,10 @@ const ATOMJawaban = ({
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>{data.namaJawaban}</Text>
+          <Text>
+            {data.namaJawaban}
+            {idPertanyaan}- {idjawaban}
+          </Text>
         </View>
       </View>
     </View>

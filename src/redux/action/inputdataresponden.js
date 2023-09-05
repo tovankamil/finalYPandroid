@@ -1,10 +1,12 @@
+import {useNavigation} from '@react-navigation/native';
 import Axios from 'axios';
 import {API_HOST} from '../../config';
-import {showMessage} from '../../utils';
-import {setLoading} from './global';
+import {removeData, showMessage} from '../../utils';
+import {setLoading, setLogout} from './global';
 
 export const inpudataresponden = (token, data) => dispatch => {
-  dispatch(setLoading(true));
+  // dispatch(setLoading(true));
+
   Axios.post(`${API_HOST.url}/fe/users/login/inputresponden`, data, {
     headers: {
       Authorization: `Bearer ${token?.value}`,
@@ -14,8 +16,8 @@ export const inpudataresponden = (token, data) => dispatch => {
     timeout: 900,
   })
     .then(res => {
-      dispatch(setLoading(false));
       if (res?.data?.data?.length > 0) {
+        dispatch({type: 'SET_SUCCESS_DATA_INPUT'});
       }
     })
     .catch(err => {

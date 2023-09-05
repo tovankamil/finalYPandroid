@@ -60,6 +60,14 @@ export default questionReducer = (state = initStateRegister, action) => {
 
     return {...state};
   }
+  if (action.type === 'RESET_UPDATE_CHECKED') {
+    if (state.dataCheckList.length > 0) {
+      state.dataCheckList.map((d, i) => {
+        d.isChecked = false;
+      });
+    }
 
+    return state;
+  }
   return state;
 };

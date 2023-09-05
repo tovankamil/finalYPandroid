@@ -81,6 +81,7 @@ const ATOMSCF = ({
           />
           <Text>
             {data.namaJawaban}
+            {idPertanyaan}
             {carijawaban}
           </Text>
           {<SubJawaban data={data} />}

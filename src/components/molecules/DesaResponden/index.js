@@ -1,18 +1,19 @@
 import {Picker} from '@react-native-community/picker';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap} from '../..';
 import {dataKecamatan2} from '../../../redux/action';
 const DesaResponden = ({navigation}) => {
   const listdesaReducer = useSelector(state => state?.listdesa);
-  console.log('listdesaReducer', listdesaReducer);
-
+  const globalState = useSelector(state => state.globalReducer);
+  useEffect(() => {
+    dispatch({type: 'RESET_NEW_DATA_DESA'});
+    return () => {};
+  }, [globalState.successinput]);
   const dispatch = useDispatch();
 
   const submit = value => {
-    console.log('value', value);
-
     dispatch({
       type: 'NEW_DATA_DESA',
       value: {

@@ -22,28 +22,25 @@ const ATOMJawabanMC = ({
   const dispatch = useDispatch();
   let index = 0;
   const selector = useSelector(state => state.questionReducer);
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {}, []);
   const cek = id => {
     const cekdata = selector?.dataQuestion?.findIndex(d => {
       return d._id === idPertanyaan;
     });
-    let datajawaban = {
-      idPertanyaan,
-      namaResponden,
-      idjawaban,
-      tipe,
-      // checked: !checked,
-      fieldjawaban: '',
-      subjawaban: '',
-    };
+
     const finindex = selector.dataCheckList.findIndex(d => {
       return d.idJawaban === idjawaban;
     });
     selector.dataCheckList[finindex].isChecked =
       selector.dataCheckList[finindex].isChecked === false ? true : false;
-
+    let datajawaban = {
+      idPertanyaan,
+      namaResponden,
+      idjawaban,
+      tipe,
+      checked: selector.dataCheckList[finindex].isChecked,
+      fieldjawaban: '',
+      subjawaban: '',
+    };
     dispatch({type: 'UPDATE_CHECKED', value: selector.dataCheckList[finindex]});
     dispatch(jawabanRespondenbaru(datajawaban));
     dispatch(subjawabanRespondenbaru(datajawaban));
@@ -74,7 +71,9 @@ const ATOMJawabanMC = ({
     }
     return (
       <View style={styles.boxSubJawaban}>
-        <Text>{data.namaJawaban}</Text>
+        <Text>
+          {data.namaJawaban} {idPertanyaan}
+        </Text>
       </View>
     );
   };

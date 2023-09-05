@@ -29,7 +29,7 @@ export const formKorespondenReducer = (
   state = initStateRegisterKoresponden,
   action,
 ) => {
-  if (action.type === 'SET_PROFILE_KORESPONDEN')
+  if (action.type === 'SET_PROFILE_KORESPONDEN') {
     return {
       ...state,
       nama: action.value.nama,
@@ -39,6 +39,7 @@ export const formKorespondenReducer = (
       alamat: action.value.alamat,
       jk: action.value.jk,
     };
+  }
 
   if (action.type === 'SET_KOTA_KORESPONDEN')
     return {
@@ -122,7 +123,15 @@ export const formKorespondenReducer = (
     };
 
   if (action.type === 'SET_RESET_FORM') {
-    return (state = initStateRegisterKoresponden);
+    state.nama = '';
+    state.nik = '';
+    state.hp = '';
+    state.usia = '';
+    state.jk = '';
+    state.alamat = '';
+    (state.kota = ''), (state.kecamatan = ''), (state.desa = '');
+
+    return state;
   }
   return state;
 };

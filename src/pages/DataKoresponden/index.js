@@ -6,6 +6,7 @@ import TabListDataKoresponden from '../../components/molecules/TabListDataKoresp
 import {resetDataFormKoresponden} from '../../redux/action';
 import {resetjawabanRespondenbarufield} from '../../redux/action/fieldjawabanResponden';
 import {resetjawabanRespondenbaru} from '../../redux/action/jawabanResponden';
+import {resetscffieldjawabanRespondenbaru} from '../../redux/action/subjawabanResponden';
 
 const DataKoresponden = ({navigation}) => {
   const dispatch = useDispatch();
@@ -13,7 +14,10 @@ const DataKoresponden = ({navigation}) => {
     dispatch(resetDataFormKoresponden());
     dispatch(resetjawabanRespondenbaru());
     dispatch(resetjawabanRespondenbarufield());
-    return () => {};
+    dispatch(resetscffieldjawabanRespondenbaru());
+    dispatch({type: 'RESET_NEW_DATA_KECAMATAN'});
+    dispatch({type: 'RESET_NEW_DATA_KOTA'});
+    dispatch({type: 'RESET_NEW_DATA_DESA'});
   }, []);
   return (
     <View style={styles.content}>

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {
   DesaResponden,
   Gap,
@@ -7,25 +7,18 @@ import {
   KotaResponden,
 } from '../../../components';
 import {dataProvinsi} from '../../../redux/action';
-import {useForm} from '../../../utils';
 
 const OIdentitasResponden = ({navigation}) => {
-  const globalStateProvinsi = useSelector(state => state?.dataProvinsiReducer);
-  const [form, setForm] = useForm({
-    nama_kota: '',
-    kota: '',
-    nama_kecamatan: '',
-    kecamatan: '',
-    nama_desa: '',
-    desa: '',
-  });
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
       type: 'RESET_PROVINSI',
     });
     dispatch(dataProvinsi());
+
+    dispatch({type: 'RESET_NEW_DATA_KECAMATAN'});
+    dispatch({type: 'RESET_NEW_DATA_KOTA'});
+    dispatch({type: 'RESET_NEW_DATA_DESA'});
     return () => {};
   }, []);
 

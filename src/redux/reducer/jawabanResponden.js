@@ -8,6 +8,7 @@ export default jawabanRespondenReducer = (
 ) => {
   if (action.type === 'POPULATE_DATA_JAWABAN_RESPONDEN_BARU') {
     // cek jika data jawaban array kosong
+
     if (state.data_jawaban.length <= 0) {
       state.data_jawaban.push(action.value);
     } else {
@@ -35,7 +36,7 @@ export default jawabanRespondenReducer = (
         const cektipe = state.data_jawaban.findIndex(d => {
           return action.value.tipe === d.tipe;
         });
-
+        console.log('action value', action.value);
         if (cektipe <= -1) {
           state.data_jawaban.push(action.value);
         } else {
@@ -71,12 +72,13 @@ export default jawabanRespondenReducer = (
         }
       }
     }
+    console.log('jawabanRespondenbaru', state);
     return {...state};
   }
   if (action.type === 'RESET_DATA_JAWABAN_RESPONDEN_BARU') {
-    console.log('reset jawaban responden');
     state.data_jawaban = [];
     return state;
   }
+
   return state;
 };

@@ -11,6 +11,7 @@ const initGlobal = {
   calegnasional: false,
   calegpropinsi: false,
   calegkabupaten: false,
+  successinput: false,
 };
 
 export const globalReducer = (state = initGlobal, action) => {
@@ -73,6 +74,18 @@ export const globalReducer = (state = initGlobal, action) => {
     return {
       ...state,
       calegnasional: action.value,
+    };
+  }
+  if (action.type === 'SET_SUCCESS_DATA_INPUT') {
+    return {
+      ...state,
+      successinput: true,
+    };
+  }
+  if (action.type === 'RESET_SUCCESS_DATA_INPUT') {
+    return {
+      ...state,
+      successinput: false,
     };
   }
   return state;

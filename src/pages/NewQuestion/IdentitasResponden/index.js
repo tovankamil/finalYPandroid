@@ -16,9 +16,14 @@ import {useForm, showMessage} from '../../../utils';
 
 const IdentitasResponden = ({navigation}) => {
   const globalState = useSelector(state => state.globalReducer);
-  const provinsireducer = useSelector(state => state.formKorespondenReducer);
+  const listkota = useSelector(state => state.listkota);
+  const listkecamatan = useSelector(state => state.listkecamatan);
+  const listdesa = useSelector(state => state.listdesa);
 
   const dataJenisKelamin = useSelector(state => state.qaloadreducer);
+  const formKorespondenReducer = useSelector(
+    state => state.formKorespondenReducer,
+  );
   const [errordata, setErrordata] = useState({
     namaEr: '',
     nikEr: '',
@@ -27,13 +32,7 @@ const IdentitasResponden = ({navigation}) => {
     usiaEr: '',
   });
 
-  const [form, setForm] = useForm({
-    nama: '',
-    nik: '',
-    alamat: '',
-    usia: '',
-    hp: '',
-  });
+  const [form, setForm] = useForm(formKorespondenReducer);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,9 +41,15 @@ const IdentitasResponden = ({navigation}) => {
     });
     dispatch(dataProvinsi());
     grepData();
-    return () => {};
+    // return () => {};
   }, []);
-
+  useEffect(() => {
+    form.nama = '';
+    form.usia = '';
+    form.nik = '';
+    form.hp = '';
+    form.alamat = '';
+  }, [globalState.successinput]);
   const grepData = () => {
     dispatch(question());
   };
@@ -58,22 +63,6 @@ const IdentitasResponden = ({navigation}) => {
         ? dataJenisKelamin?.dataJK[indexjeniskelamin].txt
         : '';
     form['jk'] = indexjeniskelamin;
-    if (form.nama.length <= 0) {
-      return showMessage('Silahkan masukan nama responden', 'danger');
-    }
-    // console.log('provinsireducer', provinsireducer);
-    // if (provinsireducer?.kota?.length <= 5) {
-    //   return showMessage('Silahkan pilih kota', 'danger');
-    // }
-    // if (
-    //   provinsireducer?.kecamatan?.length <= 5 &&
-    //   provinsireducer?.kecamatan === false
-    // ) {
-    //   return showMessage('Silahkan pilih kecamatan', 'danger');
-    // }
-    // if (provinsireducer?.desa?.length <= 5 && provinsireducer?.desa === false) {
-    //   return showMessage('Silahkan pilih desa', 'danger');
-    // }
 
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
     navigation.navigate('TentangPKB');
@@ -83,8 +72,20 @@ const IdentitasResponden = ({navigation}) => {
     return <OIdentitasResponden />;
   });
   const submit = useCallback(() => {
+    if (form.nama.length <= 0) {
+      return showMessage('Silahkan masukan nama responden', 'danger');
+    }
+    if (listkota.nama_kota.length <= 0) {
+      return showMessage('Silahkan Pilih Kota terlebih dahulu', 'danger');
+    }
+    if (listkecamatan?.nama_kecamatan.length <= 0) {
+      return showMessage('Silahkan Pilih Kecamatan terlebih dahulu', 'danger');
+    }
+    if (listdesa?.nama_desa.length <= 0) {
+      return showMessage('Silahkan Pilih Desa terlebih dahulu', 'danger');
+    }
     return ToDispatch();
-  }, [form]);
+  }, [form, listkota, listkecamatan, listdesa]);
   return (
     <ScrollView>
       <View style={styles.content}>
@@ -105,7 +106,7 @@ const IdentitasResponden = ({navigation}) => {
               label="Nama"
               sublabel="* Wajib diisi "
               placeholder="Masukan Nama"
-              value={form.name}
+              value={form.nama}
               onChangeText={value => setForm('nama', value)}
             />
             {errordata.namaEr != '' && <Span label={errordata.namaEr} />}
@@ -178,7 +179,7 @@ const IdentitasResponden = ({navigation}) => {
   );
 };
 
-export default React.memo(IdentitasResponden);
+export default IdentitasResponden;
 
 const styles = StyleSheet.create({
   container: {

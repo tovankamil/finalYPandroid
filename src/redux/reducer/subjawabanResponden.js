@@ -57,6 +57,9 @@ export default subjawabanRespondenReducer = (
     }
     return {...state};
   }
-
+  if (action.type === 'RESET_POPULATE_DATA_SUBJAWABAN_RESPONDEN_BARU') {
+    state.data_jawaban = [];
+    return state;
+  }
   return state;
 };
