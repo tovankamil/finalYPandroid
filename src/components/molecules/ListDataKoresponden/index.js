@@ -12,7 +12,6 @@ const ListDataKoresponden = () => {
   const globalState = useSelector(
     state => state.dataKorespondenReducer.data_koresponden,
   );
-
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -44,17 +43,19 @@ const ListDataKoresponden = () => {
     [globalState],
   );
 
-  const loadMoreItem = () => {};
+  const loadMoreItem = () => {
+    console.log('loadmore');
+  };
   const keyextractor = useCallback(item => item._id);
   return (
     <View style={styles.container}>
-      {/* <FlatList
+      <FlatList
         renderItem={renderItem}
         data={globalState.data}
-        keyExtractor={item => item._id}
+        keyExtractor={keyextractor}
         ListFooterComponent={renderLoader}
         onEndReached={loadMoreItem}
-      /> */}
+      />
     </View>
   );
 

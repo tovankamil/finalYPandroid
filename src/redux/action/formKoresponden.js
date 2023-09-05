@@ -59,6 +59,7 @@ export const getDataKoresponden = token => dispatch => {
   })
     .then(res => {
       dispatch(setLoading(false));
+
       dispatch({type: 'LIST_DATA_KORESPONDEN', value: res.data});
     })
     .catch(err => {

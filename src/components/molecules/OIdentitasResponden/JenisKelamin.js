@@ -8,10 +8,10 @@ import {ATOMJK, Gap} from '../../atoms';
 const JenisKelamin = () => {
   const dispatch = useDispatch();
   const dataJenisKelamin = useSelector(state => state.qaloadreducer);
-
+  const globalState = useSelector(state => state.globalReducer);
   useEffect(() => {
-    dispatch(setLoadingJK(jeniskelamin));
-  }, []);
+    dispatch(setLoadingJK(dataJenisKelamin.dataJK));
+  }, [globalState.successinput]);
   return (
     <View>
       <Text style={styles.label}>Jenis Kelamin</Text>

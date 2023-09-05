@@ -50,7 +50,8 @@ const TentangCalegKabupaten = ({navigation}) => {
       });
 
       dispatch(setLoading(false));
-      navigation.navigate('DataKoresponden');
+      // navigation.navigate('DataKoresponden');
+      navigation.reset({index: 0, routes: [{name: 'DataKoresponden'}]});
     }
     return () => {};
   }, [globalreducer]);
@@ -260,7 +261,7 @@ const TentangCalegKabupaten = ({navigation}) => {
                 text="Kembali"
                 color="#8D92A3"
                 textColor="#F9F9F9"
-                onPress={() => navigation.navigate('IdentitasResponden')}
+                onPress={() => navigation.navigate('TentangCalegPropinsi')}
                 // onPress={() => navigation.navigate('TentangCalegPropinsi')}
               />
             </View>

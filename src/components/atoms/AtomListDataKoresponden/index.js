@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {ICNext, UserKoresponden} from '../../../assets';
 
 const AtomListDataKoresponden = ({onPress, value}) => {
+  let tahun = value?.usia?.length > 0 ? `${value?.usia} tahun, ` : '';
   const LisData = () => {
     return (
       <View style={styles.container}>
@@ -13,7 +14,8 @@ const AtomListDataKoresponden = ({onPress, value}) => {
           <View style={styles.data}>
             <Text style={styles.nama}>{value?.nama} </Text>
             <Text style={styles.alamat}>
-              {`${value?.usia} Tahun ,${value?.kecamatan?.nama} / ${value?.kota?.nama}`}{' '}
+              {tahun}
+              {`${value?.kecamatan?.nama} / ${value?.kota?.nama}`}{' '}
             </Text>
           </View>
         </View>
