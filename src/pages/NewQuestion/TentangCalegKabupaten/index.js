@@ -51,7 +51,7 @@ const TentangCalegKabupaten = ({navigation}) => {
 
       dispatch(setLoading(false));
       // navigation.navigate('DataKoresponden');
-      navigation.reset({index: 0, routes: [{name: 'DataKoresponden'}]});
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
     }
     return () => {};
   }, [globalreducer]);

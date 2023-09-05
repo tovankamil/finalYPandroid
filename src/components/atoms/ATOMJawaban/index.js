@@ -45,10 +45,7 @@ const ATOMJawaban = ({
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>
-            {data.namaJawaban}
-            {idPertanyaan}- {idjawaban}
-          </Text>
+          <Text>{data.namaJawaban}</Text>
         </View>
       </View>
     </View>
