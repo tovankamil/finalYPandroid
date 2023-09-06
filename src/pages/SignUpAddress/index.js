@@ -1,10 +1,11 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Button,
   Gap,
   Header,
+  OIdentitasResponden,
   SignUpAlamat,
   SignUpNik,
   SignUpProvinsi,
@@ -12,8 +13,11 @@ import {
 import {useForm} from '../../utils';
 
 const SignUpAddress = ({navigation}) => {
+  const dispatch = useDispatch();
   const globalState2 = useSelector(state => state.registerReducer);
-
+  const listkota = useSelector(state => state.listkota);
+  const listkecamatan = useSelector(state => state.listkecamatan);
+  const listdesa = useSelector(state => state.listdesa);
   const [form, setForm] = useForm({
     nama_kota: '',
     id_kota: '',
@@ -38,19 +42,23 @@ const SignUpAddress = ({navigation}) => {
     return <SignUpAlamat />;
   }, []);
 
-  const dSignUpProvinsi = useMemo(() => {
-    return (
-      <SignUpProvinsi
-        dataPullKecamatan
-        dataPullDesa
-        Kota
-        dataKecamatan
-        dataDesa
-      />
-    );
-  }, []);
+  // const dSignUpProvinsi = useMemo(() => {
+  //   return (
+  //     <SignUpProvinsi
+  //       dataPullKecamatan
+  //       dataPullDesa
+  //       Kota
+  //       dataKecamatan
+  //       dataDesa
+  //     />
+  //   );
+  // }, []);
+  const DataProvinsi = useCallback(() => {
+    return <OIdentitasResponden />;
+  });
   let msg = '';
   const onSubmit = () => {
+    console.log('listdesa', listkecamatan?.nama_kecamatan?.split('#')[0]);
     setErrordata({error: ''});
     if (globalState2?.alamat?.length == 0) {
       msg = 'error';
@@ -58,19 +66,19 @@ const SignUpAddress = ({navigation}) => {
         ...errordata,
         error: 'Mohon Masukan Alamat',
       }));
-    } else if (globalState2?.nama_kota?.length == 0) {
+    } else if (listkota?.nama_kota?.split('#')[0]?.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
         ...errordata,
         error: 'Pilih Kota Terlebih Dahulu',
       }));
-    } else if (globalState2?.nama_kecamatan?.length == 0) {
+    } else if (listkecamatan?.nama_kecamatan?.split('#')[0]?.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
         ...errordata,
         error: 'Pilih Kecamatan Terlebih Dahulu',
       }));
-    } else if (globalState2?.nama_desa.length == 0) {
+    } else if (listdesa?.nama_desa.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
         ...errordata,
@@ -94,6 +102,20 @@ const SignUpAddress = ({navigation}) => {
         error: '',
       }));
     }
+    if (msg?.length == 0) {
+      dispatch({
+        type: 'SET_KOTA',
+        value: listkota?.nama_kota?.split('#')[0],
+      });
+      dispatch({
+        type: 'SET_KECAMATAN',
+        value: listkecamatan?.nama_kecamatan?.split('#')[0],
+      });
+      dispatch({
+        type: 'SET_DESA',
+        value: listdesa?.nama_desa?.split('#')[0],
+      });
+    }
     msg?.length == 0 && navigation.navigate('ValidasiSignUp');
   };
 
@@ -114,7 +136,7 @@ const SignUpAddress = ({navigation}) => {
 
           <Gap height={13} />
           {dSignUpAlamat}
-          {dSignUpProvinsi}
+          {DataProvinsi()}
           <Gap height={16} />
           <Gap height={46} />
           <Button

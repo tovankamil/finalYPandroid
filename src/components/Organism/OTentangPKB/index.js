@@ -76,9 +76,12 @@ export default React.memo(OTentangPKB);
 const styles = StyleSheet.create({
   container: {
     marginTop: 5,
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
   },
   pertanyaan: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
   },
   rowQuestion: {
     flexDirection: 'row',

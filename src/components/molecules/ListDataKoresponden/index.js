@@ -43,9 +43,7 @@ const ListDataKoresponden = () => {
     [globalState],
   );
 
-  const loadMoreItem = () => {
-    console.log('loadmore');
-  };
+  const loadMoreItem = () => {};
   const keyextractor = useCallback(item => item._id);
   return (
     <View style={styles.container}>

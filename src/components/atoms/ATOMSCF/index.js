@@ -79,7 +79,7 @@ const ATOMSCF = ({
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>
+          <Text style={styles.label}>
             {data.namaJawaban}
 
             {carijawaban}
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   label: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Medium',
   },
 
   checkbox: {

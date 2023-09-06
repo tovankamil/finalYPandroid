@@ -45,7 +45,7 @@ const ATOMJawaban = ({
             }}
             tintColors={{true: 'green', false: '#ddd'}}
           />
-          <Text>{data.namaJawaban}</Text>
+          <Text style={styles.label}>{data.namaJawaban}</Text>
         </View>
       </View>
     </View>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Medium',
   },
 
   checkbox: {

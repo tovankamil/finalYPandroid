@@ -43,19 +43,19 @@ export const registerReducer = (state = initStateRegister, action) => {
     return {
       ...state,
       nama_kota: action.value.nama_kota,
-      kota: action.value.kota,
+      kota: action.value,
     };
   if (action.type === 'SET_KECAMATAN')
     return {
       ...state,
       nama_kecamatan: action.value.nama_kecamatan,
-      kecamatan: action.value.kecamatan,
+      kecamatan: action.value,
     };
   if (action.type === 'SET_DESA')
     return {
       ...state,
       nama_desa: action.value.nama_desa,
-      desa: action.value.desa,
+      desa: action.value,
     };
 
   if (action.type === 'SET_ALAMAT')

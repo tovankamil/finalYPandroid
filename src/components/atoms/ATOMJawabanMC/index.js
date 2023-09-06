@@ -71,7 +71,7 @@ const ATOMJawabanMC = ({
     }
     return (
       <View style={styles.boxSubJawaban}>
-        <Text>{data.namaJawaban}</Text>
+        <Text style={styles.label}>{data.namaJawaban}</Text>
       </View>
     );
   };
@@ -112,6 +112,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
+  },
+  label: {
+    fontFamily: 'Poppins-Medium',
   },
   detailPertanyaan: {
     width: '100%',
@@ -125,9 +130,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  label: {
-    fontWeight: 'bold',
   },
 
   checkbox: {

@@ -116,9 +116,10 @@ const TentangCalegKabupaten = ({navigation}) => {
         datascf.data_jawaban.map(dx => {
           if (listjawaban.length <= 0) {
             if (datascfsub?.data_jawaban?.length > 0) {
-              const cariindex = datascfsub.data_jawaban.findIndex(d => {
+              const cariindex = datascfsub.data_jawaban?.findIndex(d => {
                 return d.idjawaban === dx.idjawaban;
               });
+
               if (cariindex >= 0) {
                 const data = {
                   idPertanyaan: dx.idPertanyaan,
@@ -161,7 +162,7 @@ const TentangCalegKabupaten = ({navigation}) => {
                   idPertanyaan: dx.idPertanyaan,
                   idjawaban: dx.idjawaban,
                   fieldjawaban: dx.fieldjawaban,
-                  subjawaban: datascfsub?.data_jawaban[cariindex]?.subjawaban,
+                  subjawaban: datascfsub?.data_jawaban[cariindex2]?.subjawaban,
                   tipe: dx.tipe,
                 };
 

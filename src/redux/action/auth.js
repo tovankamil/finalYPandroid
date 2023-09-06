@@ -41,7 +41,7 @@ export const signUpAction = (dataRegister, navigation) => dispatch => {
       // }
 
       dispatch(setLoading(false));
-      navigation.navigate('Home');
+      navigation.navigate('MainApp');
     })
     .catch(err => {
       dispatch(setLoading(false));

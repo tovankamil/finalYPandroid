@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
   H1: {
     fontSize: 18,
     fontWeight: 'bold',
-
     fontFamily: 'Poppins-Medium',
     color: '#020202',
   },
   content: {
+    fontFamily: 'Poppins-Medium',
     flex: 1,
   },
   buttonContainer: {
