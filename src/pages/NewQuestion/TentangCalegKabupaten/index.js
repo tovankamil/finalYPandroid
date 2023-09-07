@@ -230,6 +230,7 @@ const TentangCalegKabupaten = ({navigation}) => {
       }
 
       datafinal['uuid'] = await uuidv4(v4options);
+
       getData('token')
         .then(data => {
           dispatch(setLoading(true));
