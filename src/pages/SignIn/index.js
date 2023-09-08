@@ -19,12 +19,12 @@ const SignIn = ({navigation}) => {
     dispatch(setLogout(false));
     dispatch(dispatch(setTabindexinputkoresponden(0)));
     dispatch({type: 'SET_RESET_SETTING_RELAWAN'});
-    getData('token').then(res => {
-      if (res) {
-        navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
-        // navigation.reset({index: 0, routes: [{name: 'IdentitasLain'}]});
-      }
-    });
+    // getData('token').then(res => {
+    //   if (res) {
+    //     navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+    //     // navigation.reset({index: 0, routes: [{name: 'IdentitasLain'}]});
+    //   }
+    // });
   });
   const onSubmit = () => {
     // REMOVE TOKEN

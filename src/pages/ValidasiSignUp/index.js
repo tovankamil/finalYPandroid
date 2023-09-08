@@ -7,7 +7,7 @@ export const ValidasiSignUp = ({navigation}) => {
   const globalState = useSelector(state => state.registerReducer);
 
   const dispatch = useDispatch();
-
+  console.log('globalState', globalState);
   const onSubmit = () => {
     dispatch(setLoading(true));
     dispatch(signUpAction(globalState, navigation));

@@ -1,13 +1,23 @@
 import React, {useEffect} from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
-import {ICSplashScreen} from '../../assets';
+import {useDispatch} from 'react-redux';
+import {BOXLogo, ICSplashScreen} from '../../assets';
+import {setLogout, setTabindexinputkoresponden} from '../../redux/action';
+import {getData} from '../../utils';
 
 const SplashScreen = ({navigation}) => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('SignIn');
-      // navigation.replace('IdentitasResponden');
-    }, 1000);
+    dispatch(setLogout(false));
+    dispatch(dispatch(setTabindexinputkoresponden(0)));
+    dispatch({type: 'SET_RESET_SETTING_RELAWAN'});
+    getData('token').then(res => {
+      if (res) {
+        navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+      } else {
+        navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
+      }
+    });
   });
 
   return (
@@ -19,14 +29,12 @@ const SplashScreen = ({navigation}) => {
         alignItems: 'center',
       }}
     >
-      {/* <Image source={ICSplashScreen} style={styles.image} /> */}
-      <ICSplashScreen style={styles.image} />
+      <Image source={BOXLogo} style={styles.image} />
+      {/* <ICSplashScreen style={styles.image} /> */}
       <View />
       <Text
         style={{fontSize: 25, color: '#626262', fontFamily: 'Poppins-medium'}}
-      >
-        Data Sukses
-      </Text>
+      ></Text>
     </View>
   );
 };
@@ -38,7 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E3E3E3',
   },
   image: {
-    width: 300,
-    height: 300,
+    width: '50%',
+    height: 200,
   },
 });

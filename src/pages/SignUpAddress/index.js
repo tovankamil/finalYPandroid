@@ -23,14 +23,6 @@ const SignUpAddress = ({navigation}) => {
     id_kota: '',
   });
 
-  // const [form, setForm] = useForm({
-  //   nama_kota: '',
-  //   kota: '',
-  //   nama_kecamatan: '',
-  //   kecamatan: '',
-  //   nama_desa: '',
-  //   desa: '',
-  // });
   const [errordata, setErrordata] = useState({
     error: '',
   });
@@ -42,23 +34,12 @@ const SignUpAddress = ({navigation}) => {
     return <SignUpAlamat />;
   }, []);
 
-  // const dSignUpProvinsi = useMemo(() => {
-  //   return (
-  //     <SignUpProvinsi
-  //       dataPullKecamatan
-  //       dataPullDesa
-  //       Kota
-  //       dataKecamatan
-  //       dataDesa
-  //     />
-  //   );
-  // }, []);
   const DataProvinsi = useCallback(() => {
     return <OIdentitasResponden />;
   });
   let msg = '';
   const onSubmit = () => {
-    console.log('listdesa', listkecamatan?.nama_kecamatan?.split('#')[0]);
+    console.log('listdesa', listkecamatan?.nama_kecamatan);
     setErrordata({error: ''});
     if (globalState2?.alamat?.length == 0) {
       msg = 'error';
@@ -105,15 +86,15 @@ const SignUpAddress = ({navigation}) => {
     if (msg?.length == 0) {
       dispatch({
         type: 'SET_KOTA',
-        value: listkota?.nama_kota?.split('#')[0],
+        value: listkota?.nama_kota,
       });
       dispatch({
         type: 'SET_KECAMATAN',
-        value: listkecamatan?.nama_kecamatan?.split('#')[0],
+        value: listkecamatan?.nama_kecamatan,
       });
       dispatch({
         type: 'SET_DESA',
-        value: listdesa?.nama_desa?.split('#')[0],
+        value: listdesa?.nama_desa,
       });
     }
     msg?.length == 0 && navigation.navigate('ValidasiSignUp');

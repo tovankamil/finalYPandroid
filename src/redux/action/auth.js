@@ -60,7 +60,7 @@ export const signInAction = (form, navigation) => dispatch => {
       storeData('token', {value: token});
       storeData('userProfile', profile);
       dispatch(setLoading(false));
-      navigation.reset({index: 0, routes: [{name: 'Home'}]});
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
     })
     .catch(err => {
       dispatch(setLoading(false));

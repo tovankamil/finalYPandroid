@@ -1,9 +1,8 @@
-import ICLogo from './logo.png';
 import ICBack from './ic-back.svg';
 import ICBackWHITE from './ic-back-white.svg';
 import ICNext from './ic-next.svg';
 // import SVGLogo from './logo.svg';
-// import BOXLogo from './logobox.png';
+import BOXLogo from './logoyp.png';
 import Home_off from './home.svg';
 import Koresponden_off from './personalcard.svg';
 import TambahKoresponden_off from './profile-add.svg';
@@ -50,7 +49,6 @@ export {
   ICPKORESPONDEN,
   ICPROFILE,
   ICNext,
-  ICLogo,
   ICUser,
   ICBack,
   ICBackWHITE,
@@ -69,4 +67,5 @@ export {
   MapPin,
   Phone,
   Password,
+  BOXLogo,
 };
