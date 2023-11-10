@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {BOXLogo, ICSplashScreen} from '../../assets';
+import {BOXLogo} from '../../assets';
 import {setLogout, setTabindexinputkoresponden} from '../../redux/action';
 import {getData} from '../../utils';
 
@@ -33,8 +33,15 @@ const SplashScreen = ({navigation}) => {
       {/* <ICSplashScreen style={styles.image} /> */}
       <View />
       <Text
-        style={{fontSize: 25, color: '#626262', fontFamily: 'Poppins-medium'}}
-      ></Text>
+        style={{
+          fontSize: 25,
+          color: '#626262',
+          marginTop: 15,
+          fontFamily: 'Poppins-medium',
+        }}
+      >
+        YANUAR PRIHATIN
+      </Text>
     </View>
   );
 };
@@ -43,10 +50,10 @@ export default SplashScreen;
 
 const styles = StyleSheet.create({
   border: {
-    backgroundColor: '#E3E3E3',
+    backgroundColor: '##f7f7f7',
   },
   image: {
-    width: '50%',
-    height: 200,
+    width: '75%',
+    height: 150,
   },
 });

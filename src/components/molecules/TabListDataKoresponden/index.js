@@ -16,6 +16,7 @@ import {getDataKoresponden, setLogout} from '../../../redux/action';
 import {getData} from '../../../utils';
 import {Gap} from '../../atoms';
 import ListDataKoresponden from '../ListDataKoresponden';
+import ListDataSqlLite from '../ListDataSqlLite';
 
 const DataTerinput = () => {
   const globalState = useSelector(state => state);
@@ -78,7 +79,7 @@ const DataTerpending = () => {
     <ScrollView>
       <View style={styles.tabViewContainer}>
         <View style={styles.tabView}>
-          <ListDataKoresponden />
+          <ListDataSqlLite />
           <Gap height={14} />
         </View>
       </View>
@@ -104,7 +105,7 @@ const TabListDataKoresponden = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: '1', title: 'Data Terinput '},
-    // {key: '2', title: 'Data Terpending'},
+    {key: '2', title: 'Data Terpending'},
   ]);
 
   const renderScene = SceneMap({

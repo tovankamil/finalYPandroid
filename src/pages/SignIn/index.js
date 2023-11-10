@@ -38,7 +38,7 @@ const SignIn = ({navigation}) => {
       <View style={styles.boxImage}>
         <ICSplashScreen style={styles.image} />
       </View>
-
+      <Gap height={36} />
       <View style={styles.container}>
         <TextInput
           label="Username"
@@ -68,6 +68,13 @@ const SignIn = ({navigation}) => {
           textColor="#F9F9F9"
           onPress={() => navigation.navigate('SignUp')}
         />
+        <Gap height={14} />
+        <Button
+          text="Lupa Password"
+          color="#007aff"
+          textColor="#F9F9F9"
+          onPress={() => navigation.navigate('LupaPassword')}
+        />
       </View>
     </View>
   );
@@ -82,11 +89,12 @@ const styles = StyleSheet.create({
   },
   boxImage: {
     justifyContent: 'center',
+
+    alignItems: 'center',
     width: '100%',
   },
   image: {
     width: '100%',
-    height: '100%',
   },
   container: {
     backgroundColor: 'white',

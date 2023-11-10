@@ -1,102 +1,139 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Image, ScrollView} from 'react-native';
 import {IconUserDetail} from '../../../assets';
-
+import FastImage from 'react-native-fast-image';
+import {Gap} from '../../atoms';
 const Card = ({value}) => {
+  console.log('value', value);
   return (
-    <View style={styles.container}>
-      <View style={styles.boxPhoto}>
-        <View style={styles.icon}>
-          <IconUserDetail />
+    <ScrollView style={{}}>
+      <View style={styles.container}>
+        <View style={styles.boxPhoto}>
+          <View style={styles.icon}>
+            <IconUserDetail />
+          </View>
+          <Text style={styles.nama}>{value.nama}</Text>
         </View>
-        <Text style={styles.nama}>{value.nama}</Text>
-      </View>
 
-      <View style={styles.line}></View>
+        <View style={styles.line}></View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>NIK</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}>{value.nik}</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>NIK</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}>{value.nik}</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>USIA</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}>{value.usia} tahun</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>USIA</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              {value?.usia > 0 ? (
+                <Text style={styles.isiColor}>{value.usia} tahun</Text>
+              ) : (
+                <Text style={styles.isiColor}>0</Text>
+              )}
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>Hp</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}>{value.hp}</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Hp</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}>{value.hp}</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>Alamat</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}>{value.alamat}</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Alamat</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}>{value.alamat}</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>Kota</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.kota.nama}</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>Kecamatan</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}>{value.kecamatan.nama}</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Kota</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}> {value.kota.nama}</Text>
+            </View>
           </View>
         </View>
-      </View>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Kecamatan</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}>{value.kecamatan.nama}</Text>
+            </View>
+          </View>
+        </View>
 
-      <View style={styles.boxData}>
-        <View style={styles.dataLayout}>
-          <View style={styles.titleLayout}>
-            <Text style={styles.title}>Desa</Text>
-          </View>
-          <Text style={styles.dot}>:</Text>
-          <View style={styles.isi}>
-            <Text style={styles.isiColor}> {value.desa.nama}</Text>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Desa</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}> {value.desa.nama}</Text>
+            </View>
           </View>
         </View>
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Lokasi</Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <Text style={styles.isiColor}> {value.location}</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.boxData}>
+          <View style={styles.dataLayout}>
+            <View style={styles.titleLayout}>
+              <Text style={styles.title}>Foto </Text>
+            </View>
+            <Text style={styles.dot}>:</Text>
+            <View style={styles.isi}>
+              <FastImage
+                style={{width: 200, height: 200}}
+                source={{
+                  uri: `https://api.yanuarprihatin.com/images/${value.photo}`,
+                }}
+              />
+            </View>
+          </View>
+        </View>
+        <Gap height={50} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -105,9 +142,10 @@ export default Card;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    marginTop: 14,
+
     padding: 14,
     paddingVertical: 25,
+    paddingBottom: 45,
     color: 'black',
   },
   boxPhoto: {
@@ -128,7 +166,7 @@ const styles = StyleSheet.create({
   line: {
     height: 1,
     backgroundColor: '#ddd',
-    marginVertical: 25,
+    marginVertical: 15,
   },
   dataLayout: {
     flexDirection: 'row',

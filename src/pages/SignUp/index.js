@@ -9,6 +9,7 @@ import {
   Span,
   TextInput,
 } from '../../components';
+import {cekdataKode} from '../../redux/action';
 import {
   removeSpecialCharacter,
   removeWhiteSpace,
@@ -18,6 +19,7 @@ import {
 
 const SignUp = ({navigation}) => {
   const RegisterReducer = useSelector(state => state.registerReducer);
+  console.log('RegisterReducer', RegisterReducer);
   const [errordata, setErrordata] = useState({
     usernameEr: '',
     namaEr: '',
@@ -26,6 +28,7 @@ const SignUp = ({navigation}) => {
     jenisKelaminEr: '',
     umurEr: '',
     koordinatorrEr: '',
+    koderefferal: '',
   });
 
   const [form, setForm] = useForm({
@@ -36,6 +39,7 @@ const SignUp = ({navigation}) => {
     jenisKelamin: '',
     umur: '',
     koordinator: '',
+    koderefferal: '',
   });
 
   // RADIO BUTTON
@@ -72,6 +76,14 @@ const SignUp = ({navigation}) => {
     setErrordata(errordata => ({
       errordata,
     }));
+    if (form.koderefferal.length !== 6) {
+      msg = 'error';
+      setErrordata(errordata => ({
+        ...errordata,
+        koderefferal: 'Kode Tidak Valid',
+      }));
+    }
+
     if (form.username.length == 0) {
       msg = 'error';
       setErrordata(errordata => ({
@@ -163,9 +175,11 @@ const SignUp = ({navigation}) => {
         koordinatorEr: 'Pilih Koordinator Anda',
       }));
     }
+
     if (msg.length == 0) {
-      dispatch({type: 'SET_REGISTER', value: form});
-      navigation.navigate('SignUpAddress');
+      dispatch(cekdataKode(form, navigation));
+      // dispatch({type: 'SET_REGISTER', value: form});
+      // navigation.navigate('SignUpAddress');
     }
   };
 
@@ -178,6 +192,21 @@ const SignUp = ({navigation}) => {
           onBack={() => navigation.goBack()}
         />
         <View style={styles.container}>
+          <TextInput
+            label="Kode"
+            placeholder="Masukan Kode "
+            value={form.koderefferal}
+            numeric="numeric"
+            onChangeText={value =>
+              setForm(
+                'koderefferal',
+                removeSpecialCharacter(
+                  removeWhiteSpace(removeWhiteSpace2(value)),
+                ),
+              )
+            }
+          />
+          <Gap height={15} />
           <TextInput
             label="Username"
             placeholder="Masukan Username"

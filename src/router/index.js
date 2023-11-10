@@ -16,6 +16,7 @@ import {
   Setting,
   Keluar,
   SuccesInputResponden,
+  Photo,
 } from '../pages';
 import {BottomNavigator} from '../components';
 import {
@@ -27,6 +28,7 @@ import {
   TentangPKB,
 } from '../pages/NewQuestion';
 import IdentitasResponden from '../pages/NewQuestion/IdentitasResponden';
+import Lupapassword from '../pages/LupaPassword';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,6 +77,11 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="LupaPassword"
+        component={Lupapassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="SignUp"
         component={SignUp}
         options={{headerShown: false}}
@@ -90,12 +97,22 @@ const Router = () => {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="MainApp"
         component={MainApp}
         options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
+        name="Photo"
+        component={Photo}
+        options={{headerShown: false}}
       />
-
+      <Stack.Screen
+        name="MainApp"
+        // component={Photo}
+        component={MainApp}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="DataKoresponden"
         component={DataKoresponden}

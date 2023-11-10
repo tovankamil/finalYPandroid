@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#dddddd',
   },
   p: {
-    marginBottom: -70,
+    marginBottom: -60,
     lineHeight: 20,
   },
 });

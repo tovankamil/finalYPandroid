@@ -270,8 +270,9 @@ const TentangCalegKabupaten = ({navigation}) => {
             <View style={styles.boxButton}>
               <Button
                 style={styles.button}
-                onPress={submit}
-                text="Simpan"
+                // onPress={submit}
+                onPress={() => navigation.navigate('Photo')}
+                text="Selanjutnya"
                 textColor="#F9F9F9"
                 color="green"
               />

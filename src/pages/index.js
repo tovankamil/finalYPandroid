@@ -13,7 +13,10 @@ import Setting from './Setting';
 import Keluar from './Keluar';
 import * as NewQuestion from './NewQuestion';
 import SuccesInputResponden from './SuccesInputResponden';
+import Photo from './NewQuestion/Photo';
+import LupaPassword from './LupaPassword';
 export {
+  LupaPassword,
   Keluar,
   SplashScreen,
   SignIn,
@@ -29,4 +32,5 @@ export {
   Setting,
   NewQuestion,
   SuccesInputResponden,
+  Photo,
 };

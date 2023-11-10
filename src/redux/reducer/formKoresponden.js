@@ -23,6 +23,8 @@ const initStateRegisterKoresponden = {
   attribute: [],
   qa0: [],
   dataattribute: [],
+  photo: '',
+  koordinatlokasi: '',
 };
 
 export const formKorespondenReducer = (
@@ -38,6 +40,14 @@ export const formKorespondenReducer = (
       usia: action.value.usia,
       alamat: action.value.alamat,
       jk: action.value.jk,
+    };
+  }
+
+  if (action.type === 'SET_PHOTO_LOKASI') {
+    return {
+      ...state,
+      photo: action.value.photo,
+      koordinatlokasi: action.value.koordinatlokasi,
     };
   }
 
