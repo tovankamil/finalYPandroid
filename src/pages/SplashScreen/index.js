@@ -32,7 +32,7 @@ const SplashScreen = ({navigation}) => {
       <Image source={BOXLogo} style={styles.image} />
       {/* <ICSplashScreen style={styles.image} /> */}
       <View />
-      <Text
+      {/* <Text
         style={{
           fontSize: 25,
           color: '#626262',
@@ -41,7 +41,7 @@ const SplashScreen = ({navigation}) => {
         }}
       >
         YANUAR PRIHATIN
-      </Text>
+      </Text> */}
     </View>
   );
 };

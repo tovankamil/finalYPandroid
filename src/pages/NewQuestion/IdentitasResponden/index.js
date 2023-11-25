@@ -65,7 +65,8 @@ const IdentitasResponden = ({navigation}) => {
     form['jk'] = indexjeniskelamin;
 
     dispatch({type: 'SET_PROFILE_KORESPONDEN', value: form});
-    navigation.navigate('TentangPKB');
+    // navigation.navigate('TentangPKB');
+    navigation.navigate('Photo');
   };
 
   const DataProvinsi = useCallback(() => {

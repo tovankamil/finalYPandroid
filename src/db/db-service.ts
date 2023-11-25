@@ -5,50 +5,93 @@ import {
 } from 'react-native-sqlite-storage';
 import {ToDoItem} from '../models';
 
-const tableName = 'todoData';
+const tableName = 'Respondens';
 
 enablePromise(true);
 
 export const getDBConnection = async () => {
-  console.log('opendatabase', openDatabase);
-  return openDatabase({name: 'todo-datalocal.db', location: 'default'});
+  // return openDatabase({name: 'todo-datalocal.db', location: 'default'});
+  try {
+    return openDatabase(
+      {
+        name: 'yp.db',
+        location: 'default',
+        createfromlocation: 'yp.db',
+      },
+      () => {
+        // Success callback
+        console.log('Database opened successfully.');
+      },
+      error => {
+        // Error callback
+        console.error('Failed to open database:', error);
+      },
+    );
+  } catch (error) {
+    throw Error('Failed openDatabase !!!');
+  }
+  // saveTodoItems();
+  // createTable();
+  // getTodoItems();
 };
 
 export const createTable = async (db: SQLiteDatabase) => {
   // create table if not exists
-  const query = `CREATE TABLE IF NOT EXISTS ${tableName}(
-        value TEXT NOT NULL
-    );`;
-
-  await db.executeSql(query);
+  // db.transaction(tx => {
+  //   tx.executeSql(
+  //     'DROP TABLE Respondens',
+  //     [],
+  //     (_, result) => {
+  //       // console.log('Table created successfully');
+  //     },
+  //     (_, error) => {
+  //       // console.log('Error creating table:', error);
+  //     },
+  //   );
+  // });
+  try {
+    db.transaction(tx => {
+      tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS Respondens (id INTEGER PRIMARY KEY AUTOINCREMENT, value BLOB,image BLOB)',
+        [],
+        (_, result) => {
+          console.log('Table created successfully');
+        },
+        (_, error) => {
+          console.log('Error creating table:', error);
+        },
+      );
+    });
+  } catch (error) {
+    throw Error('Failed create table !!!', error);
+  }
 };
 
 export const getTodoItems = async (db: SQLiteDatabase): Promise<ToDoItem[]> => {
   try {
     const todoItems: ToDoItem[] = [];
-    const results = await db.executeSql(
-      `SELECT rowid as id,value FROM ${tableName}`,
-    );
+    const results = await db.executeSql(`SELECT * FROM ${tableName}`);
 
     results.forEach(result => {
       for (let index = 0; index < result.rows.length; index++) {
+        // console.log('result.rows.item(index)', result.rows.item(index));
         todoItems.push(result.rows.item(index));
       }
     });
     return todoItems;
   } catch (error) {
-    console.error(error);
-    throw Error('Failed to get todoItems !!!');
+    throw Error('Failed to get todoItems', error);
   }
 };
 
 export const saveTodoItems = async (
   db: SQLiteDatabase,
   todoItems: ToDoItem[],
+  images: String,
 ) => {
-  const insertQuery =
-    `INSERT OR REPLACE INTO ${tableName}(rowid, value) values` +
-    todoItems.map(i => `(${i.id}, '${i.value}')`).join(',');
+  const insertQuery = `insert into ${tableName} (value,image) values('${todoItems}','${images}')`;
+  // `INSERT OR REPLACE INTO ${tableName}(rowid, value) values` +
+  // todoItems.map(i => `(${i.id}, '${i.value}')`).join(',');
 
   return db.executeSql(insertQuery);
 };

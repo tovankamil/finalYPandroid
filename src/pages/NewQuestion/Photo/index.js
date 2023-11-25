@@ -339,7 +339,7 @@ const Photo = ({navigation}) => {
     datafinal['kota'] = listkota.nama_kota?.split('#')[0];
     datafinal['kecamatan'] = listkecamatan.nama_kecamatan?.split('#')[0];
     datafinal['desa'] = listdesa.nama_desa?.split('#')[0];
-    // datafinal['images'] = userProfile.base64;
+    datafinal['images'] = userProfile.base64;
     if (
       datafinal?.nama?.length <= 0 ||
       datafinal?.kota?.length <= 0 ||
@@ -349,9 +349,9 @@ const Photo = ({navigation}) => {
       return showMessage('Mohon isikan nama/kota/kecamatan/desa', 'danger');
     }
     datafinal['uuid'] = await uuidv4(v4options);
+
     getData('token')
       .then(data => {
-        // dispatch(setLoading(true));
         dispatch(inpudataresponden(data, datafinal));
       })
       .catch(async err => {

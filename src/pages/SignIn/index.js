@@ -56,21 +56,21 @@ const SignIn = ({navigation}) => {
         />
         <Gap height={52} />
         <Button
-          text="Masuk"
+          text="Login"
           color="#0EA137"
           textColor="#F9F9F9"
           onPress={onSubmit}
         />
         <Gap height={14} />
         <Button
-          text="Daftar Relawan"
+          text="Register"
           color="#8D92A3"
           textColor="#F9F9F9"
           onPress={() => navigation.navigate('SignUp')}
         />
         <Gap height={14} />
         <Button
-          text="Lupa Password"
+          text="Forget Password"
           color="#007aff"
           textColor="#F9F9F9"
           onPress={() => navigation.navigate('LupaPassword')}

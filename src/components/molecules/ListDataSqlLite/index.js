@@ -19,18 +19,10 @@ const ListDataSqlLite = () => {
       await createTable(db);
 
       const storedTodoItems = await getTodoItems(db);
-      console.log('storedTodoItems');
+
       if (storedTodoItems.length) {
-        if (storedTodoItems.length) {
-          storedTodoItems.map((d, i) => {
-            // console.log('object', Object.values(d.value));
-            // d?.value?.map((h, i) => {
-            //   console.log('object', h);
-            // });
-          });
-        }
-        <RenderItem />;
-        // setTodos(storedTodoItems);
+        console.log('store', storedTodoItems);
+        setTodos(storedTodoItems);
       } else {
         // await saveTodoItems(db, initTodos);
         // setTodos(initTodos);
@@ -43,37 +35,40 @@ const ListDataSqlLite = () => {
     loadDataCallback();
   }, []);
 
-  const RenderItem = useCallback(() => {
-    return (
-      <View style={styles.container}>
-        <View style={styles.box}>
-          <View style={styles.icon}>
-            <UserKoresponden />
-          </View>
-          <View style={styles.data}>
-            <Text style={styles.nama}>test </Text>
-            <Text style={styles.alamat}>test</Text>
-          </View>
-        </View>
-        <ICNext />
-      </View>
-    );
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <RenderItem />
+    <View style={styles.containerBox}>
+      {todos.length > 0 &&
+        todos?.map((data, index) => {
+          // console.log('data.value', JSON.parse(data.value.nama));
+          return (
+            <View style={styles.container} key={index}>
+              <View style={styles.box}>
+                <View style={styles.icon}>
+                  <UserKoresponden />
+                </View>
+                <View style={styles.data}>
+                  <Text style={styles.nama}></Text>
+                </View>
+              </View>
+              {/* <ICNext /> */}
+            </View>
+          );
+        })}
     </View>
   );
 };
 
 export default React.memo(ListDataSqlLite);
 const styles = StyleSheet.create({
+  containerBox: {
+    marginTop: 15,
+  },
   container: {
     backgroundColor: '#ffffff',
     borderRadius: 0,
     paddingHorizontal: 23,
     paddingVertical: 14,
+    marginBottom: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

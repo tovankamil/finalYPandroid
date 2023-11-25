@@ -1,4 +1,4 @@
-package com.yanuarprihatin;
+package com.menang2024.yanuarprihatin;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

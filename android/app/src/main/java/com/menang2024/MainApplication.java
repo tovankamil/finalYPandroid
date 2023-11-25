@@ -1,4 +1,4 @@
-package com.yanuarprihatin;
+package com.menang2024.yanuarprihatin;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

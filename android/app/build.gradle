@@ -97,13 +97,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.yanuarprihatin"
+    namespace "com.menang2024.yanuarprihatin"
     defaultConfig {
-        applicationId "com.yanuarprihatin"
+        applicationId "com.menang2024.yanuarprihatin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
     }
 
     splits {

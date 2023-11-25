@@ -1,4 +1,4 @@
-package com.yanuarprihatin;
+package com.menang2024.yanuarprihatin;
 
 import android.content.Intent;
 import android.os.Bundle;
